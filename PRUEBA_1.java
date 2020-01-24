@@ -1,8 +1,5 @@
 
 public class PRUEBA_1 {
-
-
-
 		System.out.println("******Dividir en 2 comerciante compra/venta de vehiculos y admin de trabajadores******");
 		for (String string : args) {
 			
@@ -27,8 +24,5 @@ public class PRUEBA_1 {
 		
 		
 		}while
-
-
-
 
 }
