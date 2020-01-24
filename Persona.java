@@ -1,5 +1,4 @@
 public class Persona {
-	Double Sueldo,Gastos;
+	Double Sueldo;
 	String Nombre, Apellidos, Dni, Fecha_nacimiento,Cuenta_bancaria,Trabajo,Estado_civil;
-	boolean Familia_numerosa,Minusvalia;
 }
