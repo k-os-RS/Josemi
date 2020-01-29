@@ -5,8 +5,6 @@ class motos extends vehiculos {
 	
 
 	//Constructores	
-	
-	
 	public motos() {
 		
 	}

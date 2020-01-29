@@ -3,14 +3,8 @@ package proyecto_programacion;
 class mecanico extends personas {
 	//Atributos
 	protected final String trabajo_mecanico= "Mecanico";
-		
-	//Constructores
-	public mecanico(String dni, String nombre, String apellidos, String telefono_movil, String fecha_nacimiento,
-			String cuenta_bancaria, String direccion, double sueldo) {
-		super(dni, nombre, apellidos, telefono_movil, fecha_nacimiento, cuenta_bancaria, direccion, sueldo);
-		// TODO Auto-generated constructor stub
-	}
 
+	//Constructores
 	public mecanico() {
 		
 	}

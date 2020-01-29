@@ -5,7 +5,7 @@ import java.util.*;
 class metodos {
 	
 	//Menus
-	public void MenuPrincipal () {
+	protected void MenuPrincipal () {
 		System.out.println("");
 		System.out.println(" == CONCENSIONARIO == ");
 		System.out.println("");
@@ -17,25 +17,76 @@ class metodos {
 		System.out.println("");
 		System.out.print("Elija la opci\u00f3n: ");
 	}
-	public static void MenuAdmin (ArrayList<String> admin, Scanner teclado) {
-		String datos="";
+	private void MenuAdmin (ArrayList<String> admin, ArrayList<personas> person, ArrayList<vehiculos> automovil, Scanner teclado) {
+		String datos;
+		boolean ciclo= true, confirmacion= false;
 		
-		System.out.println("");
-		System.out.println("MENU ADMIN");
-		System.out.println("");
-		datos= teclado.next();
-		System.out.println(datos);
-		admin.remove(1);
-		admin.add(1, "verdadero");
-		
+		do {
+			do {
+				System.out.println("");
+				System.out.println(" [1] Alta empleado");
+				System.out.println(" [2] Baja empleado");
+				System.out.println(" [3] Buscar empleado");
+				System.out.println(" [4] Modificar empleado");
+				System.out.println(" [5] Alta vehiculo");
+				System.out.println(" [6] Baja vehiculo");
+				System.out.println(" [7] Buscar vehiculo");
+				System.out.println(" [8] Mostrar vehiculos");
+				System.out.println(" [9] Modificar vehiculo");
+				System.out.println(" [10] Cerrar sesi\uf003n");
+				datos= teclado.nextLine();
+				
+				if (isNumeroMovil(datos)) {
+					confirmacion= true;
+				} else {
+					confirmacion= false;
+				}// Fin del if
+			
+			} while (!confirmacion);
+			
+			switch (datos) {
+			case "1":
+				AltaEmpleado(person, teclado);
+				break;
+			case "2":
+				BajaEmpleado(person, teclado);
+				break;
+			case "3":
+				BuscarEmpleado(person, teclado);
+				break;
+			case "4":
+				ModificarEmpleado(person, teclado);
+				break;
+			case "5":
+				AltaVehiculo(automovil, teclado);
+				break;
+			case "6":
+				BajaVehiculo(automovil, teclado);
+				break;
+			case "7":
+				BuscarVehiculo(automovil, teclado);
+				break;
+			case "8":
+				MostrarVehiculo(automovil, teclado);
+				break;
+			case "9":
+				ModificarVehiculo(automovil, teclado);
+				break;
+			case "10":
+				ciclo= false;
+				admin.remove(1);
+				admin.add(1, "verdadero");
+				break;
+			}
+		} while (ciclo);
 	}
-	public static void MenuAsesor () {
+	private void MenuAsesor () {
 		System.out.println("");
 		System.out.println("MENU ASESOR");
 		System.out.println("");
 		
 	}
-	public static void MenuMecanico () {
+	private void MenuMecanico () {
 		System.out.println("");
 		System.out.println("MENU MECANICO");
 		System.out.println("");
@@ -43,8 +94,8 @@ class metodos {
 	}
 
 	//Cuentas
-	public void CuentaAdmin (ArrayList<String> admin, Scanner teclado) {
-		String usuario, password;
+	public void CuentaAdmin (ArrayList<String> admin, ArrayList<personas> person, ArrayList<vehiculos> automovil, Scanner teclado) {
+		String usuario, password, dinerobase;
 		int contador= 2;
 		admin.remove(1);
 		admin.add(1, "verdadero");
@@ -54,26 +105,43 @@ class metodos {
 			System.out.println("inicia sesi\u00f3n, por favor rellene los siguientes datos");
 			System.out.println("");
 			do {
-				System.out.print("Nombre de usuario: ");
+				System.out.print("Nombre de administrador: ");
 				usuario= teclado.nextLine();
 				System.out.print("Contrase\u00f1a: ");
 				password= teclado.nextLine();
+				System.out.print("Establezca el dinero base: ");
+				dinerobase= teclado.nextLine();
 				
-				if (usuario.equals("") || password.equals("")) {
-					System.out.println("\nError: Nombre de usuario y/o contrase\u00f1a vacios, por favor rellene con datos");
+				if (usuario.equals("") || password.equals("") || dinerobase.equals("") ) {
+					System.out.println("\nError: Nombre de administrador, contrase\u00f1a y/o dinero base no establecidos");
 					System.out.println("");
+					System.out.println("Por favor vuelva a repetir todo de nuevo");
 				} else {
-					admin.remove(1);
-					admin.add(1, "false");
-				}
+					if (dinerobase.matches("[a-zA-Z]+") || dinerobase.contains(" ")) {
+						System.out.println("\nError: El dinero base tiene que ser un n\u00famero");
+						System.out.println("");
+						System.out.println("Por favor vuelva a repetir todo de nuevo");
+					} else {
+						int dinero= Integer.parseInt(dinerobase);
+						if (dinero >= 500000 ) {
+							admin.remove(1);
+							admin.add(1, "false");
+						} else {
+							System.out.println("\nError: El dinero base tiene que ser mayor o igual a 500,000\u20ac");
+							System.out.println("");
+							System.out.println("Por favor vuelva a repetir todo de nuevo");
+						}//Fin del if
+					}//Fin del if
+				}//Fin del if
 				
 			} while (admin.get(1).equals("verdadero"));
 			admin.remove(0);
 
 			admin.add(0, "false");
-			admin.add(usuario);
-			admin.add(password);
-
+			admin.add(usuario); //2
+			admin.add(password); //3
+			admin.add(dinerobase); //4
+			
 			System.out.println("\n == Cuenta Administrador creada con \u00e9xito == ");
 			System.out.println("");
 			System.out.println("Por favor vuelva a seleccionar el tipo de cuenta administrador");
@@ -107,12 +175,13 @@ class metodos {
 			//Se ejecuta si los datos son correctos
 			while (admin.get(1).equals("false") && contador > 0) {
 				System.out.println("\n == Bienvenido Administrador "+usuario+" == ");
-				metodos.MenuAdmin(admin, teclado);
+				MenuAdmin(admin, person, automovil, teclado);
 			}//Fin del while
 		}
 	}
-	public void CuentaEmpleado(ArrayList<String> admin, ArrayList<personas> person, Scanner teclado) {
+	public void CuentaEmpleado(ArrayList<String> admin, ArrayList<personas> person, ArrayList<String> dnis, Scanner teclado) {
 		String usuario;
+		boolean existe= false;
 		//int contador= 2;
 		admin.remove(1);
 		admin.add(1, "verdadero");
@@ -120,46 +189,87 @@ class metodos {
 		if (admin.get(0).equals("verdadero")) {
 			System.out.println("\nError: La cuenta administrador no ha sido establecida");
 		} else {
-			System.out.println(" == INICIO DE SESI\u00f3n EMPLEADO");
+			System.out.println("\n == INICIO DE SESI\u00f3N EMPLEADO");
 			System.out.println("");
-			System.out.println("Introduce tu DNI: ");
+			System.out.print("Introduzca su DNI: ");
 			usuario= teclado.nextLine();
-
-			for (int i=0; i<person.size(); i++) {
-				if (person.get(i).equals(null)) {
-					System.out.println("\nError: No existe empleado registrado con ese DNI");
-					i= person.size();
-				} else if (person.get(i).getDni().equals(usuario)) {
-					System.out.println(" == BIENVENIDO "+person.get(i).getNombre()+" "+person.get(i).getApellidos()+" == ");
-					
-				}
+			
+			System.out.println(dnis.get(0).equals(usuario));
+			
+			//Comprobamos que el DNI de la persona exista
+			for (int i=0; i<dnis.size(); i++) {
+				if (dnis.get(i).equals(usuario)) {
+					existe= true;
+				} else {
+					existe= false;
+				}//Fin del if
 				
+			}
+			
+			//Segun la verificacion anterior nos dira si existe o no
+			for (int j=0; j<person.size(); j++) {
+				if (!existe) {
+					System.out.println("\nError: No existe empleado registrado con ese DNI");
+					j= person.size();
+				} else if (person.get(j).getDni().equals(usuario)) {
+					System.out.println(" == BIENVENIDO "+person.get(j).getNombre()+" "+person.get(j).getApellidos()+" == ");
+						if (((asesor) person.get(j)).getTrabajo_asesor().equals("Asesor")) {
+							MenuAsesor();
+						} else if (((asesor) person.get(j)).getTrabajo_asesor().equals("Mecanico")) {
+							MenuMecanico();
+						}
+				}//Fin del if
 			}
 		}//Fin del if
 	}
 
 	//Altas y Bajas
-	public void AltaVehiculo () {
+	private void AltaEmpleado (ArrayList<personas> person, Scanner teclado) {
+//		personas a= new asesor();
+//		personas m= new mecanico();
+		
+		
 		
 	}
-	public void BajaVehiculo () {
+	private void BajaEmpleado (ArrayList<personas> person, Scanner teclado) {
 		
 	}
-	public void AltaEmpleado () {
+	private void BuscarEmpleado (ArrayList<personas> person, Scanner teclado) {
 		
 	}
-	public void BajaEmpleado () {
+	private void ModificarEmpleado (ArrayList<personas> person, Scanner teclado) {
 		
 	}
-	public void AltaCliente () {
-
+	private void AltaVehiculo (ArrayList<vehiculos> automovil, Scanner teclado) {
+		
 	}
-	public void AltaVC () {
+	private void BajaVehiculo (ArrayList<vehiculos> automovil, Scanner teclado) {
+		
+	}
+	private void BuscarVehiculo (ArrayList<vehiculos> automovil, Scanner teclado) {
+		
+	}
+	private void MostrarVehiculo (ArrayList<vehiculos> automovil, Scanner teclado) {
+		
+	}
+	private void ModificarVehiculo (ArrayList<vehiculos> automovil, Scanner teclado) {
+		
+	}
+	private void CompraVehiculo (ArrayList<vehiculos> automovil, Scanner teclado) {
+		
+	}
+	private void VentaVehiculo (ArrayList<vehiculos> automovil, Scanner teclado) {
+		
+	}
+	private void GuardarCliente (ArrayList<vehiculos> person, Scanner teclado) {
+		
+	}
+	private void ModificarCliente (ArrayList<vehiculos> person, Scanner teclado) {
 		
 	}
 
 	//Comprobacion de valides
-    public boolean isDNI (String dni) {  	
+    protected boolean isDNI (String dni) {  	
         boolean valido = false;
         int caracter= 0, miDNI = 0, resto = 0, i= 0;
         char letra = ' ';
@@ -186,7 +296,7 @@ class metodos {
         
         return valido;
     }
-	public boolean isMatricula (String matricula){
+	protected boolean isMatricula (String matricula){
 		boolean matriculaValida= false;
 		
 	    if (matricula.toUpperCase().matches("^[0-9]{4}[A-Z]{3}$")) {
@@ -198,7 +308,7 @@ class metodos {
 	    
 	    return matriculaValida;
 	}
-	public boolean isNumeroMovil (String opcion) {
+	protected boolean isNumero (String opcion) {
 		boolean verdadero= false;
 		
 		if (opcion.matches("[0-9]+")) {
@@ -210,7 +320,19 @@ class metodos {
 		
 		return verdadero;
 	}
-	public boolean isFechaNacimiento (String fechan) {
+	protected boolean isNumeroMovil (String movil) {
+		boolean verdadero= false;
+		
+		if (movil.matches("[0-9]+")) {
+			verdadero= true;
+		} else {
+			System.out.println("\nError: La opcion debe ser un numero.");
+			verdadero= false;
+		}//Fin del if
+		
+		return verdadero;
+	}
+	protected boolean isFechaNacimiento (String fechan) {
 		boolean fechan_valida= false;
 		
 		return fechan_valida;

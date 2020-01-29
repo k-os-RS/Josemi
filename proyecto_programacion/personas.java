@@ -1,28 +1,10 @@
 package proyecto_programacion;
 
-class personas {
+abstract class personas {
 	//Atributos
 	protected String dni, nombre, apellidos, telefono_movil, fecha_nacimiento, cuenta_bancaria, direccion;
 	protected double sueldo;
-
-	//Constructores
-	public personas(String dni, String nombre, String apellidos, String telefono_movil, String fecha_nacimiento,
-			String cuenta_bancaria, String direccion, double sueldo) {
-		super();
-		this.dni = dni;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.telefono_movil = telefono_movil;
-		this.fecha_nacimiento = fecha_nacimiento;
-		this.cuenta_bancaria = cuenta_bancaria;
-		this.direccion = direccion;
-		this.sueldo = sueldo;
-	}
-
-	public personas() {
-		
-	}
-
+	
 	//Getters & Setters
 	protected String getDni() {
 		return dni;

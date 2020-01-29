@@ -5,12 +5,6 @@ class asesor extends personas {
 	protected final String trabajo_asesor= "Asesor";
 	
 	//Constructores
-	public asesor(String dni, String nombre, String apellidos, String telefono_movil, String fecha_nacimiento,
-			String cuenta_bancaria, String direccion, double sueldo) {
-		super(dni, nombre, apellidos, telefono_movil, fecha_nacimiento, cuenta_bancaria, direccion, sueldo);
-
-	}
-
 	public asesor() {
 		
 	}

@@ -10,8 +10,13 @@ public class concesionario {
 
 		String cuenta;
 		boolean ciclo= true, confirmacion= false;
-
+		
+		ArrayList<vehiculos> automovil= new ArrayList<vehiculos>();
+		automovil.add(0, new coches());
 		ArrayList<personas> person= new ArrayList<personas>();
+		person.add(0, new asesor());
+		ArrayList<String> dnis= new ArrayList<String>();
+		dnis.add(0, "DNI");
 		ArrayList<String> admin= new ArrayList<String>();
 		admin.add(0, "verdadero");
 		admin.add(1, "verdadero");
@@ -37,13 +42,13 @@ public class concesionario {
 			case "1":
 				//Llamamos al metodo que mostrara unas opciones si es la
 				//primera vez que inicia sesion y otra si ya ha iniciado antes.
-				Llamar.CuentaAdmin(admin, teclado);
+				Llamar.CuentaAdmin(admin, person, automovil, teclado);
 				
 				break;
 			case "2":
 				//Llamamos al metodo que nos pedira el DNI del empleado y
 				//mostrara un menu segun la categoria del empleado (asesor o mecanico)
-				Llamar.CuentaEmpleado(admin, person,teclado);
+				Llamar.CuentaEmpleado(admin, person, dnis, teclado);
 				
 				break;
 			case "3":

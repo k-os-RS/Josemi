@@ -1,26 +1,9 @@
 package proyecto_programacion;
 
-class vehiculos {
+abstract class vehiculos {
 	//Atributos
 	protected String matricula, modelo, color, combustible, plazas;
 	protected double precio, kilometros;
-
-	//Constructores
-	public vehiculos(String matricula, String modelo, String color, String combustible, String plazas, double precio,
-			double kilometros) {
-		this.matricula = matricula;
-		this.modelo = modelo;
-		this.color = color;
-		this.combustible = combustible;
-		this.plazas = plazas;
-		this.precio = precio;
-		this.kilometros = kilometros;
-	}
-
-	public vehiculos () {
-		
-	}
-
 	
 	//Getters & Setters
 	protected String getMatricula() {
