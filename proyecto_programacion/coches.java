@@ -5,13 +5,12 @@ class coches extends vehiculos {
 	
 
 	//Constructores	
-
 	public coches() {
 		
 	}
 
 	//Getters & Setters
-
+	
 
 	@Override
 	public String toString() {

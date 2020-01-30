@@ -269,7 +269,7 @@ class metodos {
 	}
 
 	//Comprobacion de valides
-    protected boolean isDNI (String dni) {  	
+    protected boolean isDNI (String dni) {
         boolean valido = false;
         int caracter= 0, miDNI = 0, resto = 0, i= 0;
         char letra = ' ';
