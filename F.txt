@@ -3,12 +3,43 @@ Crear objeto
 Crear ArrayList
 Preguntar Dinero Base>=(500000)
 hacer
-	Preguntar si es Administrador, trabajador
+	Preguntar si es Administrador, Trabajador
 	según <opcion>
 	caso “Administrador”:
-		Mostrar"Menu (alta vehiculo,empleado,modificar y borrar)"
+		Mostrar"Menu (alta/baja mostrar  vehiculo,empleado,modificar)"
 		segun opcion
-		caso alta vehiculo
+		caso alta empleado:
+			Mostrar “Que trabajador quiere añadir?”
+				“asesor o mecanico”
+			//datos
+			si “asesor” hacer
+				Mostrar “Introduce datos”
+				Escribe datos de asesor con relacion a persona
+				//Sueldo base 1500
+			si “mecanico”
+				Mostrar “Introduce datos”
+				Escribe datos de mecanico con relacion a persona
+				//Sueldo base 1500
+		caso baja empleado:
+			Mostrar “Que trabajador quiere dar de baja?”
+			Mostrar “Introduce DNI”
+			Escribe dni
+			Mostrar objeto y pedir confirmacion
+			//borrar objeto
+		caso mostrar empleado:
+			Mostrar “Que trabajador quiere ver?”
+			Mostrar “Introduce DNI”
+			Escribe dni
+			//mostrar objeto
+		caso modificar empleado:
+			Mostrar “Que trabajador quiere modificar?”
+			Mostrar “Introduce DNI”
+			Escribe dni
+			//mostrar objeto
+			Preguntar "que quiere modificar"
+			Mostrar opciones
+			//edita y guarda objeto
+		caso alta vehiculo:
 			Mostrar "Que vehiculo quiere añadir?"
 				"coche o moto"
 			si "coche" hacer
@@ -19,23 +50,30 @@ hacer
 				Mostrar “Introduce datos”
 				Escribe datos de moto con relacion a vehiculo
 				//indicar precio que vale
-		caso alta empleado:
-			Mostrar “Que trabajador quiere añadir?”
-				“asesor o mecanico”
-			//datos
-			si “asesor” hacer
-				Mostrar “Introduce datos”
-				Escribe datos de asesor con relacion a persona
-				//Sueldo minimo 950
-			si “mecanico”
-				Mostrar “Introduce datos”
-				Escribe datos de mecanico con relacion a persona
-				//Sueldo minimo 950
+		caso baja vehiculo:
+			Mostrar "Que vehiculo quiere dar de baja?"
+			Mostrar “Introduce matricula”
+			Escribe matricula de coche con relacion a vehiculo
+			Mostrar objeto y pedir confirmacion
+			//borrar objeto
+		caso mostrar vehiculo:
+			Mostrar "Que vehiculo quiere ver?"
+			Mostrar “Introduce matricula”
+			Escribe matricula de coche con relacion a vehiculo
+			mostrar objeto
+		caso modificar vehiculo:
+			Mostrar "Que vehiculo quiere modificar?"
+			Mostrar “Introduce matricula”
+			Escribe matricula de coche con relacion a vehiculo
+			mostrar objeto
+			Preguntar "que quiere modificar"
+			Mostrar opciones
+			//edita y guarda objeto
 			
 	Caso “trabajador”:
-		introduce datos vehiculo
+		introduce datos 
 		segun dni
-		caso “Asesor(compra/venta)”:
+		caso “Asesor(compra/venta) derivar/comprobar garantia”:
 			Mostrar “Vender/Comprar”
 			Segun  <opcion>
 			caso vender:
@@ -90,7 +128,7 @@ hacer
 					mostrar componentes que estan dentro de leve y su precio
 					elejir componente
 					+dinerobase
-				mostrar que se lo cubre el seguro:thumbup:
+				mostrar que se lo cubre el seguro
 			sino
 			Mostrar "Que tipo de incidente tuvo?"
 				(leve[arañazo,abollon],medio[pieza arrancada,],grave[gran parte del vehiculo dañado])
@@ -162,4 +200,10 @@ INICIO PUNTO
 si escribe alguna coma pasala a punto [usa .replace (',','.')]
 FIN PUNTO
 
-INICIO	
+INICIO NUMERO
+//es para comprobar que cuando piden numeros y escriben otras cosas no se rompa el programa 
+si <numero contiene numeros [numero.matches("[0-9]+")]>
+retorna true
+sino 
+retorna false
+FIN NUMERO	
