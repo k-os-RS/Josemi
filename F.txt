@@ -135,10 +135,31 @@ fin si
 //comprueba que el ultimo caracter sea en mayuscula  y hace la operacon que da la letra del dni valido
 si <valido> hacer
 letra <- Character.toUpperCase(dni.charAt(8));
-            miDNI <- Integer.parseInt(dni.substring(0,8));
+            miDNI <- pasalo a entero [ Integer.parseInt(dni.substring(0,8))];
             resto <- miDNI % 23;
             valido <- (letra=asigLetra[resto]);
 fin si
 validado<-valido
 retorna validado(true o false)
 FIN DNI
+
+
+INICIO MATRICULA
+si <matricula con letras mayusculas contiene (4 numeros y 3 letras)[matricula.toUpperCase().matches("^[0-9]{4}[A-Z]{3}$")]>
+retorna true
+sino 
+retorna false
+FIN MATRICULA
+
+INICIO TELEFONO
+si <movil primer caracter sea 6 o 7 y movil debe tener 9 numeros[movil.substring(0,1) || movil.substring(0,1)=7 && movil.matches("[0-9]+")]>
+retorna true 
+sino
+retorna false
+FIN telefono
+
+INICIO PUNTO 
+si escribe alguna coma pasala a punto [usa .replace (',','.')]
+FIN PUNTO
+
+INICIO	
