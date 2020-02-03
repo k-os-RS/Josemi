@@ -1,6 +1,7 @@
 package proyecto_programacion;
 
 import java.util.*;
+import java.text.*;
 
 class metodos {
 
@@ -418,7 +419,7 @@ class metodos {
 	protected boolean isNumeroMovil (String movil) {
 		boolean verdadero= false;
 		
-		if (movil.matches("[0-9]+")) {
+		if (movil.substring(0, 1).equals("6") && movil.length() == 9){
 			verdadero= true;
 		} else {
 			System.out.println("\nError: La opcion debe ser un numero.");
@@ -427,9 +428,18 @@ class metodos {
 		
 		return verdadero;
 	}
-	protected boolean isFechaNacimiento (String fechan) {
-		boolean fechan_valida= false;
-		
-		return fechan_valida;
+	protected boolean isFechaNacimiento (String fecha) {
+		boolean valido= true;
+
+		try {
+			SimpleDateFormat isFecha= new SimpleDateFormat("dd/mm/yyyy");
+			isFecha.setLenient(false);
+			isFecha.parse(fecha);
+		} catch (ParseException e) {
+			valido= false;
+
+		}
+
+		return valido;
 	}
 }

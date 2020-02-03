@@ -28,16 +28,16 @@ public class concesionario {
 			do {
 				Llamar.MenuPrincipal();
 				cuenta= teclado.nextLine();
-			
+
 				//Llamamos metodo que compruebar si la opcion 
 				//introducida es un numero.
-				if (Llamar.isNumeroMovil(cuenta)) {
+				if (Llamar.isNumero(cuenta)) {
 					confirmacion= true;
 				} else {
 					confirmacion= false;
 				}// Fin del if
 			} while (!confirmacion); //Fin del do
-			
+
 			switch (cuenta) {
 			case "1":
 				//Llamamos al metodo que mostrara unas opciones si es la
