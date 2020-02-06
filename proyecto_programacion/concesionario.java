@@ -4,10 +4,10 @@ import java.util.*;
 
 //euro -> \u20ac � -> \u00e1 � -> \u00e9 � -> \u00ed � -> \u00f3 � -> \u00fa � -> \u00f1
 public class concesionario {
-	
+
 	public static void main(String[] args) {
 		Scanner teclado = new Scanner(System.in);
-
+		
 		String cuenta;
 		boolean ciclo= true, confirmacion= false;
 		

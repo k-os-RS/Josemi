@@ -4,7 +4,8 @@ import java.util.*;
 import java.text.*;
 
 class metodos {
-
+	//NOTA: ArrayList admin posicion 0 y 1 reservadas, person, automovil y dym posicion 0 reservadas.
+	
 	//Menus
 	protected void MenuPrincipal () {
 		System.out.println("");
@@ -279,12 +280,10 @@ class metodos {
 		if (admin.get(0).equals("verdadero")) {
 			System.out.println("\nError: La cuenta administrador no ha sido establecida");
 		} else {
-			System.out.println("\n == INICIO DE SESI\u00f3N EMPLEADO");
+			System.out.println("\n == INICIO DE SESI\u00f3N EMPLEADO == ");
 			System.out.println("");
 			System.out.print("Introduzca su DNI: ");
 			usuario= teclado.nextLine();
-			
-			System.out.println(dym.get(0).equals(usuario));
 
 			//Comprobamos que el DNI de la persona exista
 			for (int i=0; i<dym.size(); i++) {
@@ -306,6 +305,7 @@ class metodos {
 						if (((asesor) person.get(j)).getTrabajo_asesor().equals("Asesor")) {
 							System.out.println("\n == Asesor: "+person.get(j).getNombre()+" "+person.get(j).getApellidos()+" == ");
 							MenuAsesor(person, dym, automovil, teclado);
+							j= person.size();
 						} else if (((asesor) person.get(j)).getTrabajo_asesor().equals("Mecanico")) {
 							System.out.println("\n == Mecanico: "+person.get(j).getNombre()+" "+person.get(j).getApellidos()+" == ");
 							MenuMecanico(dym, automovil, teclado);
@@ -318,13 +318,333 @@ class metodos {
 
 	//Altas y Bajas
 	private void AltaEmpleado (ArrayList<personas> person, ArrayList<String> dym, Scanner teclado) {
-//		personas a= new asesor();
-//		personas m= new mecanico();
+		String tipoEmpleado, datos;
+		boolean cancelar= false, correcto= false;
 		
+		System.out.println("\n == ALTA EMPLEADO == ");
+		System.out.println("\nPor favor, a continuaci\u00f3n indique el tipo de empleado");
+		System.out.println(" Asesor - Mecanico | Si desea cancelar el alta escriba Cancelar");
 		
+		do {
+			System.out.print("Tipo de empleado: ");
+			tipoEmpleado= teclado.nextLine();
+
+			if (tipoEmpleado.equals("")) {
+				System.out.println("\nError: Por favor rellene el campo para poder continuar");
+			} else if (tipoEmpleado.equalsIgnoreCase("Asesor")) {
+				personas a= new asesor();
+				teclado.nextLine();
+				System.out.println("\nRellene los siguientes datos para el/la asesor(a): ");
+				System.out.println("");
+				//DNI
+				do {
+					System.out.println("DNI: ");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo DNI");
+					} else if (isDNI(datos)) {
+						a.setDni(datos);
+						dym.add(datos);
+						correcto= true;
+					} else {
+						System.out.println("\nError: El DNI introducido no es v\u00e1lido");
+					}//Fin del if
+					
+				} while (!correcto);
+				correcto= false;
+				//Nombre
+				do {
+					System.out.println("Nombre: ");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo nombre");
+					} else {
+						a.setNombre(datos);
+						correcto= true;
+					}//Fin del if
+					
+				} while (!correcto);
+				correcto= false;
+				//Apellidos
+				do {
+					System.out.println("Apellidos");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo apellidos");
+					} else {
+						a.setApellidos(datos);
+						correcto= true;
+					}//Fin del if
+					
+				} while (!correcto);
+				correcto= false;
+				//Telefono movil
+				do {
+					System.out.println("Telefono m\u00f3vil: ");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo telefono m\u00f3vil");
+					} else if (isNumeroMovil(datos)) {
+						a.setTelefono_movil(datos);
+						correcto= true;
+					} else {
+						System.out.println("\nError: El telefono m\u00f3vil no es v\u00e1lido");
+					}//Fin del if
+					
+				} while (!correcto);
+				correcto= false;
+				//Fecha nacimiento
+				do {
+					System.out.println("Fecha de nacimiento: ");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo fecha de nacimiento");
+					} else if (isFechaNacimiento(datos)) {
+						a.setFecha_nacimiento(datos);
+						correcto= true;
+					} else {
+						System.out.println("\nError: La fecha de nacimiento no es v\u00e1lida");
+					}//Fin del if
+					
+				} while (!correcto);
+				correcto= false;
+				//Cuenta bancaria
+				do {
+					System.out.println("Cuenta bancaria: ");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo cuenta bancaria");
+					} else {
+						a.setCuenta_bancaria(datos);
+						correcto= true;
+					}//Fin del if
+					
+				} while (!correcto);
+				correcto= false;
+				//Direccion
+				do {
+					System.out.println("Direcci\u00f3n: ");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo direccion");
+					} else {
+						a.setDireccion(datos);
+						correcto= true;
+					}//Fin del if
+					
+				} while (!correcto);
+				correcto= false;
+				//Sueldo
+				do {
+					System.out.println("Sueldo: ");
+					datos= teclado.nextLine();
+
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo nombre");
+					} else if (datos.matches("^[0-9]*$") || datos.matches("[a-zA-Z]+") || datos.contains(" ")){
+						System.out.println("\nError: El sueldo solo puede contener numeros");
+					} else {
+						datos= datos.replace(',', '.');
+						double sueldo= Double.parseDouble(datos);
+						a.setSueldo(sueldo);
+						correcto= true;
+					}//Fin del if
+					
+				} while (!correcto);
+				
+				System.out.println("\n == EL ALTA DE EMPLEADO HA SIDO COMPLETADA == ");
+				person.add(a);
+				
+			} else if (tipoEmpleado.equalsIgnoreCase("Mecanico")) {
+				personas m= new mecanico();
+				teclado.nextLine();
+				System.out.println("\nRellene los siguientes datos para el/la mecanico(a): ");
+				System.out.println("");
+				//DNI
+				do {
+					System.out.println("DNI: ");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo DNI");
+					} else if (isDNI(datos)) {
+						m.setDni(datos);
+						dym.add(datos);
+						correcto= true;
+					} else {
+						System.out.println("\nError: El DNI introducido no es v\u00e1lido");
+					}//Fin del if
+					
+				} while (!correcto);
+				correcto= false;
+				//Nombre
+				do {
+					System.out.println("Nombre: ");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo nombre");
+					} else {
+						m.setNombre(datos);
+						correcto= true;
+					}//Fin del if
+					
+				} while (!correcto);
+				correcto= false;
+				//Apellidos
+				do {
+					System.out.println("Apellidos");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo apellidos");
+					} else {
+						m.setApellidos(datos);
+						correcto= true;
+					}//Fin del if
+					
+				} while (!correcto);
+				correcto= false;
+				//Telefono movil
+				do {
+					System.out.println("Telefono m\u00f3vil: ");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo telefono m\u00f3vil");
+					} else if (isNumeroMovil(datos)) {
+						m.setTelefono_movil(datos);
+						correcto= true;
+					} else {
+						System.out.println("\nError: El telefono m\u00f3vil no es v\u00e1lido");
+					}//Fin del if
+					
+				} while (!correcto);
+				correcto= false;
+				//Fecha nacimiento
+				do {
+					System.out.println("Fecha de nacimiento: ");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo fecha de nacimiento");
+					} else if (isFechaNacimiento(datos)) {
+						m.setFecha_nacimiento(datos);
+						correcto= true;
+					} else {
+						System.out.println("\nError: La fecha de nacimiento no es v\u00e1lida");
+					}//Fin del if
+					
+				} while (!correcto);
+				correcto= false;
+				//Cuenta bancaria
+				do {
+					System.out.println("Cuenta bancaria: ");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo cuenta bancaria");
+					} else {
+						m.setCuenta_bancaria(datos);
+						correcto= true;
+					}//Fin del if
+					
+				} while (!correcto);
+				correcto= false;
+				//Direccion
+				do {
+					System.out.println("Direcci\u00f3n: ");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo direccion");
+					} else {
+						m.setDireccion(datos);
+						correcto= true;
+					}//Fin del if
+					
+				} while (!correcto);
+				correcto= false;
+				//Sueldo
+				do {
+					System.out.println("Sueldo: ");
+					datos= teclado.nextLine();
+
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo nombre");
+					} else if (datos.matches("^[0-9]*$") || datos.matches("[a-zA-Z]+") || datos.contains(" ")){
+						System.out.println("\nError: El sueldo solo puede contener numeros");
+					} else {
+						datos= datos.replace(',', '.');
+						double sueldo= Double.parseDouble(datos);
+						m.setSueldo(sueldo);
+						correcto= true;
+					}//Fin del if
+					
+				} while (!correcto);
+				
+				System.out.println("\n == EL ALTA DE EMPLEADO HA SIDO COMPLETADA == ");
+				person.add(m);
+
+			} else if (tipoEmpleado.equalsIgnoreCase("Cancelar")) {
+				System.out.println("\n == ALTA EMPLEADO CANCELADA == ");
+				cancelar= true;
+			} else {
+				System.out.println("\nError: El tipo de empleado no existe");
+			}
+			
+		} while (!cancelar);
 		
 	}
 	private void BajaEmpleado (ArrayList<personas> person, ArrayList<String> dym, Scanner teclado) {
+		//SIN TERMINAR - HACER COMPROBACIONES
+		//Comprobar si la variable i da como resultado el valor de la posicion fuera del for
+		//Comprobar que el ArrayList dym no es necesario
+		//Si variable i es igual a posicion, borrar for j
+		//Pensar de que manera se puede obtener el dni unicamente de un empleado, no cliente
+		String dni;
+		boolean existe= false;
+		
+		System.out.println("\n == BAJA EMPLEADO == ");
+		System.out.println("");
+		System.out.print("DNI del empleado: ");
+		dni= teclado.nextLine();
+
+		//Comprobamos que el DNI de la persona exista
+		for (int i=0; i<person.size(); i++) {
+			if (person.get(i).getDni().equals(dni)) {
+				existe= true;
+				i= person.size();
+			} else {
+				existe= false;
+			}//Fin del if
+			
+		}//Fin del for i
+		
+		//Segun la verificacion anterior nos dira si existe o no
+		for (int j=0; j<person.size(); j++) {
+			if (!existe) {
+				System.out.println("\nError: No existe empleado registrado con ese DNI");
+				j= person.size();
+			} else if (person.get(j).getDni().equals(dni)) {
+				System.out.println(" == BIENVENIDO "+person.get(j).getNombre()+" "+person.get(j).getApellidos()+" == ");
+					if (((asesor) person.get(j)).getTrabajo_asesor().equals("Asesor")) {
+						System.out.println("\n == Asesor: "+person.get(j).getNombre()+" "+person.get(j).getApellidos()+" == ");
+						
+					} else if (((asesor) person.get(j)).getTrabajo_asesor().equals("Mecanico")) {
+						System.out.println("\n == Mecanico: "+person.get(j).getNombre()+" "+person.get(j).getApellidos()+" == ");
+						
+						j= person.size();
+					}
+			}//Fin del if
+		}//Fin del for j
 		
 	}
 	private void MostrarEmpleado (ArrayList<personas> person, ArrayList<String> dym, Scanner teclado) {
