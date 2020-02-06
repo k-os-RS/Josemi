@@ -34,9 +34,9 @@ class metodos {
 				System.out.println(" [6] Baja vehiculo");
 				System.out.println(" [7] Mostrar vehiculos");
 				System.out.println(" [8] Modificar vehiculo");
-				System.out.println(" [9] Cerrar sesi\uf003n");
+				System.out.println(" [9] Cerrar sesi\u00f3n");
 				System.out.println("");
-				System.out.print("Elija una opci\u00fan: ");
+				System.out.print("Elija una opci\u00f3n: ");
 				datos= teclado.nextLine();
 
 				if (isNumero(datos)) {
@@ -201,9 +201,6 @@ class metodos {
 				System.out.print("Establezca el dinero base: ");
 				dinerobase= teclado.nextLine();
 				
-				//Reemplaza la coma por un .
-				dinerobase= dinerobase.replace(',', '.');
-				
 				//Comproba que los datos no esten vacios
 				if (usuario.equals("") || password.equals("") || dinerobase.equals("") ) {
 					System.out.println("\nError: Nombre de administrador, contrase\u00f1a y/o dinero base no establecidos");
@@ -214,6 +211,8 @@ class metodos {
 						System.out.println("\nError: El dinero base tiene que ser un n\u00famero");
 						System.out.println("Por favor vuelva a repetir todo de nuevo\n");
 					} else {
+						//Reemplaza la coma por un .
+						dinerobase= dinerobase.replace(',', '.');
 						double dinero= Double.parseDouble(dinerobase);
 						if (dinero >= 500000 ) {
 							admin.remove(1);
