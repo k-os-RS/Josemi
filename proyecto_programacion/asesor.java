@@ -3,7 +3,7 @@ package proyecto_programacion;
 class asesor extends personas {
 	//Atributos
 	protected final String trabajo_asesor= "Asesor";
-	
+
 	//Constructores
 	public asesor() {
 		

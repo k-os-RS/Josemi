@@ -3,7 +3,7 @@ package proyecto_programacion;
 class mecanico extends personas {
 	//Atributos
 	protected final String trabajo_mecanico= "Mecanico";
-
+	
 	//Constructores
 	public mecanico() {
 		
