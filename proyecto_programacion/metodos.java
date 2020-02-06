@@ -333,7 +333,6 @@ class metodos {
 				System.out.println("\nError: Por favor rellene el campo para poder continuar");
 			} else if (tipoEmpleado.equalsIgnoreCase("Asesor")) {
 				personas a= new asesor();
-				teclado.nextLine();
 				System.out.println("\nRellene los siguientes datos para el/la asesor(a): ");
 				System.out.println("");
 				//DNI
