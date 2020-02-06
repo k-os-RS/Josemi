@@ -207,10 +207,7 @@ class metodos {
 					System.out.println("Por favor vuelva a repetir todo de nuevo\n");
 				} else {
 					//Comprueba que el dinerobase no sean letras y que no contenga espacios
-					if (dinerobase.matches("^[0-9]*$") || dinerobase.matches("[a-zA-Z]+") || dinerobase.contains(" ")) {
-						System.out.println("\nError: El dinero base tiene que ser un n\u00famero");
-						System.out.println("Por favor vuelva a repetir todo de nuevo\n");
-					} else {
+					if (dinerobase.matches("[0-9]+") || dinerobase.contains(".") || dinerobase.contains(",")) {
 						//Reemplaza la coma por un .
 						dinerobase= dinerobase.replace(',', '.');
 						double dinero= Double.parseDouble(dinerobase);
@@ -218,9 +215,13 @@ class metodos {
 							admin.remove(1);
 							admin.add(1, "false");
 						} else {
-							System.out.println("\nError: El dinero base tiene que ser mayor o igual a 500mil\u20ac");
+							System.out.println("\nError: El dinero base tiene que ser mayor o igual a 500mil euros");
 							System.out.println("Por favor vuelva a repetir todo de nuevo\n");
 						}//Fin del if
+						
+					} else {
+						System.out.println("\nError: El dinero base tiene que ser un n\u00famero");
+						System.out.println("Por favor vuelva a repetir todo de nuevo\n");
 					}//Fin del if
 				}//Fin del if
 
@@ -447,13 +448,13 @@ class metodos {
 
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo nombre");
-					} else if (datos.matches("^[0-9]*$") || datos.matches("[a-zA-Z]+") || datos.contains(" ")){
-						System.out.println("\nError: El sueldo solo puede contener numeros");
-					} else {
+					} else if (datos.matches("[0-9]+") || datos.contains(".") || datos.contains(",")){
 						datos= datos.replace(',', '.');
 						double sueldo= Double.parseDouble(datos);
 						a.setSueldo(sueldo);
 						correcto= true;
+					} else {
+						System.out.println("\nError: El sueldo solo puede contener numeros");
 					}//Fin del if
 					
 				} while (!correcto);
