@@ -3,7 +3,7 @@ package proyecto_programacion;
 class coches extends vehiculos {
 	//Atributos
 	protected String enReparacionCoche, vendidoCoche;
-	
+
 	//Constructores	
 	public coches() {
 		
