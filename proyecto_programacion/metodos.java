@@ -36,7 +36,7 @@ class metodos {
 				System.out.println(" [8] Modificar vehiculo");
 				System.out.println(" [9] Cerrar sesi\uf003n");
 				System.out.println("");
-				System.out.print("Elija una opci\u00fan: ");
+				System.out.print("Elija una opci\u00f3an: ");
 				datos= teclado.nextLine();
 
 				if (isNumero(datos)) {
