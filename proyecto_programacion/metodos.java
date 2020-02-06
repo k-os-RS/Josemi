@@ -34,9 +34,9 @@ class metodos {
 				System.out.println(" [6] Baja vehiculo");
 				System.out.println(" [7] Mostrar vehiculos");
 				System.out.println(" [8] Modificar vehiculo");
-				System.out.println(" [9] Cerrar sesi\uf003n");
+				System.out.println(" [9] Cerrar sesi\u00f3n");
 				System.out.println("");
-				System.out.print("Elija una opci\u00f3an: ");
+				System.out.print("Elija una opci\u00f3n: ");
 				datos= teclado.nextLine();
 
 				if (isNumero(datos)) {
