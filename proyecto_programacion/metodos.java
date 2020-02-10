@@ -19,7 +19,7 @@ class metodos {
 		System.out.println("");
 		System.out.print("Elija la opci\u00f3n: ");
 	}
-	private void MenuAdmin (ArrayList<String> admin, ArrayList<personas> person, ArrayList<String> dym, ArrayList<vehiculos> automovil, Scanner teclado) {
+	private void MenuAdmin (ArrayList<String> admin, ArrayList<personas> person, ArrayList<vehiculos> automovil, Scanner teclado) {
 		String datos;
 		boolean ciclo= true, confirmacion= false;
 
@@ -49,28 +49,28 @@ class metodos {
 			
 			switch (datos) {
 			case "1":
-				AltaEmpleado(person, dym, teclado);
+				AltaEmpleado(person, teclado);
 				break;
 			case "2":
-				BajaEmpleado(person, dym, teclado);
+				BajaEmpleado(person, teclado);
 				break;
 			case "3":
-				MostrarEmpleado(person, dym, teclado);
+				MostrarEmpleado(person, teclado);
 				break;
 			case "4":
-				ModificarEmpleado(person, dym, teclado);
+				ModificarEmpleado(person, teclado);
 				break;
 			case "5":
-				AltaVehiculo(automovil, dym, teclado);
+				AltaVehiculo(automovil, teclado);
 				break;
 			case "6":
-				BajaVehiculo(automovil, dym, teclado);
+				BajaVehiculo(automovil, teclado);
 				break;
 			case "7":
-				MostrarVehiculo(automovil, dym, teclado);
+				MostrarVehiculo(automovil, teclado);
 				break;
 			case "8":
-				ModificarVehiculo(automovil, dym, teclado);
+				ModificarVehiculo(automovil, teclado);
 				break;
 			case "9":
 				ciclo= false;
@@ -80,7 +80,7 @@ class metodos {
 			}
 		} while (ciclo);
 	}
-	private void MenuAsesor (ArrayList<personas> person, ArrayList<String> dym, ArrayList<vehiculos> automovil, Scanner teclado) {
+	private void MenuAsesor (ArrayList<personas> person, ArrayList<vehiculos> automovil, Scanner teclado) {
 		String datos;
 		boolean ciclo= true, confirmacion= false;
 
@@ -108,19 +108,19 @@ class metodos {
 			
 			switch (datos) {
 			case "1":
-				VentaVehiculo(person, automovil, dym, teclado);
+				VentaVehiculo(person, automovil, teclado);
 
 				break;
 			case "2":
-				CompraVehiculo(person, automovil, dym, teclado);
+				CompraVehiculo(person, automovil, teclado);
 				
 				break;
 			case "3":
-				MostrarCliente(person, dym, teclado);
+				MostrarCliente(person, teclado);
 
 				break;
 			case "4":
-				MostrarCliente(person, dym, teclado);
+				MostrarCliente(person, teclado);
 
 				break;
 			case "5":
@@ -135,7 +135,7 @@ class metodos {
 			
 		}while (ciclo);
 	}
-	private void MenuMecanico (ArrayList<String> dym, ArrayList<vehiculos> automovil, Scanner teclado) {
+	private void MenuMecanico (ArrayList<vehiculos> automovil, Scanner teclado) {
 		String datos;
 		boolean ciclo= true, confirmacion= false;
 
@@ -158,15 +158,15 @@ class metodos {
 			
 			switch (datos) {
 			case "1":
-				MostrarVehiculo(automovil, dym, teclado);
+				MostrarVehiculo(automovil, teclado);
 				
 				break;
 			case "2":
-				RepararVehiculo(automovil, dym, teclado);
+				RepararVehiculo(automovil, teclado);
 				
 				break;
 			case "3":
-				MostrarEnReparacion(automovil, dym, teclado);
+				MostrarEnReparacion(automovil, teclado);
 				
 				break;
 			case "4":
@@ -183,7 +183,7 @@ class metodos {
 	}
 
 	//Cuentas
-	protected void CuentaAdmin (ArrayList<String> admin, ArrayList<personas> person, ArrayList<String> dym, ArrayList<vehiculos> automovil, Scanner teclado) {
+	protected void CuentaAdmin (ArrayList<String> admin, ArrayList<personas> person, ArrayList<vehiculos> automovil, Scanner teclado) {
 		String usuario, password, dinerobase;
 		int contador= 2;
 		admin.remove(1);
@@ -266,11 +266,11 @@ class metodos {
 			//Se ejecuta si los datos son correctos
 			while (admin.get(1).equals("false") && contador > 0) {
 				System.out.println("\n == Bienvenido Administrador "+usuario+" == ");
-				MenuAdmin(admin, person, dym, automovil, teclado);
+				MenuAdmin(admin, person, automovil, teclado);
 			}//Fin del while
 		}
 	}
-	protected void CuentaEmpleado(ArrayList<String> admin, ArrayList<personas> person, ArrayList<String> dym, ArrayList<vehiculos> automovil, Scanner teclado) {
+	protected void CuentaEmpleado(ArrayList<String> admin, ArrayList<personas> person, ArrayList<vehiculos> automovil, Scanner teclado) {
 		String usuario;
 		boolean existe= false;
 		//int contador= 2;
@@ -286,8 +286,8 @@ class metodos {
 			usuario= teclado.nextLine();
 
 			//Comprobamos que el DNI de la persona exista
-			for (int i=0; i<dym.size(); i++) {
-				if (dym.get(i).equals(usuario)) {
+			for (int i=0; i<person.size(); i++) {
+				if (person.get(i).getDni().equals(usuario) && person.get(i).getTipo_persona().equals("empleado")) {
 					existe= true;
 				} else {
 					existe= false;
@@ -304,11 +304,11 @@ class metodos {
 					System.out.println(" == BIENVENIDO "+person.get(j).getNombre()+" "+person.get(j).getApellidos()+" == ");
 						if (((asesor) person.get(j)).getTrabajo_asesor().equals("Asesor")) {
 							System.out.println("\n == Asesor: "+person.get(j).getNombre()+" "+person.get(j).getApellidos()+" == ");
-							MenuAsesor(person, dym, automovil, teclado);
+							MenuAsesor(person, automovil, teclado);
 							j= person.size();
 						} else if (((asesor) person.get(j)).getTrabajo_asesor().equals("Mecanico")) {
 							System.out.println("\n == Mecanico: "+person.get(j).getNombre()+" "+person.get(j).getApellidos()+" == ");
-							MenuMecanico(dym, automovil, teclado);
+							MenuMecanico(automovil, teclado);
 							j= person.size();
 						}
 				}//Fin del if
@@ -317,14 +317,14 @@ class metodos {
 	}
 
 	//Altas y Bajas
-	private void AltaEmpleado (ArrayList<personas> person, ArrayList<String> dym, Scanner teclado) {
+	private void AltaEmpleado (ArrayList<personas> person, Scanner teclado) {
 		String tipoEmpleado, datos;
 		boolean cancelar= false, correcto= false;
-		
+
 		System.out.println("\n == ALTA EMPLEADO == ");
 		System.out.println("\nPor favor, a continuaci\u00f3n indique el tipo de empleado");
-		System.out.println(" Asesor - Mecanico | Si desea cancelar el alta escriba Cancelar");
-		
+		System.out.println("Asesor - Mecanico | Si desea cancelar el alta escriba Cancelar\n");
+
 		do {
 			System.out.print("Tipo de empleado: ");
 			tipoEmpleado= teclado.nextLine();
@@ -333,42 +333,42 @@ class metodos {
 				System.out.println("\nError: Por favor rellene el campo para poder continuar");
 			} else if (tipoEmpleado.equalsIgnoreCase("Asesor")) {
 				personas a= new asesor();
+				a.setTipo_persona("empleado");
 				System.out.println("\nRellene los siguientes datos para el/la asesor(a): ");
 				System.out.println("");
 				//DNI
 				do {
-					System.out.println("DNI: ");
+					System.out.print("DNI: ");
 					datos= teclado.nextLine();
-					
+
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo DNI");
 					} else if (isDNI(datos)) {
 						a.setDni(datos);
-						dym.add(datos);
 						correcto= true;
 					} else {
-						System.out.println("\nError: El DNI introducido no es v\u00e1lido");
+						System.out.println("\nError: El DNI no es v\u00e1lido");
 					}//Fin del if
-					
+
 				} while (!correcto);
 				correcto= false;
 				//Nombre
 				do {
-					System.out.println("Nombre: ");
+					System.out.print("Nombre: ");
 					datos= teclado.nextLine();
-					
+
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo nombre");
 					} else {
 						a.setNombre(datos);
 						correcto= true;
 					}//Fin del if
-					
+
 				} while (!correcto);
 				correcto= false;
 				//Apellidos
 				do {
-					System.out.println("Apellidos");
+					System.out.print("Apellidos: ");
 					datos= teclado.nextLine();
 					
 					if (datos.equals("")) {
@@ -382,7 +382,7 @@ class metodos {
 				correcto= false;
 				//Telefono movil
 				do {
-					System.out.println("Telefono m\u00f3vil: ");
+					System.out.print("Telefono m\u00f3vil: ");
 					datos= teclado.nextLine();
 					
 					if (datos.equals("")) {
@@ -391,16 +391,16 @@ class metodos {
 						a.setTelefono_movil(datos);
 						correcto= true;
 					} else {
-						System.out.println("\nError: El telefono m\u00f3vil no es v\u00e1lido");
+						correcto= false;
 					}//Fin del if
-					
+
 				} while (!correcto);
 				correcto= false;
 				//Fecha nacimiento
 				do {
-					System.out.println("Fecha de nacimiento: ");
+					System.out.print("Fecha de nacimiento (dd/mm/yyyy): ");
 					datos= teclado.nextLine();
-					
+
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo fecha de nacimiento");
 					} else if (isFechaNacimiento(datos)) {
@@ -409,12 +409,12 @@ class metodos {
 					} else {
 						System.out.println("\nError: La fecha de nacimiento no es v\u00e1lida");
 					}//Fin del if
-					
+
 				} while (!correcto);
 				correcto= false;
 				//Cuenta bancaria
 				do {
-					System.out.println("Cuenta bancaria: ");
+					System.out.print("Cuenta bancaria: ");
 					datos= teclado.nextLine();
 					
 					if (datos.equals("")) {
@@ -428,7 +428,7 @@ class metodos {
 				correcto= false;
 				//Direccion
 				do {
-					System.out.println("Direcci\u00f3n: ");
+					System.out.print("Direcci\u00f3n: ");
 					datos= teclado.nextLine();
 					
 					if (datos.equals("")) {
@@ -442,7 +442,7 @@ class metodos {
 				correcto= false;
 				//Sueldo
 				do {
-					System.out.println("Sueldo: ");
+					System.out.print("Sueldo: ");
 					datos= teclado.nextLine();
 
 					if (datos.equals("")) {
@@ -455,37 +455,37 @@ class metodos {
 					} else {
 						System.out.println("\nError: El sueldo solo puede contener numeros");
 					}//Fin del if
-					
+
 				} while (!correcto);
-				
+
 				System.out.println("\n == EL ALTA DE EMPLEADO HA SIDO COMPLETADA == ");
 				person.add(a);
-				
+				cancelar= true;
+
 			} else if (tipoEmpleado.equalsIgnoreCase("Mecanico")) {
 				personas m= new mecanico();
-				teclado.nextLine();
+				m.setTipo_persona("empleado");
 				System.out.println("\nRellene los siguientes datos para el/la mecanico(a): ");
 				System.out.println("");
 				//DNI
 				do {
-					System.out.println("DNI: ");
+					System.out.print("DNI: ");
 					datos= teclado.nextLine();
 					
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo DNI");
 					} else if (isDNI(datos)) {
 						m.setDni(datos);
-						dym.add(datos);
 						correcto= true;
 					} else {
-						System.out.println("\nError: El DNI introducido no es v\u00e1lido");
+						System.out.println("\nError: El DNI no es v\u00e1lido");
 					}//Fin del if
 					
 				} while (!correcto);
 				correcto= false;
 				//Nombre
 				do {
-					System.out.println("Nombre: ");
+					System.out.print("Nombre: ");
 					datos= teclado.nextLine();
 					
 					if (datos.equals("")) {
@@ -499,7 +499,7 @@ class metodos {
 				correcto= false;
 				//Apellidos
 				do {
-					System.out.println("Apellidos");
+					System.out.print("Apellidos: ");
 					datos= teclado.nextLine();
 					
 					if (datos.equals("")) {
@@ -513,7 +513,7 @@ class metodos {
 				correcto= false;
 				//Telefono movil
 				do {
-					System.out.println("Telefono m\u00f3vil: ");
+					System.out.print("Telefono m\u00f3vil: ");
 					datos= teclado.nextLine();
 					
 					if (datos.equals("")) {
@@ -522,14 +522,14 @@ class metodos {
 						m.setTelefono_movil(datos);
 						correcto= true;
 					} else {
-						System.out.println("\nError: El telefono m\u00f3vil no es v\u00e1lido");
+						correcto= false;
 					}//Fin del if
 					
 				} while (!correcto);
 				correcto= false;
 				//Fecha nacimiento
 				do {
-					System.out.println("Fecha de nacimiento: ");
+					System.out.print("Fecha de nacimiento: ");
 					datos= teclado.nextLine();
 					
 					if (datos.equals("")) {
@@ -540,12 +540,12 @@ class metodos {
 					} else {
 						System.out.println("\nError: La fecha de nacimiento no es v\u00e1lida");
 					}//Fin del if
-					
+
 				} while (!correcto);
 				correcto= false;
 				//Cuenta bancaria
 				do {
-					System.out.println("Cuenta bancaria: ");
+					System.out.print("Cuenta bancaria: ");
 					datos= teclado.nextLine();
 					
 					if (datos.equals("")) {
@@ -559,7 +559,7 @@ class metodos {
 				correcto= false;
 				//Direccion
 				do {
-					System.out.println("Direcci\u00f3n: ");
+					System.out.print("Direcci\u00f3n: ");
 					datos= teclado.nextLine();
 					
 					if (datos.equals("")) {
@@ -568,12 +568,12 @@ class metodos {
 						m.setDireccion(datos);
 						correcto= true;
 					}//Fin del if
-					
+
 				} while (!correcto);
 				correcto= false;
 				//Sueldo
 				do {
-					System.out.println("Sueldo: ");
+					System.out.print("Sueldo: ");
 					datos= teclado.nextLine();
 
 					if (datos.equals("")) {
@@ -586,11 +586,12 @@ class metodos {
 						m.setSueldo(sueldo);
 						correcto= true;
 					}//Fin del if
-					
+
 				} while (!correcto);
-				
+
 				System.out.println("\n == EL ALTA DE EMPLEADO HA SIDO COMPLETADA == ");
 				person.add(m);
+				cancelar= true;
 
 			} else if (tipoEmpleado.equalsIgnoreCase("Cancelar")) {
 				System.out.println("\n == ALTA EMPLEADO CANCELADA == ");
@@ -602,7 +603,7 @@ class metodos {
 		} while (!cancelar);
 		
 	}
-	private void BajaEmpleado (ArrayList<personas> person, ArrayList<String> dym, Scanner teclado) {
+	private void BajaEmpleado (ArrayList<personas> person, Scanner teclado) {
 		//SIN TERMINAR - HACER COMPROBACIONES
 		//Comprobar si la variable i da como resultado el valor de la posicion fuera del for
 		//Comprobar que el ArrayList dym no es necesario
@@ -646,40 +647,40 @@ class metodos {
 		}//Fin del for j
 		
 	}
-	private void MostrarEmpleado (ArrayList<personas> person, ArrayList<String> dym, Scanner teclado) {
+	private void MostrarEmpleado (ArrayList<personas> person, Scanner teclado) {
 		
 	}
-	private void ModificarEmpleado (ArrayList<personas> person, ArrayList<String> dym, Scanner teclado) {
+	private void ModificarEmpleado (ArrayList<personas> person, Scanner teclado) {
 		
 	}
-	private void AltaVehiculo (ArrayList<vehiculos> automovil, ArrayList<String> dym, Scanner teclado) {
+	private void AltaVehiculo (ArrayList<vehiculos> automovil, Scanner teclado) {
 		
 	}
-	private void BajaVehiculo (ArrayList<vehiculos> automovil, ArrayList<String> dym, Scanner teclado) {
+	private void BajaVehiculo (ArrayList<vehiculos> automovil, Scanner teclado) {
 		
 	}
-	private void MostrarVehiculo (ArrayList<vehiculos> automovil, ArrayList<String> dym, Scanner teclado) {
+	private void MostrarVehiculo (ArrayList<vehiculos> automovil, Scanner teclado) {
 		
 	}
-	private void ModificarVehiculo (ArrayList<vehiculos> automovil, ArrayList<String> dym, Scanner teclado) {
+	private void ModificarVehiculo (ArrayList<vehiculos> automovil, Scanner teclado) {
 		
 	}
-	private void CompraVehiculo (ArrayList<personas> person, ArrayList<vehiculos> automovil, ArrayList<String> dym, Scanner teclado) {
+	private void CompraVehiculo (ArrayList<personas> person, ArrayList<vehiculos> automovil, Scanner teclado) {
 		//Comprobar que el arraylist person es utilizado en este metodo
 	}
-	private void VentaVehiculo (ArrayList<personas> person, ArrayList<vehiculos> automovil, ArrayList<String> dym, Scanner teclado) {
-		GuardarCliente(person, dym, teclado);
+	private void VentaVehiculo (ArrayList<personas> person, ArrayList<vehiculos> automovil, Scanner teclado) {
+		GuardarCliente(person, teclado);
 	}
-	private void GuardarCliente (ArrayList<personas> person, ArrayList<String> dym, Scanner teclado) {
+	private void GuardarCliente (ArrayList<personas> person, Scanner teclado) {
 		
 	}
-	private void MostrarCliente (ArrayList<personas> person, ArrayList<String> dym, Scanner teclado) {
+	private void MostrarCliente (ArrayList<personas> person, Scanner teclado) {
 		
 	}
-	private void MostrarEnReparacion (ArrayList<vehiculos> automovil, ArrayList<String> dym, Scanner teclado) {
+	private void MostrarEnReparacion (ArrayList<vehiculos> automovil, Scanner teclado) {
 		
 	}
-	private void RepararVehiculo (ArrayList<vehiculos> automovil, ArrayList<String> dym, Scanner teclado) {
+	private void RepararVehiculo (ArrayList<vehiculos> automovil, Scanner teclado) {
 		
 	}
 

@@ -3,7 +3,7 @@ package proyecto_programacion;
 class coches extends vehiculos {
 	//Atributos
 	protected String enReparacionCoche, vendidoCoche;
-	
+
 	//Constructores	
 	public coches() {
 		
@@ -17,11 +17,11 @@ class coches extends vehiculos {
 	public void setEnReparacionCoche(String enReparacionCoche) {
 		this.enReparacionCoche = enReparacionCoche;
 	}
-
+	
 	public String getVendidoCoche() {
 		return vendidoCoche;
 	}
-
+	
 	public void setVendidoCoche(String vendidoCoche) {
 		this.vendidoCoche = vendidoCoche;
 	}
