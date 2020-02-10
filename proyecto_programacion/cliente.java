@@ -8,12 +8,12 @@ class cliente extends personas {
 	public cliente() {
 		
 	}
-
+	
 	//Getters & Setters
 	public int getCompraCoche() {
 		return compraCoche;
 	}
-
+	
 	public void setCompraCoche(int compraCoche) {
 		this.compraCoche = compraCoche;
 	}

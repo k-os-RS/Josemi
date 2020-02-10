@@ -8,12 +8,12 @@ class mecanico extends personas {
 	public mecanico() {
 		
 	}
-
+	
 	//Getters & Setters
 	protected String getTrabajo_mecanico() {
 		return trabajo_mecanico;
 	}
-
+	
 	@Override
 	public String toString() {
 		String texto= "\nINFORMACI\u00f3N PARA EL EMPLEADO CON DNI: "+dni+"\n"+

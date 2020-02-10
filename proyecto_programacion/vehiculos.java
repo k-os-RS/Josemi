@@ -9,11 +9,11 @@ abstract class vehiculos {
 	protected String getMatricula() {
 		return matricula;
 	}
-
+	
 	protected void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-
+	
 	protected String getModelo() {
 		return modelo;
 	}

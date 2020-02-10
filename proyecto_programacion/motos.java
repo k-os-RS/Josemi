@@ -17,11 +17,11 @@ class motos extends vehiculos {
 	public void setEnReparacionMoto(String enReparacionMoto) {
 		this.enReparacionMoto = enReparacionMoto;
 	}
-
+	
 	public String getVendidoMoto() {
 		return vendidoMoto;
 	}
-
+	
 	public void setVendidoMoto(String vendidoMoto) {
 		this.vendidoMoto = vendidoMoto;
 	}

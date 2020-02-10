@@ -8,12 +8,12 @@ class asesor extends personas {
 	public asesor() {
 		
 	}
-
+	
 	//Getters & Setters
 	protected String getTrabajo_asesor() {
 		return trabajo_asesor;
 	}
-
+	
 	@Override
 	public String toString() {
 		String texto= "\nINFORMACI\u00f3N PARA EL EMPLEADO CON DNI: "+dni+"\n"+
