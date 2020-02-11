@@ -800,7 +800,7 @@ class metodos {
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo matricula");
 					} else if (isMatricula(datos)) {
-						c.setMatricula(datos);
+						m.setMatricula(datos);
 						correcto= true;
 					} else {
 						System.out.println("\nError: La matricula no es v\u00e1lido");
@@ -816,7 +816,7 @@ class metodos {
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo modelo");
 					} else {
-						c.setModelo(datos);
+						m.setModelo(datos);
 						correcto= true;
 					}//Fin del if
 
@@ -830,7 +830,7 @@ class metodos {
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo apellidos");
 					} else {
-						c.setColor(datos);
+						m.setColor(datos);
 						correcto= true;
 					}//Fin del if
 					
@@ -845,7 +845,7 @@ class metodos {
 						System.out.println("\nError: Por favor rellene el campo combustible");
 						correcto= false;
 					} else {
-						c.setCombustible(datos);
+						m.setCombustible(datos);
 						correcto= true;
 					}//Fin del if
 
@@ -860,7 +860,7 @@ class metodos {
 					} else if (datos.matches("[0-9]+")) {
 						int comprobante=Integer.parseInt(datos);
 						if(comprobante>=1) {
-							c.setPlazas(datos);
+							m.setPlazas(datos);
 							correcto= true;
 						}else {
 							System.out.println("La cantidad de plazas debe ser mayor a 1");
@@ -881,7 +881,7 @@ class metodos {
 					} else if (datos.matches("[0-9]+") || datos.contains(".") || datos.contains(",")){
 						datos.replace('.',',');
 						Double km=Double.parseDouble(datos);
-						c.setKilometros(km);
+						m.setKilometros(km);
 						correcto= true;
 					}//Fin del if
 					
@@ -897,7 +897,7 @@ class metodos {
 					} else if (datos.matches("[0-9]+") || datos.contains(".") || datos.contains(",")){
 							datos.replace('.',',');
 							Double precio=Double.parseDouble(datos);
-							c.setKilometros(precio);
+							m.setKilometros(precio);
 							correcto= true;
 					}//Fin del if
 					
