@@ -655,7 +655,6 @@ class metodos {
 	}
 	private void AltaVehiculo (ArrayList<vehiculos> automovil, Scanner teclado) {
 		
-		vehiculos m=new motos();
 		String tipoVehiculo,datos;
 		boolean cancelar= false, correcto= false;
 
@@ -772,7 +771,7 @@ class metodos {
 					datos= teclado.nextLine();
 					
 					if (datos.equals("")) {
-						System.out.println("\nError: Por favor rellene el campo direccion");
+						System.out.println("\nError: Por favor rellene el campo precio");
 					} else if (datos.matches("[0-9]+") || datos.contains(".") || datos.contains(",")){
 							datos.replace('.',',');
 							Double precio=Double.parseDouble(datos);
@@ -789,7 +788,128 @@ class metodos {
 
 			
 			}else if (tipoVehiculo.equalsIgnoreCase("Moto")) {
+
+
+				vehiculos m = new motos();
+				System.out.println("\nRellene los siguientes datos para el moto: \n");
+				//Matricula
+				do {
+					System.out.print("Matricula: ");
+					datos= teclado.nextLine();
+
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo matricula");
+					} else if (isMatricula(datos)) {
+						c.setMatricula(datos);
+						correcto= true;
+					} else {
+						System.out.println("\nError: La matricula no es v\u00e1lido");
+					}//Fin del if
+
+				} while (!correcto);
+				correcto= false;
+				//Modelo
+				do {
+					System.out.print("Modelo: ");
+					datos= teclado.nextLine();
+
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo modelo");
+					} else {
+						c.setModelo(datos);
+						correcto= true;
+					}//Fin del if
+
+				} while (!correcto);
+				correcto= false;
+				//Color
+				do {
+					System.out.print("Color: ");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo apellidos");
+					} else {
+						c.setColor(datos);
+						correcto= true;
+					}//Fin del if
+					
+				} while (!correcto);
+				correcto= false;
+				//Combustible
+				do {
+					System.out.print("Combustible: ");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo combustible");
+						correcto= false;
+					} else {
+						c.setCombustible(datos);
+						correcto= true;
+					}//Fin del if
+
+				} while (!correcto);
+				correcto= false;
+				//plazas
+				do {
+					System.out.print("Plazas: ");
+					datos= teclado.nextLine();
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo plazas");
+					} else if (datos.matches("[0-9]+")) {
+						int comprobante=Integer.parseInt(datos);
+						if(comprobante>=1) {
+							c.setPlazas(datos);
+							correcto= true;
+						}else {
+							System.out.println("La cantidad de plazas debe ser mayor a 1");
+						}
+					} else {
+						System.out.println("\nError: El n\u00famero no es v\u00a1lido");
+					}//Fin del if
+
+				} while (!correcto);
+				correcto= false;
+				//Kilometros
+				do {
+					System.out.print("Kilometros: ");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo kilometros");
+					} else if (datos.matches("[0-9]+") || datos.contains(".") || datos.contains(",")){
+						datos.replace('.',',');
+						Double km=Double.parseDouble(datos);
+						c.setKilometros(km);
+						correcto= true;
+					}//Fin del if
+					
+				} while (!correcto);
+				correcto= false;
+				//Precio
+				do {
+					System.out.print("Precio: ");
+					datos= teclado.nextLine();
+					
+					if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo direccion");
+					} else if (datos.matches("[0-9]+") || datos.contains(".") || datos.contains(",")){
+							datos.replace('.',',');
+							Double precio=Double.parseDouble(datos);
+							c.setKilometros(precio);
+							correcto= true;
+					}//Fin del if
+					
+				} while (!correcto);
+				correcto= false;
 				
+				System.out.println("\n == EL ALTA DE VEHICULO HA SIDO COMPLETADA == ");
+				automovil.add(m);
+				cancelar= true;
+
+			
+			
 			}else if (tipoVehiculo.equalsIgnoreCase("Cancelar")) {
 				System.out.println("\n == ALTA EMPLEADO CANCELADA == ");
 				cancelar= true;
