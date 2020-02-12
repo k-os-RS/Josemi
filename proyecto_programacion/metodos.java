@@ -826,8 +826,6 @@ class metodos {
 
 			
 			}else if (tipoVehiculo.equalsIgnoreCase("Moto")) {
-
-
 				vehiculos m = new motos();
 				System.out.println("\nRellene los siguientes datos para el moto: \n");
 				//Matricula
