@@ -826,7 +826,7 @@ class metodos {
 
 			
 			}else if (tipoVehiculo.equalsIgnoreCase("Moto")) {
-
+        
 				vehiculos m = new motos();
 				System.out.println("\nRellene los siguientes datos para el moto: \n");
 				//Matricula
@@ -944,7 +944,6 @@ class metodos {
 				System.out.println("\n == EL ALTA DE VEHICULO HA SIDO COMPLETADA == ");
 				automovil.add(m);
 				cancelar= true;
-
 			}else if (tipoVehiculo.equalsIgnoreCase("Cancelar")) {
 				System.out.println("\n == ALTA EMPLEADO CANCELADA == ");
 				cancelar= true;
