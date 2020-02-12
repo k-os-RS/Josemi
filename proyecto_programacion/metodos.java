@@ -710,16 +710,16 @@ class metodos {
 				System.out.println("\nRellene los siguientes datos para el coche: \n");
 				//Matricula
 				do {
-					System.out.print("Matricula: ");
+					System.out.print("Matr\u00edcula: ");
 					datos= teclado.nextLine();
 
 					if (datos.equals("")) {
-						System.out.println("\nError: Por favor rellene el campo matricula");
+						System.out.println("\nError: Por favor rellene el campo matr\u00edcula");
 					} else if (isMatricula(datos)) {
 						c.setMatricula(datos);
 						correcto= true;
 					} else {
-						System.out.println("\nError: La matricula no es v\u00e1lida");
+						System.out.println("\nError: La matr\u00edcula no es v\u00e1lida");
 					}//Fin del if
 
 				} while (!correcto);
@@ -832,7 +832,7 @@ class metodos {
 				System.out.println("\nRellene los siguientes datos para el moto: \n");
 				//Matricula
 				do {
-					System.out.print("Matricula: ");
+					System.out.print("Matr\u00edcula: ");
 					datos= teclado.nextLine();
 
 					if (datos.equals("")) {
@@ -841,7 +841,7 @@ class metodos {
 						m.setMatricula(datos);
 						correcto= true;
 					} else {
-						System.out.println("\nError: La matricula no es v\u00e1lida");
+						System.out.println("\nError: La matr\u00edcula no es v\u00e1lida");
 					}//Fin del if
 
 				} while (!correcto);
