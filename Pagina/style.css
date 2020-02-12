@@ -1,45 +1,201 @@
-.logo{
-    width: 170px;
-    height: 140px;    
+* {
+  box-sizing: border-box;
 }
-ul{
-    border: 1px solid black;
-    list-style: none;
-    margin: 10px;
-    padding: 0;
-    overflow: hidden;
-    display: inline;
-    
-}
-a{
-    text-decoration: none;
-}
-li{
-    border: 1px solid black ;
-    background-color: lightcoral;
-    display: inline;
-}
-body{
-    background-color: lightblue;
-}
-li:hover{
-    border: 3px solid yellow;
-    background-color: rebeccapurple;
-}
-a:hover{
-    color: white;
-}
-td{
-    background-color: turquoise;
-}
-header{
-    background-color: white;
-    border-radius: 15%;
-}
-img.logo{
-    margin-left: 15em;
 
+.header {
+  color: orange;
+  height: 282px;
+  background: linear-gradient(to right, rgba(242,251,252,1) 5%, rgba(242,251,252,1) 9%, rgba(234,243,250,1) 41%, rgba(237,233,222,1) 83%, rgba(238,234,223,1) 84%, rgba(254,243,231,1) 100%);
 }
-h1{
-    margin-left: 7em;
+
+body {
+  background: #fefefe;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
 }
+
+.contenido {
+  padding-right: 25px;
+  padding-left: 25px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .contenido {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .contenido {
+    width: 940px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .contenido {
+    width: 1140px;
+  }
+}
+
+.secciones {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.seccion-a {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media (min-width: 768px) {
+  .seccion-a {
+    float: left;
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+  .seccion-a {
+    float: left;
+    width: 50%;
+}
+
+.ceslogo {
+ padding: 10px 0 0 90px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .ceslogo {
+	   text-align: center;
+	   padding-top: 15px;
+	   padding-bottom: 0px;
+  }
+}
+
+.img-logo {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  vertical-align: middle;
+  border: 0;
+}
+
+.cabezera-contacto {
+  display: block;
+  padding: 5px 0 2px 0;
+}
+  .cabezera-contacto li {
+    display: inline;
+    margin-right: 14px;
+    font-size: 18px;
+  }
+    .cabezera-contacto i {
+      display: inline;
+      font-size: 22px;
+    }
+
+    .cabezera-contacto li a {
+      font-family: Open Sans;
+      color: #49a5bf;
+    }
+
+.redes {
+  display: block;
+  text-align: right;
+  padding-top: 30px;
+  padding-bottom: 5px;
+}
+  .redes li {
+    display: inline;
+    font-size: 18px;
+    margin-right: 5px;
+    cursor: pointer;
+    border: 2px solid #fff;
+  }
+
+  .redes li.facebook {
+    background: blue;
+  }
+
+  .redes .twitter {
+    background: lightblue;
+  }
+
+  .redes .youtube {
+    background: red;
+  }
+
+.bienvenida {
+  text-align: right;
+  padding: 2px 7px 0 0;
+}
+
+.horario {
+  text-align: right;
+  padding: 10px 70px 0 0;
+}
+
+hr {
+  color: #555;
+}
+
+h1, h3 {
+  font-weight: normal;
+  color: #666;
+  text-shadow: 0 0 1px rgba(0,0,0,0.01);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  color: #0077a9;
+  margin: 0 0 10px;
+}
+
+ul {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+a {
+  background: transparent;
+  text-decoration: none
+}
+
+/*ul {
+  display: inline;
+  border: 1px solid black;
+  list-style: none;
+  margin: 10px;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  border: 1px solid black;
+  background: lightcoral;
+  display: inline;
+}
+
+li:hover {
+  border: 3px solid yellow;
+  background-color: rebeccapurple;
+}
+
+a:hover {
+  color: white;
+}
+
+td {
+  background: turquoise;
+}
+*/
