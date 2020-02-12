@@ -786,8 +786,8 @@ class metodos {
 				System.out.println("\n == EL ALTA DE VEHICULO HA SIDO COMPLETADA == ");
 				automovil.add(c);
 				cancelar= true;
+			
 				
-					
 			}else if (tipoVehiculo.equalsIgnoreCase("Moto")) {
 
 
