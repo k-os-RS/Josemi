@@ -578,7 +578,7 @@ class metodos {
 
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo nombre");
-					} else if (datos.matches("^[0-9]*$") || datos.matches("[a-zA-Z]+") || datos.contains(" ")){
+					} else if (datos.matches("[0-9]+") || datos.contains(".") || datos.contains(",")){
 						System.out.println("\nError: El sueldo solo puede contener numeros");
 					} else {
 						datos= datos.replace(',', '.');
@@ -604,11 +604,6 @@ class metodos {
 		
 	}
 	private void BajaEmpleado (ArrayList<personas> person, Scanner teclado) {
-		//SIN TERMINAR - HACER COMPROBACIONES
-		//Comprobar si la variable i da como resultado el valor de la posicion fuera del for
-		//Comprobar que el ArrayList dym no es necesario
-		//Si variable i es igual a posicion, borrar for j
-		//Pensar de que manera se puede obtener el dni unicamente de un empleado, no cliente
 		String dni;
 		boolean existe= false;
 		
@@ -619,7 +614,7 @@ class metodos {
 
 		//Comprobamos que el DNI de la persona exista
 		for (int i=0; i<person.size(); i++) {
-			if (person.get(i).getDni().equals(dni)) {
+			if (person.get(i).getDni().equals(dni) && person.get(i).getTipo_persona().equals("empleado")) {
 				existe= true;
 				i= person.size();
 			} else {
@@ -634,21 +629,63 @@ class metodos {
 				System.out.println("\nError: No existe empleado registrado con ese DNI");
 				j= person.size();
 			} else if (person.get(j).getDni().equals(dni)) {
-				System.out.println(" == BIENVENIDO "+person.get(j).getNombre()+" "+person.get(j).getApellidos()+" == ");
-					if (((asesor) person.get(j)).getTrabajo_asesor().equals("Asesor")) {
-						System.out.println("\n == Asesor: "+person.get(j).getNombre()+" "+person.get(j).getApellidos()+" == ");
-						
-					} else if (((asesor) person.get(j)).getTrabajo_asesor().equals("Mecanico")) {
-						System.out.println("\n == Mecanico: "+person.get(j).getNombre()+" "+person.get(j).getApellidos()+" == ");
-						
-						j= person.size();
-					}
+				System.out.println("\nEst\u00e1 por eliminar del registro al empleado "+person.get(j).getNombre());
+				System.out.println("con DNI "+person.get(j).getDni());
+				System.out.println("");
+				System.out.println("Pulse INTRO si est\u00e1 seguro o escriba Cancelar, para cancelar la operaci\u00f3n\n");
+				dni= teclado.nextLine();
+				
+				if (dni.equals("")) {
+					System.out.println(" == SE HA DADO DE BAJA AL EMPLEADO CON \u00e0XITO == ");
+					person.remove(j);
+				} else if (dni.equalsIgnoreCase("cancelar")) {
+					System.out.println(" == OPERACI\u00f3N CANCELADA == ");
+					j= person.size();
+				} else {
+					System.out.println(" == OPERACI\u00f3N CANCELADA == ");
+					j= person.size();
+				}
 			}//Fin del if
 		}//Fin del for j
 		
 	}
 	private void MostrarEmpleado (ArrayList<personas> person, Scanner teclado) {
+		String dni;
+		boolean existe= false;
 		
+		System.out.println("\n == MOSTRAR DATOS EMPLEADO == ");
+		System.out.println("");
+		System.out.print("DNI del empleado: ");
+		dni= teclado.nextLine();
+
+		//Comprobamos que el DNI de la persona exista
+		for (int i=0; i<person.size(); i++) {
+			if (person.get(i).getDni().equals(dni) && person.get(i).getTipo_persona().equals("empleado")) {
+				existe= true;
+				i= person.size();
+			} else {
+				existe= false;
+			}//Fin del if
+			
+		}//Fin del for i
+		
+//		if (!existe) {
+//			System.out.println("\nError: No existe empleado registrado con ese DNI");
+//		} else {
+//			for (personas t: person) {
+//				System.out.println(t);
+//			}
+//		}
+
+		//Segun la verificacion anterior nos dira si existe o no
+		for (int j=0; j<person.size(); j++) {
+			if (!existe) {
+				System.out.println("\nError: No existe empleado registrado con ese DNI");
+				j= person.size();
+			} else if (person.get(j).getDni().equals(dni)) {
+				person.get(j);
+			}//Fin del if
+		}//Fin del for j
 	}
 	private void ModificarEmpleado (ArrayList<personas> person, Scanner teclado) {
 		
@@ -789,8 +826,7 @@ class metodos {
 
 			
 			}else if (tipoVehiculo.equalsIgnoreCase("Moto")) {
-
-
+        
 				vehiculos m = new motos();
 				System.out.println("\nRellene los siguientes datos para el moto: \n");
 				//Matricula
@@ -908,9 +944,6 @@ class metodos {
 				System.out.println("\n == EL ALTA DE VEHICULO HA SIDO COMPLETADA == ");
 				automovil.add(m);
 				cancelar= true;
-
-			
-			
 			}else if (tipoVehiculo.equalsIgnoreCase("Cancelar")) {
 				System.out.println("\n == ALTA EMPLEADO CANCELADA == ");
 				cancelar= true;
@@ -1022,7 +1055,47 @@ class metodos {
 			valido= false;
 
 		}
+		
+		while (valido) {
+			int dia= Integer.parseInt(fecha.substring(0, 2)); 
+			int mes= Integer.parseInt(fecha.substring(3, 5)); 
+			int anio= Integer.parseInt(fecha.substring(6, 10)); 
+			
+			if (dia >= 1 && dia <=31) {
+				if (mes >= 1 && mes <= 12) {
+					if (mes == 2) {
+						if (dia >= 1 && dia <= 28) {
+							
+						} else {
+							if ((anio%400) == 0 || ((anio%4) == 0) && (anio%100 != 0)) {
+								
+							} else {
+								
+							}
+						}
+					} else {
+						
+					}
+				} else {
+					
+				}
+			} else {
+				
+			}
+		}
 
 		return valido;
 	}
+	protected boolean isCombustible (String combustible) {
+		boolean valido= false;
+		
+		if (combustible.equalsIgnoreCase("gasolina") || combustible.equalsIgnoreCase("diesel")) {
+			valido= true;
+		} else {
+			System.out.println("\nError: El tipo de combustible no es v\u00e1lido");
+		}
+		
+		return valido;
+	}
+
 }
