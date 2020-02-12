@@ -786,8 +786,6 @@ class metodos {
 				System.out.println("\n == EL ALTA DE VEHICULO HA SIDO COMPLETADA == ");
 				automovil.add(c);
 				cancelar= true;
-
-			
 			}else if (tipoVehiculo.equalsIgnoreCase("Moto")) {
 
 
@@ -799,7 +797,7 @@ class metodos {
 					datos= teclado.nextLine();
 
 					if (datos.equals("")) {
-						System.out.println("\nError: Por favor rellene el campo matr\u00edcula");
+						System.out.println("\nError: Por favor rellene el campo matricula");
 					} else if (isMatricula(datos)) {
 						m.setMatricula(datos);
 						correcto= true;
