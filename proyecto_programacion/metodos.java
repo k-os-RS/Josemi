@@ -655,7 +655,7 @@ class metodos {
 	}
 	private void AltaVehiculo (ArrayList<vehiculos> automovil, Scanner teclado) {
 		
-		String tipoVehiculo,datos;
+		String tipoVehiculo, datos;
 		boolean cancelar= false, correcto= false;
 
 		System.out.println("\n == ALTA VEHICULO == ");
