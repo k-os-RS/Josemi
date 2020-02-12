@@ -1,4 +1,4 @@
-package proyecto_programacion;
+ package proyecto_programacion;
 
 abstract class personas {
 	//Atributos
