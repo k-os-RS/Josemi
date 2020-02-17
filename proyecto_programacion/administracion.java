@@ -489,11 +489,13 @@ class administracion {
 				if (tipoEmpleado.equalsIgnoreCase("asesor")) {
 					System.out.println("\n == EL ALTA DE ASESOR HA SIDO COMPLETADA == ");
 					a.setTipo_persona("empleado");
+					a.setDespedida("no");
 					person.add(a);
 					cancelar= true;
 				} else {
 					System.out.println("\n == EL ALTA DE MECANICO HA SIDO COMPLETADA == ");
 					m.setTipo_persona("mecanico");
+					m.setDespedida("no");
 					person.add(m);
 					cancelar= true;
 				}
@@ -505,90 +507,86 @@ class administracion {
 			}
 		} while (!cancelar);
 	}
-//	protected void BajaEmpleado () {
-//		String dni;
-//		boolean existe= false;
-//		
-//		System.out.println("\n == BAJA EMPLEADO == ");
-//		System.out.println("");
-//		System.out.print("DNI del empleado: ");
-//		dni= teclado.nextLine();
-//
-//		//Comprobamos que el DNI de la persona exista
-//		for (int i=0; i<person.size(); i++) {
-//			if (person.get(i).getDni().equals(dni) && person.get(i).getTipo_persona().equals("empleado")) {
-//				existe= true;
-//				i= person.size();
-//			} else {
-//				existe= false;
-//			}//Fin del if
-//			
-//		}//Fin del for i
-//		
-//		//Segun la verificacion anterior nos dira si existe o no
-//		for (int j=0; j<person.size(); j++) {
-//			if (!existe) {
-//				System.out.println("\nError: No existe empleado registrado con ese DNI");
-//				j= person.size();
-//			} else if (person.get(j).getDni().equals(dni)) {
-//				System.out.println("\nEst\u00e1 por eliminar del registro al empleado "+person.get(j).getNombre());
-//				System.out.println("con DNI "+person.get(j).getDni());
-//				System.out.println("");
-//				System.out.println("Pulse INTRO si est\u00e1 seguro o escriba Cancelar, para cancelar la operaci\u00f3n\n");
-//				dni= teclado.nextLine();
-//				
-//				if (dni.equals("")) {
-//					System.out.println(" == SE HA DADO DE BAJA AL EMPLEADO CON \u00e0XITO == ");
-//					person.remove(j);
-//				} else if (dni.equalsIgnoreCase("cancelar")) {
-//					System.out.println(" == OPERACI\u00f3N CANCELADA == ");
-//					j= person.size();
-//				} else {
-//					System.out.println(" == OPERACI\u00f3N CANCELADA == ");
-//					j= person.size();
-//				}
-//			}//Fin del if
-//		}//Fin del for j
-//		
-//	}
-//	protected void MostrarEmpleado () {
-//		String dni;
-//		boolean existe= false;
-//		
-//		System.out.println("\n == MOSTRAR DATOS EMPLEADO == ");
-//		System.out.println("");
-//		System.out.print("DNI del empleado: ");
-//		dni= teclado.nextLine();
-//
-//		//Comprobamos que el DNI de la persona exista
-//		for (int i=0; i<person.size(); i++) {
-//			if (person.get(i).getDni().equals(dni) && person.get(i).getTipo_persona().equals("empleado")) {
-//				existe= true;
-//				i= person.size();
-//			} else {
-//				existe= false;
-//			}//Fin del if
-//			
-//		}//Fin del for i
-//		
-////		if (!existe) {
-////			System.out.println("\nError: No existe empleado registrado con ese DNI");
-////		} else {
-////			for (personas t: person) {
-////				System.out.println(t);
-////			}
-////		}
-//
-//		//Segun la verificacion anterior nos dira si existe o no
-//		for (int j=0; j<person.size(); j++) {
-//			if (!existe) {
-//				System.out.println("\nError: No existe empleado registrado con ese DNI");
-//				j= person.size();
-//			} else if (person.get(j).getDni().equals(dni)) {
-//				person.get(j);
-//			}//Fin del if
-//		}//Fin del for j
-//	}
+	protected void BajaEmpleado () {
+		String dni;
+		boolean existe= false;
+		
+		System.out.println("\n == BAJA EMPLEADO == ");
+		System.out.println("");
+		System.out.print("DNI del empleado: ");
+		dni= teclado.CadenaTexto();
+		
+		//Comprobamos que el DNI de la persona exista
+		for (int i=0; i<person.size(); i++) {
+			if (person.get(i).getDni().equals(dni) && person.get(i).getTipo_persona().equals("empleado")) {
+				if (person.get(i).getDespedida().equals("no")) {
+					existe= true;
+					i= person.size();
+				} else {
+					System.out.println("\nError: El empleado ya ha sido despedido");
+				}
+				
+			} else {
+				existe= false;
+			}//Fin del if
+			
+		}//Fin del for i
+		
+		//Segun la verificacion anterior nos dira si existe o no
+		for (int j=0; j<person.size(); j++) {
+			if (!existe) {
+				System.out.println("\nError: No existe empleado registrado con ese DNI");
+				j= person.size();
+			} else if (person.get(j).getDni().equals(dni)) {
+				System.out.println("\nEst\u00e1 por despedir al empleado "+person.get(j).getNombre());
+				System.out.println("con DNI "+person.get(j).getDni());
+				System.out.println("");
+				System.out.println("Pulse INTRO si est\u00e1 seguro o escriba Cancelar, para cancelar la operaci\u00f3n\n");
+				dni= teclado.CadenaTexto();
+				
+				if (dni.equals("")) {
+					System.out.println(" == SE HA DADO DE BAJA AL EMPLEADO CON \u00e0XITO == ");
+					person.remove(j);
+				} else if (dni.equalsIgnoreCase("cancelar")) {
+					System.out.println(" == OPERACI\u00f3N CANCELADA == ");
+					j= person.size();
+				} else {
+					System.out.println(" == OPERACI\u00f3N CANCELADA == ");
+					j= person.size();
+				}
+			}//Fin del if
+		}//Fin del for j
+		
+	}
+	protected void MostrarEmpleado () {
+		String dni;
+		boolean existe= false;
+		
+		System.out.println("\n == MOSTRAR DATOS EMPLEADO == ");
+		System.out.println("");
+		System.out.print("DNI del empleado: ");
+		dni= teclado.CadenaTexto();
+
+		//Comprobamos que el DNI de la persona exista
+		for (int i=0; i<person.size(); i++) {
+			if (person.get(i).getDni().equals(dni) && person.get(i).getTipo_persona().equals("empleado")) {
+				existe= true;
+				i= person.size();
+			} else {
+				existe= false;
+			}//Fin del if
+		}//Fin del for i
+
+		//Segun la verificacion anterior nos dira si existe o no
+		for (int j=0; j<person.size(); j++) {
+			if (!existe) {
+				System.out.println("\nError: No existe empleado registrado con ese DNI");
+				j= person.size();
+			} else if (person.get(j).getDni().equals(dni)) {
+				person.get(j);
+			}//Fin del if
+		}//Fin del for j
+	}
 	protected void AltaVehiculo () {
 		
 		String tipoVehiculo= "", datos= "";
