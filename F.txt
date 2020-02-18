@@ -1,0 +1,209 @@
+INICIO 
+Crear objeto 
+Crear ArrayList
+Preguntar Dinero Base>=(500000)
+hacer
+	Preguntar si es Administrador, Trabajador
+	según <opcion>
+	caso “Administrador”:
+		Mostrar"Menu (alta/baja mostrar  vehiculo,empleado,modificar)"
+		segun opcion
+		caso alta empleado:
+			Mostrar “Que trabajador quiere añadir?”
+				“asesor o mecanico”
+			//datos
+			si “asesor” hacer
+				Mostrar “Introduce datos”
+				Escribe datos de asesor con relacion a persona
+				//Sueldo base 1500
+			si “mecanico”
+				Mostrar “Introduce datos”
+				Escribe datos de mecanico con relacion a persona
+				//Sueldo base 1500
+		caso baja empleado:
+			Mostrar “Que trabajador quiere dar de baja?”
+			Mostrar “Introduce DNI”
+			Escribe dni
+			Mostrar objeto y pedir confirmacion
+			//borrar objeto
+		caso mostrar empleado:
+			Mostrar “Que trabajador quiere ver?”
+			Mostrar “Introduce DNI”
+			Escribe dni
+			//mostrar objeto
+		caso modificar empleado:
+			Mostrar “Que trabajador quiere modificar?”
+			Mostrar “Introduce DNI”
+			Escribe dni
+			//mostrar objeto
+			Preguntar "que quiere modificar"
+			Mostrar opciones
+			//edita y guarda objeto
+		caso alta vehiculo:
+			Mostrar "Que vehiculo quiere añadir?"
+				"coche o moto"
+			si "coche" hacer
+				Mostrar “Introduce datos”
+				Escribe datos de coche con relacion a vehiculo
+				//indicar precio que vale
+			si "moto" hacer
+				Mostrar “Introduce datos”
+				Escribe datos de moto con relacion a vehiculo
+				//indicar precio que vale
+		caso baja vehiculo:
+			Mostrar "Que vehiculo quiere dar de baja?"
+			Mostrar “Introduce matricula”
+			Escribe matricula de coche con relacion a vehiculo
+			Mostrar objeto y pedir confirmacion
+			//borrar objeto
+		caso mostrar vehiculo:
+			Mostrar "Que vehiculo quiere ver?"
+			Mostrar “Introduce matricula”
+			Escribe matricula de coche con relacion a vehiculo
+			mostrar objeto
+		caso modificar vehiculo:
+			Mostrar "Que vehiculo quiere modificar?"
+			Mostrar “Introduce matricula”
+			Escribe matricula de coche con relacion a vehiculo
+			mostrar objeto
+			Preguntar "que quiere modificar"
+			Mostrar opciones
+			//edita y guarda objeto
+			
+	Caso “trabajador”:
+		introduce datos 
+		segun dni
+		caso “Asesor(compra/venta) derivar/comprobar garantia”:
+			Mostrar “Vender/Comprar”
+			Segun  <opcion>
+			caso vender:
+				Preguntar “coche o moto”
+					si “coche”
+					pregunta “modelo,color,combustible,plazas”
+					guardar en objeto
+					Mostrar coches con esas caracteristicas,km y precio
+					pregunta “quiere accesorios?”
+					Generar matricula 
+					Pregunta si quiere modificarla 
+					si “moto”
+					pregunta “modelo,color,combustible,plazas”
+					Mostrar coches con esas caracteristicas,km y precio
+					pregunta “quiere accesorios?”
+					Generar matricula 
+					Pregunta si quiere modificarla 
+					+el dinero base
+		
+			caso comprar:
+				Preguntar “coche o moto”
+					si “coche”
+					pregunta “modelo,color,combustible,plazas”
+					guardar en objeto
+					Mostrar coches con esas caracteristicas,km y precio
+					pregunta “quiere accesorios?”
+					Generar matricula 
+					Pregunta si quiere modificarla 
+					si “moto”
+					pregunta “modelo,color,combustible,plazas”
+					Mostrar coches con esas caracteristicas,km y precio
+					pregunta “quiere accesorios?”
+					Generar matricula 
+					Pregunta si quiere modificarla 
+
+		caso “Mecanico”:
+			Mostrar “Tiene garantia ?”
+			segun respuesta
+			si <si>:
+				Mostrar "Que tipo de incidente tuvo?"
+				(leve[arañazo,abollon],medio[pieza arrancada,],grave[gran parte del vehiculo dañado])
+				segun <opcion>
+				caso leve:
+					mostrar componentes que estan dentro de leve y su precio
+					elejir componente
+					+dinerobase
+				caso medio:
+					mostrar componentes que estan dentro de leve y su precio
+					elejir componente
+					+dinerobase
+				caso grave:
+					mostrar componentes que estan dentro de leve y su precio
+					elejir componente
+					+dinerobase
+				mostrar que se lo cubre el seguro
+			sino
+			Mostrar "Que tipo de incidente tuvo?"
+				(leve[arañazo,abollon],medio[pieza arrancada,],grave[gran parte del vehiculo dañado])
+				segun <opcion>
+				caso leve:
+					mostrar componentes que estan dentro de leve y su precio
+					elejir componente
+					+dinerobase
+				caso medio:
+					mostrar componentes que estan dentro de leve y su precio
+					elejir componente
+					+dinerobase
+				caso grave:
+					mostrar componentes que estan dentro de leve y su precio
+					elejir componente
+					+dinerobase
+				mostrar cuanto se le cobrara
+				guardar en objeto
+mientras<bucle>
+
+FIN
+
+
+INICIO DNI
+nombre de metodo<- validar
+llamamiento <- dni,validado
+valido<-false
+caracter<-0
+miDNI <- 0
+resto <- 0
+i <- 0
+asigletra[]<-('T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X','B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E')
+//comprobar si el dni recibido tiene 9 caracteres y si la ultima es una letra
+si <dni.length<-9 and Character.isLetter(dni.charAt(8))> hacer
+	hacer
+	caracter <- dni.codePointAt(i)
+		//la suma de los caracteres este en el rango de <47 y 58>
+                valido <-(caracter > 47 && caracter < 58)
+                incrementa i
+	mientras(i < dni.length-1 and valido)
+fin si
+//comprueba que el ultimo caracter sea en mayuscula  y hace la operacon que da la letra del dni valido
+si <valido> hacer
+letra <- Character.toUpperCase(dni.charAt(8));
+            miDNI <- pasalo a entero [ Integer.parseInt(dni.substring(0,8))];
+            resto <- miDNI % 23;
+            valido <- (letra=asigLetra[resto]);
+fin si
+validado<-valido
+retorna validado(true o false)
+FIN DNI
+
+
+INICIO MATRICULA
+si <matricula con letras mayusculas contiene (4 numeros y 3 letras)[matricula.toUpperCase().matches("^[0-9]{4}[A-Z]{3}$")]>
+retorna true
+sino 
+retorna false
+FIN MATRICULA
+
+INICIO TELEFONO
+si <movil primer caracter sea 6 o 7 y movil debe tener 9 numeros[movil.substring(0,1) || movil.substring(0,1)=7 && movil.matches("[0-9]+")]>
+retorna true 
+sino
+retorna false
+FIN telefono
+
+INICIO PUNTO 
+si escribe alguna coma pasala a punto [usa .replace (',','.')]
+FIN PUNTO
+
+INICIO NUMERO
+//es para comprobar que cuando piden numeros y escriben otras cosas no se rompa el programa 
+si <numero contiene numeros [numero.matches("[0-9]+")]>
+retorna true
+sino 
+retorna false
+FIN NUMERO	
