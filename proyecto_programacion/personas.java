@@ -2,9 +2,9 @@
 
 abstract class personas {
 	//Atributos
-	protected String dni, nombre, apellidos, telefono_movil, fecha_nacimiento, cuenta_bancaria, direccion, tipo_persona;
+	protected String dni, nombre, apellidos, telefono_movil, fecha_nacimiento, cuenta_bancaria, direccion, tipo_persona, despedida;
 	protected double sueldo;
-
+	
 	//Getters & Setters
 	protected String getDni() {
 		return dni;
@@ -60,6 +60,14 @@ abstract class personas {
 
 	protected void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+
+	public String getDespedida() {
+		return despedida;
+	}
+
+	public void setDespedida(String despedida) {
+		this.despedida = despedida;
 	}
 
 	protected double getSueldo() {
