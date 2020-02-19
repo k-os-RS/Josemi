@@ -86,6 +86,7 @@ class administracion {
 			while (!ciclo && contador > 0) {
 				System.out.println("\n == Bienvenido Administrador "+usuario+" == ");
 				MenuAdmin();
+				ciclo= true;
 			}//Fin del while
 		}
 	}
@@ -179,16 +180,17 @@ class administracion {
 				//Salimos del programa
 				System.out.println(" == Hasta la pr\u00f3xima == ");
 				ciclo= false;
-
+				break;
 			default:
 				System.out.println("\nError: La opci\u00f3n elegida es incorrecta");
+				break;
 				
 			}//Fin del swith
 		} while (ciclo);
 	}
 	protected void MenuAdmin () {
 		String datos;
-		boolean ciclo= true, confirmacion= false;
+		boolean ciclo2= true, confirmacion= false;
 
 		do {
 			do {
@@ -217,7 +219,6 @@ class administracion {
 			switch (datos) {
 			case "1":
 				AltaEmpleado();
-				System.out.println(person.get(0));
 				break;
 			case "2":
 				//BajaEmpleado(person);
@@ -229,7 +230,7 @@ class administracion {
 				//ModificarEmpleado(automovil);
 				break;
 			case "5":
-				//AltaVehiculo(automovil);
+				AltaVehiculo();
 				break;
 			case "6":
 				//BajaVehiculo(automovil);
@@ -241,10 +242,13 @@ class administracion {
 				//ModificarVehiculo(automovil);
 				break;
 			case "9":
-				ciclo= false;
+				ciclo2= false;
+				break;
+			default: 
+				System.out.println("\nError: La opci\u00f3n elegida no es v\u00e1lida");
 				break;
 			}
-		}while (ciclo);
+		}while (ciclo2);
 	}
 	protected void MenuAsesor () {
 		String datos;
