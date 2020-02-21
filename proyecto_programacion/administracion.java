@@ -780,7 +780,7 @@ class administracion {
 		
 	}
 
-	//Comprobacion de valides
+	//Comprobacion de validez
     protected boolean isDNI (String dni) {  	
         boolean valido = false;
         int caracter= 0, miDNI = 0, resto = 0, i= 0;
@@ -884,7 +884,7 @@ class administracion {
 	protected boolean isNumeroMovil (String movil) {
 		boolean verdadero= false;
 		
-		if (movil.substring(0, 1).equals("6") && movil.length() == 9){
+		if (movil.substring(0, 1).equals("6") && movil.length() == 9 || movil.substring(0, 1).equals("7") && movil.length() == 9){
 			verdadero= true;
 		} else {
 			System.out.println("\nError: La opcion debe ser un numero.");
