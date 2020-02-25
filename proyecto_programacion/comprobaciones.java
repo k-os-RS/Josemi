@@ -53,18 +53,6 @@ public class comprobaciones {
 
 		return valido;
 	}
-	protected boolean isNumero (String numero) {
-		boolean verdadero= false;
-		
-		if (numero.matches("[0-9]+")) {
-			verdadero= true;
-		} else {
-			System.out.println("\nError: La opci\u00f3n debe ser un n\u00famero.");
-			verdadero= false;
-		}//Fin del if
-		
-		return verdadero;
-	}
 	protected boolean isMatricula (String matricula){
 		boolean matriculaValida= false;
 		
@@ -76,18 +64,6 @@ public class comprobaciones {
 	    
 	    return matriculaValida;
 	}
-	protected boolean isNumeroMovil (String movil) {
-		boolean verdadero= false;
-		
-		if (movil.substring(0, 1).equals("6") && movil.length() == 9){
-			verdadero= true;
-		} else {
-			System.out.println("\nError: La opcion debe ser un numero.");
-			verdadero= false;
-		}//Fin del if
-		
-		return verdadero;
-	}
 	protected boolean isCombustible (String combustible) {
 		boolean valido= false;
 		
@@ -98,6 +74,55 @@ public class comprobaciones {
 		}
 		
 		return valido;
+	}
+	protected boolean isNumeroMovil (String movil) {
+		boolean verdadero= false;
+		
+		if (movil.substring(0, 1).equals("6") && movil.length() == 9){
+			verdadero= true;
+		} else {
+			System.out.println("\nError: El n\u00famero tendrá que conteneder 9 digitos y empezar en 6.");
+			verdadero= false;
+		}//Fin del if
+		
+		return verdadero;
+	}
+	protected boolean isNumeroEntero (String numeroE) {
+		boolean verdadero= false;
+		
+		if (numeroE.matches("[0-9]+")) {
+			verdadero= true;
+		} else {
+			System.out.println("\nError: La opci\u00f3n debe ser un n\u00famero.");
+			verdadero= false;
+		}//Fin del if
+		
+		return verdadero;
+	}
+	protected boolean isNumeroDecimal (String numeroD) {
+		int pospunto= 0, cont= 0;
+		boolean verdadero= false;
+		numeroD.replace(',', '.');
+		
+		for (int i= 0; i < numeroD.length(); i++) {
+			if (numeroD.charAt(i) == '.') {
+				cont++;
+			}
+		}
+		
+		if (cont == 1) {
+			pospunto= numeroD.indexOf('.');
+		} else {
+			verdadero= true;
+		}
+		
+		if (!verdadero) {
+			if (pospunto == numeroD.length() - 1 || pospunto == 0) {
+				verdadero= false;
+			}
+		}
+		
+		return verdadero;
 	}
 	
 }

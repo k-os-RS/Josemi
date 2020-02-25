@@ -14,7 +14,7 @@ class administracion {
 		String usuario, password, dinerobase;
 		boolean ciclo= true;
 		int contador= 2;
-
+		
 		if (admin.size() == 0) {
 			System.out.println("\nBuenas administrador, esta es la primera vez que");
 			System.out.println("inicia sesi\u00f3n, por favor rellene los siguientes datos");
@@ -150,7 +150,7 @@ class administracion {
 				cuenta= teclado.CadenaTexto();
 				//Llamamos metodo que compruebar si la opcion 
 				//introducida es un numero.
-				if (comprob.isNumero(cuenta)) {
+				if (comprob.isNumeroEntero(cuenta)) {
 					confirmacion= true;
 				} else {
 					confirmacion= false;
@@ -202,7 +202,7 @@ class administracion {
 				System.out.print("Elija una opci\u00f3n: ");
 				datos= teclado.CadenaTexto();
 
-				if (comprob.isNumero(datos)) {
+				if (comprob.isNumeroEntero(datos)) {
 					confirmacion= true;
 				} else {
 					confirmacion= false;
@@ -260,12 +260,12 @@ class administracion {
 				System.out.println(" [4] Devolver Vehiculo");
 				System.out.println(" [5] Enviar a mecanico");
 				System.out.println(" [6] Mostrar Cliente");
-				System.out.println(" [7] Cerrar sesi\uf003n");
+				System.out.println(" [7] Cerrar sesi\u00f3n");
 				System.out.println("");
 				System.out.print("Elija una opci\u00f3n: ");
 				datos= teclado.CadenaTexto();
 					
-				if (comprob.isNumero(datos)) {
+				if (comprob.isNumeroEntero(datos)) {
 					confirmacion= true;
 				} else {
 					confirmacion= false;
@@ -316,7 +316,7 @@ class administracion {
 				System.out.print("Elija una opci\u00f3n: ");
 				datos= teclado.CadenaTexto();
 				
-				if (comprob.isNumero(datos)) {
+				if (comprob.isNumeroEntero(datos)) {
 					confirmacion= true;
 				} else {
 					confirmacion= false;
@@ -486,8 +486,7 @@ class administracion {
 					datos= teclado.CadenaTexto();
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo nombre");
-					} else if (datos.matches("[0-9]+") || datos.contains(".") || datos.contains(",")){
-						datos= datos.replace(',', '.');
+					} else if (comprob.isNumeroDecimal(datos)){
 						double sueldo= Double.parseDouble(datos);
 						if (sueldo < 950) {
 							System.out.println("\nError: El sueldo minimo es de \u20ac950");
@@ -710,7 +709,7 @@ class administracion {
 					datos= teclado.CadenaTexto();
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo plazas");
-					} else if (comprob.isNumero(datos)) {
+					} else if (comprob.isNumeroEntero(datos)) {
 						int comprobante= Integer.parseInt(datos);
 						if (comprobante >= 1) {
 							c.setPlazas(datos);
