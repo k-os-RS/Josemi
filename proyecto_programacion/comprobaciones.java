@@ -1,6 +1,6 @@
 package proyecto_programacion;
 
-public class comprobaciones {
+class comprobaciones {
 	
 	//Comprobacion de validez
     protected boolean isDNI (String dni) {
