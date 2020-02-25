@@ -104,30 +104,30 @@ class administracion {
 			while (itrP.hasNext() && !existe) {
 				personas p= itrP.next();
 				if (p.getDni().equalsIgnoreCase(usuario) && p.getTipo_persona().equals("empleado")) {
-					existe= true;
+					if (p.getDespedida().equals("si")) {
+						System.out.println("\nError: Este empleado ha sido despedido");
+						existe= true;
+					} else {
+						if (((asesor) p).getTrabajo_asesor().equals("Asesor")) {
+							System.out.println("\n == Asesor: "+p.getNombre()+" "+p.getApellidos()+" == ");
+							MenuAsesor();
+							existe= true;
+						} else if (((mecanico) p).getTrabajo_mecanico().equals("Mecanico")) {
+							System.out.println("\n == Mecanico: "+p.getNombre()+" "+p.getApellidos()+" == ");
+							MenuMecanico();
+							existe= true;
+						}//Fin del if
+					}//Fin del if
 				} else {
 					existe= false;
-				}
-			}//Fin del while
-			//Segun la verificacion anterior nos dira si existe o no
-			for (int j=0; j < person.size(); j++) {
-				if (!existe) {
-					System.out.println("\nError: No existe empleado registrado con ese DNI");
-					j= person.size();
-				} else if (person.get(j).getDni().equals(usuario)) {
-					System.out.println(" == BIENVENIDO == ");
-						if (((asesor) person.get(j)).getTrabajo_asesor().equals("Asesor")) {
-							System.out.println("\n == Asesor: "+person.get(j).getNombre()+" "+person.get(j).getApellidos()+" == ");
-							MenuAsesor();
-							j= person.size();
-						} else if (((asesor) person.get(j)).getTrabajo_asesor().equals("Mecanico")) {
-							System.out.println("\n == Mecanico: "+person.get(j).getNombre()+" "+person.get(j).getApellidos()+" == ");
-							MenuMecanico();
-							j= person.size();
-						}//Fin del if
 				}//Fin del if
-			}//Fin del for j
-		}//Fin del if
+			}//Fin del while
+			
+			if (!existe) {
+				System.out.println("\nError: No existe empleado registrado con ese DNI");
+			}//Fin del if
+			//Segun la verificacion anterior nos dira si existe o no
+		}
 	}
 
 	//Menus
