@@ -174,16 +174,17 @@ class administracion {
 				//Salimos del programa
 				System.out.println(" == Hasta la pr\u00f3xima == ");
 				ciclo= false;
-
+				break;
 			default:
 				System.out.println("\nError: La opci\u00f3n elegida es incorrecta");
+				break;
 				
 			}//Fin del swith
 		} while (ciclo);
 	}
 	protected void MenuAdmin () {
 		String datos;
-		boolean ciclo= true, confirmacion= false;
+		boolean ciclo2= true, confirmacion= false;
 
 		do {
 			do {
@@ -243,9 +244,10 @@ class administracion {
 				break;
 			default:
 				System.out.println("\nError: La opci\u00f3n elegida es incorrecta");
+
 				break;
 			}
-		}while (ciclo);
+		}while (ciclo2);
 	}
 	protected void MenuAsesor () {
 		String datos;
@@ -805,6 +807,7 @@ class administracion {
 		
 	}
 	protected void MostrarGanancias () {
+
 		
 	}
 
