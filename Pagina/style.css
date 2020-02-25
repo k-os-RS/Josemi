@@ -112,15 +112,23 @@ img {
   padding-bottom: 5px;
 }
   .redes li {
-    display: inline;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
     font-size: 18px;
     margin-right: 5px;
+    text-align: center;
     cursor: pointer;
     border: 2px solid #fff;
   }
 
   .redes li.facebook {
     background: blue;
+  }
+
+  .redes i {
+    color: #fff;
+    line-height: 30px;
   }
 
   .redes .twitter {
