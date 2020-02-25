@@ -240,7 +240,7 @@ class administracion {
 				MostrarGanancias();
 				break;
 			case "10":
-				ciclo = false;
+				ciclo2 = false;
 				break;
 			default:
 				System.out.println("\nError: La opci\u00f3n elegida es incorrecta");
@@ -639,6 +639,11 @@ class administracion {
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo matr\u00edcula");
 					} else if (comprob.isMatricula(datos)) {
+						if(automovil.size()==0) {
+							c.setMatricula(datos);
+							m.setMatricula(datos);
+							correcto= true;
+						}else {
 						for (int i= 0; i < automovil.size(); i++) {
 				        	if (automovil.get(i).getMatricula().equalsIgnoreCase(datos)) {
 				        		System.out.println("\nError: La matricula ya existe en algun vehiculo");
@@ -651,6 +656,7 @@ class administracion {
 								i= automovil.size();
 				        	}//Fin del if
 				        }//Fin del for i
+						}
 					} else {
 						System.out.println("\nError: La matr\u00edcula no es v\u00e1lida");
 					}//Fin del if
@@ -780,10 +786,144 @@ class administracion {
 		} while (!cancelar);		
 	}
 	protected void BajaVehiculo () {
+		String respuesta, datos;
+		Double precio, km;
+		boolean cancelar= false, correcto= false;
+
+		System.out.println("\n == BAJA VEHICULO == ");
+		System.out.println("Si desea cancelar la baja escriba Cancelar\n");
+		System.out.println("Introduzca la matr\u00edcula ");
 		
+		do {
+				vehiculos m = new motos();
+				vehiculos c = new coches();
+				//Matricula
+				do {
+					System.out.print("Matr\u00edcula: ");
+					datos= teclado.CadenaTexto();
+					if (datos.equalsIgnoreCase("Cancelar")) {
+						System.out.println("\n == BAJA VEHICULO CANCELADA == ");
+						cancelar= true;
+					} else if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo matr\u00edcula");
+						
+					} else if (comprob.isMatricula(datos)) {
+						
+						for (int i= 0; i < automovil.size(); i++) {
+				        	if (automovil.get(i).getMatricula().equalsIgnoreCase(datos)) {
+				        		System.out.println("\nLa matr\u00edcula es de este veh\u00edculo");
+				        		System.out.println(automovil.get(i));
+				        		correcto= true;
+								cancelar= true;
+				        		i= automovil.size();
+				        	} else {
+				        		System.out.println("La matr\u00edcula no existe");
+								correcto= false;
+								i= automovil.size();
+				        	}//Fin del if
+				        }//Fin del for i
+					
+					} else {
+						System.out.println("\nError: La matr\u00edcula no es v\u00e1lida");
+					}//Fin del if
+
+				} while (!correcto);
+				correcto= false;
+				System.out.println("\nSeguro que desea dar de baja este vehiculo?");
+				respuesta=teclado.CadenaTexto();
+				
+				if (respuesta.equalsIgnoreCase("si")) {
+					System.out.println("\n == LA BAJA DE VEH\u00dedCULO HA SIDO COMPLETADA == ");
+					for (int i= 0; i < automovil.size(); i++) {
+			        	if (automovil.get(i).getMatricula().equalsIgnoreCase(datos)) {
+			        		i= automovil.size();
+			        		automovil.remove(i);
+					cancelar= true;	
+			        	}//fin del if
+			        }//fin del for i
+				} else if (respuesta.equalsIgnoreCase("no")) {					
+					cancelar= true;	
+				}//fin del if
+
+		} while (!cancelar);		
 	}
 	protected void MostrarVehiculo () {
+		String respuesta, datos;
+		Double precio, km;
+		boolean cancelar= false, correcto= false;
 		
+		do {
+			do {
+				System.out.println("\n == MOSTRAR VEHICULO == ");
+				System.out.println(" [1] Mostrar todos los coches");
+				System.out.println(" [2] Mostrar todos las motos");
+				System.out.println(" [3] Mostrar un vehiculo espec\u00edfico");
+				System.out.println(" [4] Salir");
+				respuesta=teclado.CadenaTexto();
+				if(comprob.isNumeroEntero(respuesta)) {
+					correcto=true;
+				}else {
+					correcto=false;
+				}
+			}while(!correcto);
+		
+			switch(respuesta) {
+			case "1":
+				for (vehiculos i : automovil) {
+					if(i instanceof coches) {
+					System.out.println(i);	
+					}
+				}
+			break;
+			case "2":
+				for (vehiculos i : automovil) {
+					if(i instanceof motos) {
+					System.out.println(i);	
+					}
+				}
+			break;
+			case "3":
+				System.out.println("Introduzca la matr\u00edcula ");
+				System.out.println("Si quiere salir escriba cancelar");
+				//Matricula
+				do {
+					System.out.print("Matr\u00edcula: ");
+					datos= teclado.CadenaTexto();
+					if (datos.equalsIgnoreCase("Cancelar")) {
+						System.out.println("\n == MOSTRAR VEHICULO CANCELADO == ");
+						cancelar= true;
+					} else if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo matr\u00edcula");		
+					} else if (comprob.isMatricula(datos)) {
+							
+						for (int i= 0; i < automovil.size(); i++) {
+					      	if (automovil.get(i).getMatricula().equalsIgnoreCase(datos)) {
+					       		System.out.println("\nLa matr\u00edcula es de este veh\u00edculo");
+					       		System.out.println(automovil.get(i));
+					       		correcto= true;
+								cancelar= true;
+					       		i= automovil.size();
+					       	} else {
+					       		System.out.println("La matr\u00edcula no existe");
+								correcto= false;
+								i= automovil.size();
+					       	}//Fin del if
+					     }//Fin del for i
+					} else {
+						System.out.println("\nError: La matr\u00edcula no es v\u00e1lida");
+					}//Fin del if
+	
+					} while (!correcto);	
+			break;
+			case "4":
+				cancelar=true;
+				break;
+			default:
+				System.out.println("Esa opci\u00f3n no es v\u00e1lida");
+			break;
+			}
+		
+		}while(!cancelar);
 	}
 	protected void ModificarVehiculo () {
 		
