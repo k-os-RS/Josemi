@@ -765,7 +765,13 @@ class administracion {
 					}//Fin del if
 
 				} while (!correcto);
-
+				//compra
+				((coches)c).setVendidoCoche("no");
+				((motos)m).setVendidoMoto("no");
+				//reparacion
+				((coches)c).setEnReparacionCoche("no");;
+				((motos)m).setEnReparacionMoto("no");;	
+				//guardar
 				if (tipoVehiculo.equalsIgnoreCase("coche")) {
 					System.out.println("\n == EL ALTA DE COCHE HA SIDO COMPLETADA == ");
 					automovil.add(c);
@@ -787,7 +793,6 @@ class administracion {
 	}
 	protected void BajaVehiculo () {
 		String respuesta, datos;
-		Double precio, km;
 		boolean cancelar= false, correcto= false;
 
 		System.out.println("\n == BAJA VEHICULO == ");
@@ -795,8 +800,6 @@ class administracion {
 		System.out.println("Introduzca la matr\u00edcula ");
 		
 		do {
-				vehiculos m = new motos();
-				vehiculos c = new coches();
 				//Matricula
 				do {
 					System.out.print("Matr\u00edcula: ");
@@ -849,7 +852,6 @@ class administracion {
 	}
 	protected void MostrarVehiculo () {
 		String respuesta, datos;
-		Double precio, km;
 		boolean cancelar= false, correcto= false;
 		
 		do {
