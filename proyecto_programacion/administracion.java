@@ -184,7 +184,7 @@ class administracion {
 	}
 	protected void MenuAdmin () {
 		String datos;
-		boolean ciclo2= true, confirmacion= false;
+		boolean ciclo= true, confirmacion= false;
 
 		do {
 			do {
@@ -247,7 +247,7 @@ class administracion {
 
 				break;
 			}
-		}while (ciclo2);
+		}while (ciclo);
 	}
 	protected void MenuAsesor () {
 		String datos;
