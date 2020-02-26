@@ -883,6 +883,7 @@ class administracion {
 				}
 			break;
 			case "3":
+				boolean existe=false;
 				System.out.println("Introduzca la matr\u00edcula ");
 				System.out.println("Si quiere salir escriba cancelar");
 				//Matricula
@@ -901,14 +902,18 @@ class administracion {
 					       		System.out.println("\nLa matr\u00edcula es de este veh\u00edculo");
 					       		System.out.println(automovil.get(i));
 					       		correcto= true;
-								cancelar= true;
+					       		existe=true;
 					       		i= automovil.size();
 					       	} else {
-					       		System.out.println("La matr\u00edcula no existe");
+					       		if(!existe) {
+					       		existe=false;}
 								correcto= false;
-								i= automovil.size();
 					       	}//Fin del if
 					     }//Fin del for i
+						if(!existe) {
+						       		System.out.println("La matr\u00edcula no existe");
+									correcto= false;
+						}
 					} else {
 						System.out.println("\nError: La matr\u00edcula no es v\u00e1lida");
 					}//Fin del if
