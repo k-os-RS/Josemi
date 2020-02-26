@@ -189,16 +189,16 @@ class administracion {
 		do {
 			do {
 				System.out.println("");
-				System.out.println(" [1] Alta empleado");
-				System.out.println(" [2] Baja empleado");
-				System.out.println(" [3] Mostrar empleado");
-				System.out.println(" [4] Modificar empleado");
-				System.out.println(" [5] Alta vehiculo");
-				System.out.println(" [6] Baja vehiculo");
-				System.out.println(" [7] Mostrar vehiculos");
-				System.out.println(" [8] Modificar vehiculo");
-				System.out.println(" [9] Mostrar dinero y ganancias");
-				System.out.println(" [10] Cerrar sesi\u00f3n");
+				System.out.println(" [1] Alta empleado.");
+				System.out.println(" [2] Baja empleado.");
+				System.out.println(" [3] Mostrar empleado.");
+				System.out.println(" [4] Modificar empleado.");
+				System.out.println(" [5] Alta vehiculo.");
+				System.out.println(" [6] Baja vehiculo.");
+				System.out.println(" [7] Mostrar vehiculos.");
+				System.out.println(" [8] Modificar datos de vehiculo.");
+				System.out.println(" [9] Mostrar economia de la empresa.");
+				System.out.println(" [10] Cerrar sesi\u00f3n.");
 				System.out.println("");
 				System.out.print("Elija una opci\u00f3n: ");
 				datos= teclado.CadenaTexto();
@@ -256,13 +256,13 @@ class administracion {
 		do {
 			do {
 				System.out.println("");
-				System.out.println(" [1] Vender vehiculo");
-				System.out.println(" [2] Comprar vehiculo");
-				System.out.println(" [3] Mostrar Vehiculo");
-				System.out.println(" [4] Devolver Vehiculo");
-				System.out.println(" [5] Enviar a mecanico");
-				System.out.println(" [6] Mostrar Cliente");
-				System.out.println(" [7] Cerrar sesi\u00f3n");
+				System.out.println(" [1] Vender vehiculo.");
+				System.out.println(" [2] Comprar vehiculo.");
+				System.out.println(" [3] Mostrar Vehiculo.");
+				System.out.println(" [4] Devolver Vehiculo.");
+				System.out.println(" [5] Enviar a mecanico.");
+				System.out.println(" [6] Mostrar Clientes.");
+				System.out.println(" [7] Cerrar sesi\u00f3n.");
 				System.out.println("");
 				System.out.print("Elija una opci\u00f3n: ");
 				datos= teclado.CadenaTexto();
@@ -310,10 +310,10 @@ class administracion {
 		do {
 			do {
 				System.out.println("");
-				System.out.println(" [1] Mostrar Vehiculo");
-				System.out.println(" [2] Marcar vehiculo reparado");
-				System.out.println(" [3] Vehiculos en reparaci\u00f3n");
-				System.out.println(" [4] Cerrar sesi\uf003n");
+				System.out.println(" [1] Mostrar Vehiculo.");
+				System.out.println(" [2] Marcar vehiculo reparado.");
+				System.out.println(" [3] Vehiculos para reparar.");
+				System.out.println(" [4] Cerrar sesi\uf003n.");
 				System.out.println("");
 				System.out.print("Elija una opci\u00f3n: ");
 				datos= teclado.CadenaTexto();
