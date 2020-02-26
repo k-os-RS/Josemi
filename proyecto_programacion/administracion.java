@@ -793,8 +793,10 @@ class administracion {
 	}
 	protected void BajaVehiculo () {
 		String respuesta, datos;
-		boolean cancelar= false, correcto= false;
-
+		boolean cancelar= false, correcto= false, existe=false;
+		vehiculos m = new motos();
+		vehiculos c = new coches();
+		
 		System.out.println("\n == BAJA VEHICULO == ");
 		System.out.println("Si desea cancelar la baja escriba Cancelar\n");
 		System.out.println("Introduzca la matr\u00edcula ");
@@ -811,28 +813,40 @@ class administracion {
 						System.out.println("\nError: Por favor rellene el campo matr\u00edcula");
 						
 					} else if (comprob.isMatricula(datos)) {
-						
 						for (int i= 0; i < automovil.size(); i++) {
-				        	if (automovil.get(i).getMatricula().equalsIgnoreCase(datos)) {
-				        		System.out.println("\nLa matr\u00edcula es de este veh\u00edculo");
-				        		System.out.println(automovil.get(i));
-				        		correcto= true;
-								cancelar= true;
-				        		i= automovil.size();
-				        	} else {
-				        		System.out.println("La matr\u00edcula no existe");
+					      	if (automovil.get(i).getMatricula().equalsIgnoreCase(datos)) {
+					       		System.out.println("\nLa matr\u00edcula es de este veh\u00edculo");
+					       		System.out.println(automovil.get(i));
+					       		correcto= true;
+					       		existe=true;
+					       		i= automovil.size();
+					       		datos=((coches)c).getVendidoCoche();
+					       		datos=((motos)m).getVendidoMoto();
+					       	} else {
+					       		if(!existe) {
+					       		existe=false;}
 								correcto= false;
-								i= automovil.size();
-				        	}//Fin del if
-				        }//Fin del for i
-					
+					       	}//Fin del if
+					     }//Fin del for i
+						if(!existe) {
+						    System.out.println("La matr\u00edcula no existe");
+							correcto= false;
+						}
 					} else {
 						System.out.println("\nError: La matr\u00edcula no es v\u00e1lida");
 					}//Fin del if
-
+					
 				} while (!correcto);
 				correcto= false;
-				System.out.println("\nSeguro que desea dar de baja este vehiculo?");
+				//proceso borrado
+				if(datos=="si") {
+					correcto=false;
+					System.out.println("Este vehiculo fue vendido y no se puede dar de baja ");
+				}else {
+					correcto=true;
+				}
+				if(correcto) {
+					System.out.println("\nSeguro que desea dar de baja este vehiculo?");
 				respuesta=teclado.CadenaTexto();
 				
 				if (respuesta.equalsIgnoreCase("si")) {
@@ -847,6 +861,8 @@ class administracion {
 				} else if (respuesta.equalsIgnoreCase("no")) {					
 					cancelar= true;	
 				}//fin del if
+				}
+				
 
 		} while (!cancelar);		
 	}
