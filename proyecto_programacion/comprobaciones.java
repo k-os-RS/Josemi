@@ -67,7 +67,7 @@ class comprobaciones {
 	protected boolean isCombustible (String combustible) {
 		boolean valido= false;
 		
-		if (combustible.equalsIgnoreCase("gasolina") || combustible.equalsIgnoreCase("diesel")) {
+		if (combustible.equalsIgnoreCase("gasolina") || combustible.equalsIgnoreCase("diesel") ||combustible.equalsIgnoreCase("electricidad") || combustible.equalsIgnoreCase("gasoil")) {
 			valido= true;
 		} else {
 			System.out.println("\nError: El tipo de combustible no es v\u00e1lido");
