@@ -240,7 +240,7 @@ class administracion {
 				MostrarGanancias();
 				break;
 			case "10":
-				ciclo = false;
+				ciclo2 = false;
 				break;
 			default:
 				System.out.println("\nError: La opci\u00f3n elegida es incorrecta");
@@ -862,7 +862,13 @@ class administracion {
 					}//Fin del if
 
 				} while (!correcto);
-
+				//compra
+				((coches)c).setVendidoCoche("no");
+				((motos)m).setVendidoMoto("no");
+				//reparacion
+				((coches)c).setEnReparacionCoche("no");;
+				((motos)m).setEnReparacionMoto("no");;	
+				//guardar
 				if (tipoVehiculo.equalsIgnoreCase("coche")) {
 					System.out.println("\n == EL ALTA DE COCHE HA SIDO COMPLETADA == ");
 					automovil.add(c);
@@ -885,6 +891,7 @@ class administracion {
 	protected void BajaVehiculo () {
 		String respuesta, datos;
 		boolean cancelar= false, correcto= false;
+
 
 		System.out.println("\n == BAJA VEHICULO == ");
 		System.out.println("Si desea cancelar la baja escriba Cancelar\n");
@@ -935,6 +942,7 @@ class administracion {
 			} else if (respuesta.equalsIgnoreCase("no")) {					
 				cancelar= true;	
 			}//Fin del if
+
 		} while (!cancelar);		
 	}
 	protected void MostrarVehiculo () {
@@ -1022,6 +1030,7 @@ class administracion {
 			break;
 			}
 		
+
 		}while(!cancelar);
 	}
 	protected void ModificarVehiculo () {
