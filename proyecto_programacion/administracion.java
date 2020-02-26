@@ -1046,7 +1046,13 @@ class administracion {
 		
 	}
 	protected void MostrarGanancias () {
-
+		System.out.println("\n== MOSTRAR GANANCIAS == ");
+		System.out.println("\nDinero Base: "+admin.get(2)+"\u20ac");
+		System.out.println("\nGanancia de coches "+admin.get(3)+"\u20ac");
+		System.out.println("Ganancia de motos "+admin.get(4)+"\u20ac");
+		System.out.println("\nCompra de coches "+admin.get(5)+"\u20ac");
+		System.out.println("Compra de motos "+admin.get(6)+"\u20ac");
+		System.out.println("\nDinero Total: "+admin.get(7)+"\u20ac");
 		
 	}
 
