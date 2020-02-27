@@ -240,7 +240,7 @@ class administracion {
 				MostrarGanancias();
 				break;
 			case "10":
-				ciclo2 = false;
+				ciclo = false;
 				break;
 			default:
 				System.out.println("\nError: La opci\u00f3n elegida es incorrecta");
