@@ -143,6 +143,7 @@ class administracion {
 		do {
 			do {
 				menu.MenuPrincipal();
+
 				cuenta= teclado.CadenaTexto();
 				//Llamamos metodo que compruebar si la opcion 
 				//introducida es un numero.
@@ -736,7 +737,7 @@ class administracion {
 											
 										} while (!confirmacion);
 										i= person.size();
-										break;
+                  break;
 									case "6":
 										do {
 											System.out.print("\nIndique la nueva cuenta bancaria: ");

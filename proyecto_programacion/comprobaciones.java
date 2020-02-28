@@ -1,6 +1,7 @@
 package proyecto_programacion;
 
 class  comprobaciones {
+
 	
 	//Comprobacion de validez
     protected boolean isDNI (String dni) {
@@ -81,7 +82,7 @@ class  comprobaciones {
 		if (movil.substring(0, 1).equals("6") && movil.length() == 9){
 			verdadero= true;
 		} else {
-			System.out.println("\nError: El n\u00famero tendrá que conteneder 9 digitos y empezar en 6.");
+			System.out.println("\nError: El n\u00famero tendr\u00e1 que conteneder 9 digitos y empezar en 6.");
 			verdadero= false;
 		}//Fin del if
 		
@@ -99,27 +100,41 @@ class  comprobaciones {
 		return verdadero;
 	}
 	protected boolean isNumeroDecimal (String numeroD) {
+		String parteI, parteF;
 		int pospunto= 0, cont= 0;
-		boolean verdadero= false;
-		numeroD.replace(',', '.');
+		boolean verdadero= true;
+		numeroD= numeroD.replace(',', '.');
 		
 		for (int i= 0; i < numeroD.length(); i++) {
 			if (numeroD.charAt(i) == '.') {
 				cont++;
 			}
-		}
+		}//Fin del for i
 		
 		if (cont == 1) {
 			pospunto= numeroD.indexOf('.');
-		} else {
-			verdadero= true;
-		}
-		
-		if (!verdadero) {
 			if (pospunto == numeroD.length() - 1 || pospunto == 0) {
 				verdadero= false;
-			}
-		}
+			} else {
+				parteI = numeroD.substring(0, pospunto);
+				parteF = numeroD.substring(pospunto+1, numeroD.length());
+				for (int j= 0; j < parteI.length(); j++) {
+					if (!Character.isDigit(parteI.charAt(j))) {
+						verdadero= false;
+					}
+				}//Fin del for j
+				
+				if (verdadero) {
+					for (int x= 0; x < parteF.length(); x++) {
+						if (!Character.isDigit(parteF.charAt(x))) {
+							verdadero= false;
+						}//Fin del if
+					}//Fin del for x
+				}//Fin del if 
+			}//Fin del if
+		} else {
+			verdadero= false;
+		}//Fin del if
 		
 		return verdadero;
 	}
