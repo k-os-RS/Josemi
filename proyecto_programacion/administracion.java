@@ -6,8 +6,9 @@ class administracion {
 	protected ArrayList<vehiculos> automovil= new ArrayList<vehiculos>();
 	protected ArrayList<personas> person= new ArrayList<personas>();
 	protected ArrayList<String> admin= new ArrayList<String>();
-	protected E_S teclado= new E_S();
 	protected comprobaciones comprob= new comprobaciones();
+	protected E_S teclado= new E_S();
+	protected menus menu= new menus();
 
 	//Cuentas de Administrador y Cuenta de Empleado
 	private void CuentaAdmin () {
@@ -141,22 +142,14 @@ class administracion {
 
 		do {
 			do {
-				System.out.println(" == CONCENSIONARIO == ");
-				System.out.println("");
-				System.out.println("");
-				System.out.println("Por favor, a continuaci\u00f3n elija el tipo de cuenta");
-				System.out.println("");
-				System.out.println(" [1] Administrador");
-				System.out.println(" [2] Empleado");
-				System.out.println(" [3] Salir");
-				System.out.println("");
-				System.out.print("Elija la opci\u00f3n: ");
+				menu.MenuPrincipal();
 				cuenta= teclado.CadenaTexto();
 				//Llamamos metodo que compruebar si la opcion 
 				//introducida es un numero.
 				if (comprob.isNumeroEntero(cuenta)) {
 					confirmacion= true;
 				} else {
+					System.out.println("\nError: La opci\u00f3n debe ser un n\u00famero");
 					confirmacion= false;
 				}// Fin del if
 			} while (!confirmacion); //Fin del do
@@ -192,24 +185,13 @@ class administracion {
 
 		do {
 			do {
-				System.out.println("");
-				System.out.println(" [1] Alta empleado");
-				System.out.println(" [2] Baja empleado");
-				System.out.println(" [3] Mostrar empleado");
-				System.out.println(" [4] Modificar empleado");
-				System.out.println(" [5] Alta vehiculo");
-				System.out.println(" [6] Baja vehiculo");
-				System.out.println(" [7] Mostrar vehiculos");
-				System.out.println(" [8] Modificar vehiculo");
-				System.out.println(" [9] Mostrar dinero y ganancias");
-				System.out.println(" [10] Cerrar sesi\u00f3n");
-				System.out.println("");
-				System.out.print("Elija una opci\u00f3n: ");
+				menu.MenuAdmin();
 				datos= teclado.CadenaTexto();
 
 				if (comprob.isNumeroEntero(datos)) {
 					confirmacion= true;
 				} else {
+					System.out.println("\nError: La opci\u00f3n debe ser un n\u00famero");
 					confirmacion= false;
 				}//Fin del if
 				
@@ -259,21 +241,13 @@ class administracion {
 
 		do {
 			do {
-				System.out.println("");
-				System.out.println(" [1] Vender vehiculo");
-				System.out.println(" [2] Comprar vehiculo");
-				System.out.println(" [3] Mostrar Vehiculo");
-				System.out.println(" [4] Devolver Vehiculo");
-				System.out.println(" [5] Enviar a mecanico");
-				System.out.println(" [6] Mostrar Cliente");
-				System.out.println(" [7] Cerrar sesi\u00f3n");
-				System.out.println("");
-				System.out.print("Elija una opci\u00f3n: ");
+				menu.MenuAsesor();
 				datos= teclado.CadenaTexto();
 					
 				if (comprob.isNumeroEntero(datos)) {
 					confirmacion= true;
 				} else {
+					System.out.println("\nError: La opci\u00f3n debe ser un n\u00famero");
 					confirmacion= false;
 				}// Fin del if
 					
@@ -287,7 +261,7 @@ class administracion {
 				//CompraVehiculo();
 				break;
 			case "3":
-				//MostrarVehiculo();
+				MostrarVehiculo();
 				break;
 			case "4":
 				//DevolverVehiculo();
@@ -313,18 +287,13 @@ class administracion {
 
 		do {
 			do {
-				System.out.println("");
-				System.out.println(" [1] Mostrar Vehiculo");
-				System.out.println(" [2] Marcar vehiculo reparado");
-				System.out.println(" [3] Vehiculos en reparaci\u00f3n");
-				System.out.println(" [4] Cerrar sesi\uf003n");
-				System.out.println("");
-				System.out.print("Elija una opci\u00f3n: ");
+				menu.MenuMecanico();
 				datos= teclado.CadenaTexto();
 				
 				if (comprob.isNumeroEntero(datos)) {
 					confirmacion= true;
 				} else {
+					System.out.println("\nError: La opci\u00f3n debe ser un n\u00famero");
 					confirmacion= false;
 				}// Fin del if
 				
@@ -332,7 +301,7 @@ class administracion {
 				
 			switch (datos) {
 			case "1":
-				//MostrarVehiculo(automovil);	
+				MostrarVehiculo();	
 				break;
 			case "2":
 				//RepararVehiculo(automovil);
@@ -651,20 +620,7 @@ class administracion {
 						do {
 							System.out.println(p);
 							do {
-								System.out.println("\nPor favor indique el dato que desea cambiar");
-								System.out.println("");
-								System.out.println(" [1] DNI");
-								System.out.println(" [2] Nombre");
-								System.out.println(" [3] Apellidos");
-								System.out.println(" [4] Telefono m\u00f3vil");
-								System.out.println(" [5] Fecha de nacimiento");
-								System.out.println(" [6] Cuenta bancaria");
-								System.out.println(" [7] Direccion");
-								System.out.println(" [8] Tipo de trabajo");
-								System.out.println(" [9] Sueldo");
-								System.out.println(" [10] Cancelar");
-								System.out.println("");
-								System.out.print("Elige una opci\u00f3n: ");
+								menu.MenuModificarEmpleado();
 								datos= teclado.CadenaTexto();
 								
 								if (comprob.isNumeroEntero(datos)) {
@@ -832,42 +788,31 @@ class administracion {
 											
 											if (datos.equals("")) {
 												System.out.println("\nError: Por favor inserte datos.");
+											} else if (datos.equalsIgnoreCase("asesor") || datos.equalsIgnoreCase("mecanico")) {
+												if (person.get(i) instanceof asesor) {
+													if (((asesor) person.get(i)).getTrabajo_asesor().equals(datos)) {
+														System.out.println("\nError: Este trabajador ya es un asesor");
+													} else {
+														personas a= new asesor();
+														a= (asesor) person.get(i);
+														person.remove(i);
+														person.add(i, a);
+														confirmacion= true;
+													}//Fin del if
+												} else if (person.get(i) instanceof mecanico) {
+													if (((mecanico) person.get(i)).getTrabajo_mecanico().equals(datos)) {
+														System.out.println("\nError: Este trabajador ya es un mecanico");
+													} else {
+														personas m= new mecanico();
+														m= (mecanico) person.get(i);
+														person.remove(i);
+														person.add(i, m);
+														confirmacion= true;
+													}//Fin del if
+												}//Fin del if
 											} else {
-												if (((asesor) person.get(i)).getTrabajo_asesor().equals(datos)) {
-													personas a= new asesor();
-													a.setDni(person.get(i).getDni());
-													a.setNombre(person.get(i).getNombre());
-													a.setApellidos(person.get(i).getApellidos());
-													a.setTelefono_movil(person.get(i).getTelefono_movil());
-													a.setFecha_nacimiento(person.get(i).getFecha_nacimiento());
-													a.setCuenta_bancaria(person.get(i).getCuenta_bancaria());
-													a.setDireccion(person.get(i).getDireccion());
-													a.setSueldo(person.get(i).getSueldo());
-													a.setDespedida(person.get(i).getDespedida());
-													person.remove(i);
-													person.add(i, a);
-													System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
-													confirmacion= true;
-												} else if (((mecanico) person.get(i)).getTrabajo_mecanico().equals(datos)) {
-													personas m= new asesor();
-													m.setDni(person.get(i).getDni());
-													m.setNombre(person.get(i).getNombre());
-													m.setApellidos(person.get(i).getApellidos());
-													m.setTelefono_movil(person.get(i).getTelefono_movil());
-													m.setFecha_nacimiento(person.get(i).getFecha_nacimiento());
-													m.setCuenta_bancaria(person.get(i).getCuenta_bancaria());
-													m.setDireccion(person.get(i).getDireccion());
-													m.setSueldo(person.get(i).getSueldo());
-													m.setDespedida(person.get(i).getDespedida());
-													person.remove(i);
-													person.add(i, m);
-													System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
-													confirmacion= true;
-												} else {
-													System.out.println("\nError: Ese tipo de trabajo no existe");
-												}
-											}
-											
+												System.out.println("\nError: Ese tipo de trabajo no existe");
+											}//Fin del if
 										} while (!confirmacion);
 										
 										i= person.size();
@@ -885,7 +830,7 @@ class administracion {
 												System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
 												confirmacion= true;
 											} else {
-												confirmacion= false;
+												System.out.println("\nError: Solo se admiten n\u00fameros");
 											}
 											
 										} while (!confirmacion);
@@ -922,7 +867,7 @@ class administracion {
 	}
 	protected void AltaVehiculo () {
 		String tipoVehiculo, datos;
-		Double precio, km;
+		Double decimal;
 		boolean cancelar= false, correcto= false;
 
 		System.out.println("\n == ALTA VEHICULO == ");
@@ -1034,24 +979,25 @@ class administracion {
 							System.out.println("\nError: La cantidad de plazas debe ser mayor a 1");
 						}
 					} else {
-						System.out.println("\nError: El n\u00famero no es v\u00a1lido");
+						System.out.println("\nError: El campo solo admite n\u00fameros");
 					}//Fin del if
 
 				} while (!correcto);
 				correcto= false;
 				//Kilometros
 				do {
-					System.out.print("Kilometros: ");
+					System.out.print("Kil\u00f3metros: ");
 					datos= teclado.CadenaTexto();
 					
 					if (datos.equals("")) {
-						System.out.println("\nError: Por favor rellene el campo kilometros");
-					} else if (datos.matches("[0-9]+") || datos.contains(".") || datos.contains(",")){
-						datos.replace('.',',');
-						km= Double.parseDouble(datos);
-						c.setKilometros(km);
-						m.setKilometros(km);
+						System.out.println("\nError: Por favor rellene el campo kil\u00f3metros");
+					} else if (comprob.isNumeroDecimal(datos) || comprob.isNumeroEntero(datos)){
+						decimal= Double.parseDouble(datos);
+						c.setKilometros(decimal);
+						m.setKilometros(decimal);
 						correcto= true;
+					} else {
+						System.out.println("\nError: El campo solo admite n\u00fameros");
 					}//Fin del if
 					
 				} while (!correcto);
@@ -1063,28 +1009,27 @@ class administracion {
 					
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo precio");
-					} else if (datos.matches("[0-9]+") || datos.contains(".") || datos.contains(",")){
-							datos.replace('.',',');
-							precio= Double.parseDouble(datos);
-							c.setPrecio(precio);
-							m.setPrecio(precio);
-							correcto= true;
+					} else if (comprob.isNumeroDecimal(datos) || comprob.isNumeroEntero(datos)){
+						decimal= Double.parseDouble(datos);
+						c.setPrecio(decimal);
+						m.setPrecio(decimal);
+						correcto= true;
+					} else {
+						System.out.println("\nError: El campo solo admite n\u00fameros");
 					}//Fin del if
 
 				} while (!correcto);
-				//compra
-				((coches)c).setVendidoCoche("no");
-				((motos)m).setVendidoMoto("no");
-				//reparacion
-				((coches)c).setEnReparacionCoche("no");;
-				((motos)m).setEnReparacionMoto("no");;	
-				//guardar
+
 				if (tipoVehiculo.equalsIgnoreCase("coche")) {
 					System.out.println("\n == EL ALTA DE COCHE HA SIDO COMPLETADA == ");
+					((coches) c).setVendidoCoche("no");
+					((coches) c).setEnReparacionCoche("no");
 					automovil.add(c);
 					cancelar= true;	
 				} else {
 					System.out.println("\n == EL ALTA DE MOTO HA SIDO COMPLETADA == ");
+					((motos) m).setVendidoMoto("no");
+					((motos) m).setEnReparacionMoto("no");
 					automovil.add(m);
 					cancelar= true;	
 				}
@@ -1161,19 +1106,13 @@ class administracion {
 		
 		do {
 			do {
-				System.out.println("\n == MOSTRAR VEHICULO == ");
-				System.out.println("");
-				System.out.println(" [1] Mostrar todos los coches");
-				System.out.println(" [2] Mostrar todos las motos");
-				System.out.println(" [3] Mostrar un vehiculo espec\u00edfico");
-				System.out.println(" [4] Salir");
-				System.out.println("");
-				System.out.print("Elige una opci\u00f3n: ");
+				menu.MenuMostrarVehiculo();
 				respuesta= teclado.CadenaTexto();
 				
 				if(comprob.isNumeroEntero(respuesta)) {
 					correcto=true;
 				}else {
+					System.out.println("\nError: La opci\u00f3n debe ser un n\u00famero");
 					correcto=false;
 				}//Fin del if
 				
@@ -1352,10 +1291,13 @@ class administracion {
 	protected void VentaVehiculo () {
 		
 	}
-	protected void GuardarCliente () {
+	protected void AltaCliente () {
 		
 	}
 	protected void MostrarCliente () {
+		
+	}
+	protected void ModificarCliente () {
 		
 	}
 	protected void MostrarEnReparacion () {

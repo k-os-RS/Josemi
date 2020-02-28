@@ -8,7 +8,7 @@ class cliente extends personas {
 	public cliente() {
 		
 	}
-	
+
 	//Getters & Setters
 	public int getCompraCoche() {
 		return compraCoche;
@@ -29,7 +29,7 @@ class cliente extends personas {
 	@Override
 	public String toString() {
 		String texto= "\nINFORMACI\u00f3N PARA EL CLIENTE CON DNI: "+dni+"\n"+
-				"\nNombre: "+nombre+
+				"Nombre: "+nombre+
 				"\nApellidos: "+apellidos+
 				"\nDirecci\u00f3n: "+direccion+
 				"\nTelefono m\u00f3vil: "+telefono_movil+

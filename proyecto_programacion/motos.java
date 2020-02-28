@@ -28,8 +28,8 @@ class motos extends vehiculos {
 
 	@Override
 	public String toString() {
-		String texto= "\nDatos de la moto: "+matricula+
-				"\nModelo: "+modelo+
+		String texto= "\nDatos de la moto: "+matricula+"\n"+
+				"Modelo: "+modelo+
 				"\nColor: "+color+
 				"\nPlazas: "+plazas+
 				"\nCombustible: "+combustible+

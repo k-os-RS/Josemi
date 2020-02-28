@@ -2,7 +2,7 @@ package proyecto_programacion;
 
 class mecanico extends personas {
 	//Atributos
-	protected final String trabajo_mecanico= "Mecanico";
+	protected String trabajo_mecanico= "Mecanico";
 
 	//Constructores
 	public mecanico() {
@@ -14,10 +14,14 @@ class mecanico extends personas {
 		return trabajo_mecanico;
 	}
 	
+	protected void setTrabajo_mecanico(String trabajo_mecanico) {
+		this.trabajo_mecanico = trabajo_mecanico;
+	}
+
 	@Override
 	public String toString() {
 		String texto= "\nINFORMACI\u00f3N PARA EL EMPLEADO CON DNI: "+dni+"\n"+
-				"\nNombre: "+nombre+
+				"Nombre: "+nombre+
 				"\nApellidos: "+apellidos+
 				"\nFecha Nacimiento: "+fecha_nacimiento+
 				"\nTrabaja de: "+trabajo_mecanico+

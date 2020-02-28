@@ -4,7 +4,7 @@ import java.util.*;
 class E_S {
 	
 	Scanner teclado= new Scanner(System.in);
-	
+
 	public String CadenaTexto () {
 		String dato= teclado.nextLine();
 		

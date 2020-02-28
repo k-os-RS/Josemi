@@ -2,7 +2,7 @@ package proyecto_programacion;
 
 class asesor extends personas {
 	//Atributos
-	protected final String trabajo_asesor= "Asesor";
+	protected String trabajo_asesor= "Asesor";
 	
 	//Constructores
 	public asesor() {
@@ -14,10 +14,14 @@ class asesor extends personas {
 		return trabajo_asesor;
 	}
 	
+	public void setTrabajo_asesor(String trabajo_asesor) {
+		this.trabajo_asesor = trabajo_asesor;
+	}
+
 	@Override
 	public String toString() {
 		String texto= "\nINFORMACI\u00f3N PARA EL EMPLEADO CON DNI: "+dni+"\n"+
-				"\nNombre: "+nombre+
+				"Nombre: "+nombre+
 				"\nApellidos: "+apellidos+
 				"\nFecha Nacimiento: "+fecha_nacimiento+
 				"\nTrabaja de: "+trabajo_asesor+
