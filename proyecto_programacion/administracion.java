@@ -713,20 +713,46 @@ class administracion {
 										i= person.size();
 										break;
 									case "2":
-										System.out.print("\nIndique el nuevo nombre: ");
-										person.get(i).setNombre(teclado.CadenaTexto());
-										System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
+										do {
+											System.out.print("\nIndique el nuevo nombre: ");
+											datos= teclado.CadenaTexto();
+											
+											if (datos.equals("")) {
+												System.out.println("\nError: Por favor inserte datos.");
+											} else if (comprob.isNumeroMovil(datos)) {
+												person.get(i).setNombre(datos);
+												System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
+												confirmacion= true;
+											} else {
+												confirmacion= false;
+											}
+											
+										} while (!confirmacion);
+										
 										i= person.size();
 										break;
 									case "3":
-										System.out.print("\nIndique el nuevo apellidos: ");
-										person.get(i).setApellidos(teclado.CadenaTexto());
-										System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
+										do {
+											System.out.print("\nIndique los nuevos apellidos: ");
+											datos= teclado.CadenaTexto();
+											
+											if (datos.equals("")) {
+												System.out.println("\nError: Por favor inserte datos.");
+											} else if (comprob.isNumeroMovil(datos)) {
+												person.get(i).setApellidos(datos);
+												System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
+												confirmacion= true;
+											} else {
+												confirmacion= false;
+											}
+											
+										} while (!confirmacion);
+										
 										i= person.size();
 										break;
 									case "4":
 										do {
-											System.out.print("\nIndique el nuevo telefono m\u00f3vil: ");
+											System.out.print("\nIndique el nuevo n\u00famero de telefono m\u00f3vil: ");
 											datos= teclado.CadenaTexto();
 											
 											if (datos.equals("")) {
@@ -745,13 +771,13 @@ class administracion {
 										break;
 									case "5":
 										do {
-											System.out.print("\nIndique el nuevo nombre: ");
+											System.out.print("\nIndique la nueva fecha de nacimiento (dd/mm/yyyy): ");
 											datos= teclado.CadenaTexto();
 											
 											if (datos.equals("")) {
 												System.out.println("\nError: Por favor inserte datos.");
-											} else if (comprob.isNumeroMovil(datos)) {
-												person.get(i).setTelefono_movil(datos);
+											} else if (comprob.isFecha(datos)) {
+												person.get(i).setFecha_nacimiento(datos);
 												System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
 												confirmacion= true;
 											} else {
@@ -761,30 +787,110 @@ class administracion {
 										} while (!confirmacion);
 										
 										i= person.size();
-										i= person.size();
 										break;
 									case "6":
-										System.out.print("\nIndique el nuevo nombre: ");
-										person.get(i).setNombre(teclado.CadenaTexto());
-										System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
+										do {
+											System.out.print("\nIndique la nueva cuenta bancaria: ");
+											datos= teclado.CadenaTexto();
+											
+											if (datos.equals("")) {
+												System.out.println("\nError: Por favor inserte datos.");
+											} else if (comprob.isFecha(datos)) {
+												person.get(i).setCuenta_bancaria(datos);
+												System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
+												confirmacion= true;
+											} else {
+												confirmacion= false;
+											}
+											
+										} while (!confirmacion);
+										
 										i= person.size();
 										break;
 									case "7":
-										System.out.print("\nIndique el nuevo nombre: ");
-										person.get(i).setNombre(teclado.CadenaTexto());
-										System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
+										do {
+											System.out.print("\nIndique la nueva direcci\u00f3n: ");
+											datos= teclado.CadenaTexto();
+											
+											if (datos.equals("")) {
+												System.out.println("\nError: Por favor inserte datos.");
+											} else {
+												person.get(i).setDireccion(datos);
+												System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
+												confirmacion= true;
+											}
+											
+										} while (!confirmacion);
+										
 										i= person.size();
 										break;
 									case "8":
-										System.out.print("\nIndique el nuevo nombre: ");
-										person.get(i).setNombre(teclado.CadenaTexto());
-										System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
+										do {
+											System.out.println("\nAsesor - Mecanico");
+											System.out.print("Indique el nuevo tipo de trabajo: ");
+											datos= teclado.CadenaTexto();
+											
+											if (datos.equals("")) {
+												System.out.println("\nError: Por favor inserte datos.");
+											} else {
+												if (((asesor) person.get(i)).getTrabajo_asesor().equals(datos)) {
+													personas a= new asesor();
+													a.setDni(person.get(i).getDni());
+													a.setNombre(person.get(i).getNombre());
+													a.setApellidos(person.get(i).getApellidos());
+													a.setTelefono_movil(person.get(i).getTelefono_movil());
+													a.setFecha_nacimiento(person.get(i).getFecha_nacimiento());
+													a.setCuenta_bancaria(person.get(i).getCuenta_bancaria());
+													a.setDireccion(person.get(i).getDireccion());
+													a.setSueldo(person.get(i).getSueldo());
+													a.setDespedida(person.get(i).getDespedida());
+													person.remove(i);
+													person.add(i, a);
+													System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
+													confirmacion= true;
+												} else if (((mecanico) person.get(i)).getTrabajo_mecanico().equals(datos)) {
+													personas m= new asesor();
+													m.setDni(person.get(i).getDni());
+													m.setNombre(person.get(i).getNombre());
+													m.setApellidos(person.get(i).getApellidos());
+													m.setTelefono_movil(person.get(i).getTelefono_movil());
+													m.setFecha_nacimiento(person.get(i).getFecha_nacimiento());
+													m.setCuenta_bancaria(person.get(i).getCuenta_bancaria());
+													m.setDireccion(person.get(i).getDireccion());
+													m.setSueldo(person.get(i).getSueldo());
+													m.setDespedida(person.get(i).getDespedida());
+													person.remove(i);
+													person.add(i, m);
+													System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
+													confirmacion= true;
+												} else {
+													System.out.println("\nError: Ese tipo de trabajo no existe");
+												}
+											}
+											
+										} while (!confirmacion);
+										
 										i= person.size();
 										break;
 									case "9":
-										System.out.println("\n == MODIFICACI\u00f3N CANCELADA == ");
+										do {
+											System.out.print("\nIndique el nuevo sueldo: ");
+											datos= teclado.CadenaTexto();
+											
+											if (datos.equals("")) {
+												System.out.println("\nError: Por favor inserte datos.");
+											} else if (comprob.isNumeroDecimal(datos) || comprob.isNumeroEntero(datos)) {
+												double sueldo= Double.parseDouble(datos);
+												person.get(i).setSueldo(sueldo);
+												System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
+												confirmacion= true;
+											} else {
+												confirmacion= false;
+											}
+											
+										} while (!confirmacion);
+										
 										i= person.size();
-										ciclo= false;
 										break;
 									case "10":
 										System.out.println("\n == MODIFICACI\u00f3N CANCELADA == ");
