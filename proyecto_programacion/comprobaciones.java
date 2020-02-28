@@ -1,6 +1,7 @@
 package proyecto_programacion;
 
-class comprobaciones {
+class  comprobaciones {
+
 	
 	//Comprobacion de validez
     protected boolean isDNI (String dni) {
@@ -93,7 +94,6 @@ class comprobaciones {
 		if (numeroE.matches("[0-9]+")) {
 			verdadero= true;
 		} else {
-			System.out.println("\nError: La opci\u00f3n debe ser un n\u00famero.");
 			verdadero= false;
 		}//Fin del if
 		

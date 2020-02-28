@@ -4,7 +4,7 @@ abstract class vehiculos {
 	//Atributos
 	protected String matricula, modelo, color, combustible, plazas;
 	protected double precio, kilometros;
-	
+
 	//Getters & Setters
 	protected String getMatricula() {
 		return matricula;
