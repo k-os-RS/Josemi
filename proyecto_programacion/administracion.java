@@ -737,7 +737,7 @@ class administracion {
 											
 										} while (!confirmacion);
 										i= person.size();
-                  break;
+										break;
 									case "6":
 										do {
 											System.out.print("\nIndique la nueva cuenta bancaria: ");
