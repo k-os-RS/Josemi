@@ -498,54 +498,53 @@ class administracion {
 	}
 	protected void BajaEmpleado () {
 		String dni;
-		boolean existe= false;
-		
-		System.out.println("\n == BAJA EMPLEADO == ");
-		System.out.println("");
-		System.out.print("DNI del empleado: ");
-		dni= teclado.CadenaTexto();
-		
-		//Comprobamos que el DNI de la persona exista
-		for (int i=0; i<person.size(); i++) {
-			if (person.get(i).getDni().equals(dni) && person.get(i).getTipo_persona().equals("empleado")) {
-				if (person.get(i).getDespedida().equals("no")) {
-					existe= true;
-					i= person.size();
-				} else {
-					System.out.println("\nError: El empleado ya ha sido despedido");
+		boolean existe= false, confirmacion= false;
+		if (person.size() > 0) {
+			System.out.println("\n == MOSTRAR DATOS EMPLEADO == ");
+			System.out.println("");
+			System.out.print("DNI del empleado: ");
+			dni= teclado.CadenaTexto();
+			//Comprobar que exista el DNI de la persona
+			Iterator <personas> itrP = person.iterator();
+			while (itrP.hasNext() && !existe) {
+				personas p= itrP.next();
+				//Segun la verificacion nos lo mostrara o no
+				if (p.getDni().equalsIgnoreCase(dni) && p.getTipo_persona().equals("empleado")) {
+					if (p.getDespedida().equals("si")) {
+						System.out.println("\nError: El empleado ya ha sido despedido");
+						existe= true;
+					} else {
+						System.out.println("\nEsta por despedir al empleado");
+						System.out.println("DNI: "+p.getDni());
+						System.out.println("Nombre: "+p.getNombre());
+						System.out.println("Apellidos: "+p.getApellidos());
+						do {
+							System.out.println("\nSi esta seguro pulse INTRO en caso contrario escriba CANCELAR");
+							dni= teclado.CadenaTexto();
+							if (dni.equals("")) {
+								System.out.println("\n == El empleado ha sido despedido == ");
+								p.setDespedida("si");
+								confirmacion= true;
+							} else if (dni.equalsIgnoreCase("cancelar")) {
+								System.out.println("\n == DESPIDO CANCELADO == ");
+							} else {
+								System.out.println("\nError: Por favor indique la acci\u00f3n correcta.");
+							}//Fin del if
+							existe= true;
+						} while (!confirmacion); //Fin del while
+					}//Fin del if
+				}else {
 					existe= false;
-					i= person.size();
 				}//Fin del if
-			} else {
-				existe= false;
-			}//Fin del if
-		}//Fin del for i
-		
-		//Segun la verificacion anterior nos dira si existe o no
-		for (int j=0; j<person.size(); j++) {
+			}//Fin del while
 			if (!existe) {
 				System.out.println("\nError: No existe empleado registrado con ese DNI");
-				j= person.size();
-			} else if (person.get(j).getDni().equals(dni)) {
-				System.out.println("\nEst\u00e1 por despedir al empleado "+person.get(j).getNombre());
-				System.out.println("con DNI: "+person.get(j).getDni());
-				System.out.println("");
-				System.out.println("Pulse INTRO si est\u00e1 seguro o escriba Cancelar, para cancelar la operaci\u00f3n\n");
-				dni= teclado.CadenaTexto();
-				
-				if (dni.equals("")) {
-					System.out.println(" == SE HA DADO DE BAJA AL EMPLEADO CON \u00e9XITO == ");
-					person.get(j).setDespedida("si");
-				} else if (dni.equalsIgnoreCase("cancelar")) {
-					System.out.println(" == OPERACI\u00f3N CANCELADA == ");
-					j= person.size();
-				} else {
-					System.out.println(" == OPERACI\u00f3N CANCELADA == ");
-					j= person.size();
-				}
+				existe= true;
 			}//Fin del if
-		}//Fin del for j
-		
+		} else {
+			System.out.println("\nError: No hay ningun empleado contratado");
+		}//Fin del if
+
 	}
 	protected void MostrarEmpleado () {
 		String dni;
@@ -602,7 +601,6 @@ class administracion {
 							System.out.println("\nDesea recontratar a este empleado");
 							System.out.println("Escriba SI en respuesta afirmativa o NO en respuesta negativa");
 							datos= teclado.CadenaTexto();
-							
 							if (datos.equals("")) {
 								System.out.println("\nError: Por favor rellene el campo");
 							} else if (datos.equalsIgnoreCase("si")) {
@@ -613,8 +611,7 @@ class administracion {
 								existe= true;
 							} else {
 								System.out.println("\nError: Solo se aceptan respuestas SI o NO");
-							}
-							
+							}//Fin del if
 						} while (!confirmacion);
 					} else {
 						do {
@@ -622,16 +619,15 @@ class administracion {
 							do {
 								menu.MenuModificarEmpleado();
 								datos= teclado.CadenaTexto();
-								
 								if (comprob.isNumeroEntero(datos)) {
 									confirmacion= true;
 								} else {
 									System.out.println("\nError: La opci\u00f3n debe ser un n\u00famero");
-								}
+								}//Fin del if
 							} while (!confirmacion);
 							confirmacion= false;
 							for (int i= 0; i < person.size(); i++) {
-								if(person.get(i).getDni().equals(dni)) {
+								if (person.get(i).getDni().equals(dni)) {
 									switch (datos) {
 									case "1":
 										do {
@@ -656,16 +652,14 @@ class administracion {
 												}//Fin del if
 											} else {
 												System.out.println("\nError: El DNI no es v\u00e1lido.");
-											}
+											}//Fin del if
 											
 											if (repetir) {
 												person.get(i).setDni(datos);
 												System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
 												confirmacion= true;
-											}
-											
+											}//Fin del if
 										} while (!confirmacion);
-					
 										i= person.size();
 										break;
 									case "2":
@@ -738,10 +732,9 @@ class administracion {
 												confirmacion= true;
 											} else {
 												confirmacion= false;
-											}
+											}//Fin del if
 											
 										} while (!confirmacion);
-										
 										i= person.size();
 										break;
 									case "6":
@@ -757,10 +750,9 @@ class administracion {
 												confirmacion= true;
 											} else {
 												confirmacion= false;
-											}
+											}//Fin del if
 											
 										} while (!confirmacion);
-										
 										i= person.size();
 										break;
 									case "7":
@@ -774,10 +766,9 @@ class administracion {
 												person.get(i).setDireccion(datos);
 												System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
 												confirmacion= true;
-											}
+											}//Fin del if
 											
 										} while (!confirmacion);
-										
 										i= person.size();
 										break;
 									case "8":
@@ -814,7 +805,6 @@ class administracion {
 												System.out.println("\nError: Ese tipo de trabajo no existe");
 											}//Fin del if
 										} while (!confirmacion);
-										
 										i= person.size();
 										break;
 									case "9":
@@ -831,10 +821,8 @@ class administracion {
 												confirmacion= true;
 											} else {
 												System.out.println("\nError: Solo se admiten n\u00fameros");
-											}
-											
+											}//Fin del if
 										} while (!confirmacion);
-										
 										i= person.size();
 										break;
 									case "10":
@@ -845,11 +833,34 @@ class administracion {
 									default:
 										System.out.println("\nError: La opci\u00f3n elegida es incorrecta");
 										break;
-									}
-								}
+									}//Fin del switch
+								}//Fin del if
 							}
+							if (ciclo) {
+								confirmacion= false;
+								do {
+									System.out.println("\nDesea realizar otra modificaci\u00f3n");
+									System.out.println(" [1] Si");
+									System.out.println(" [2] No");
+									System.out.print("\nOpci\u00f3n: ");
+									datos= teclado.CadenaTexto();
+									if (datos.equals("")) {
+										 System.out.println("\nError: Por favor elija una opci\u00f3n");
+									} else if (comprob.isNumeroEntero(datos)) {
+										if (datos.equals("1")) {
+											confirmacion= true;
+										} else if (datos.equals("2")) {
+											confirmacion= true;
+											ciclo= false;
+										} else {
+											System.out.println("\nError: La opci\u00f3n no es v\u00e1lida");
+										}//Fin del if
+									} else {
+										System.out.println("\nError: La opci\u00f3n solo admite n\u00fameros");
+									}//Fin del if
+								} while (!confirmacion);
+							}//Fin del if
 						} while (ciclo);
-						
 						existe= true;
 					}//Fin del if
 				}else {
@@ -1044,7 +1055,7 @@ class administracion {
 		} while (!cancelar);		
 	}
 	protected void BajaVehiculo () {
-		String respuesta, datos;
+		String matricula;
 		boolean cancelar= false, correcto= false;
 
 
@@ -1055,16 +1066,16 @@ class administracion {
 		do {
 			do {
 				System.out.print("Matr\u00edcula: ");
-				datos= teclado.CadenaTexto();
+				matricula= teclado.CadenaTexto();
 				
-				if (datos.equalsIgnoreCase("Cancelar")) {
+				if (matricula.equalsIgnoreCase("Cancelar")) {
 					System.out.println("\n == BAJA VEHICULO CANCELADA == ");
 					cancelar= true;
-				} else if (datos.equals("")) {
+				} else if (matricula.equals("")) {
 					System.out.println("\nError: Por favor rellene el campo matr\u00edcula");
-				} else if (comprob.isMatricula(datos)) {		
+				} else if (comprob.isMatricula(matricula)) {		
 					for (int i= 0; i < automovil.size(); i++) {
-			        	if (automovil.get(i).getMatricula().equalsIgnoreCase(datos)) {
+			        	if (automovil.get(i).getMatricula().equalsIgnoreCase(matricula)) {
 			        		System.out.println("\nLa matr\u00edcula es de este veh\u00edculo");
 			        		System.out.println(automovil.get(i));
 				        	correcto= true;
@@ -1083,18 +1094,18 @@ class administracion {
 			} while (!correcto);
 			correcto= false;
 			System.out.println("\nSeguro que desea dar de baja este vehiculo?");
-			respuesta=teclado.CadenaTexto();	
+			matricula=teclado.CadenaTexto();	
 			
-			if (respuesta.equalsIgnoreCase("si")) {
+			if (matricula.equalsIgnoreCase("si")) {
 				System.out.println("\n == LA BAJA DE VEH\u00dedCULO HA SIDO COMPLETADA == ");
 				for (int i= 0; i < automovil.size(); i++) {
-			       	if (automovil.get(i).getMatricula().equalsIgnoreCase(datos)) {
+			       	if (automovil.get(i).getMatricula().equalsIgnoreCase(matricula)) {
 			       		i= automovil.size();
 			       		automovil.remove(i);
 				cancelar= true;	
 			       	}//Fin del if
 			       }//Fin del for i
-			} else if (respuesta.equalsIgnoreCase("no")) {					
+			} else if (matricula.equalsIgnoreCase("no")) {					
 				cancelar= true;	
 			}//Fin del if
 

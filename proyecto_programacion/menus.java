@@ -5,7 +5,6 @@ class menus {
 	protected void MenuPrincipal () {
 		System.out.println(" == CONCENSIONARIO == ");
 		System.out.println("");
-		System.out.println("");
 		System.out.println("Por favor, a continuaci\u00f3n elija el tipo de cuenta");
 		System.out.println("");
 		System.out.println(" [1] Administrador");
