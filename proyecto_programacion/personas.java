@@ -1,5 +1,4 @@
- package proyecto_programacion;
-
+package proyecto_programacion;
 abstract class personas {
 	//Atributos
 	protected String dni, nombre, apellidos, telefono_movil, fecha_nacimiento, cuenta_bancaria, direccion, tipo_persona, despedida;

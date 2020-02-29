@@ -1,5 +1,4 @@
 package proyecto_programacion;
-
 class mecanico extends personas {
 	//Atributos
 	protected String trabajo_mecanico= "Mecanico";

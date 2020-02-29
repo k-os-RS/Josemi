@@ -1,5 +1,4 @@
 package proyecto_programacion;
-
 class cliente extends personas {
 	//Atributos
 	protected int compraCoche= 0, compraMoto= 0;

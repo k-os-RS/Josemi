@@ -1,5 +1,4 @@
 package proyecto_programacion;
-
 class menus {
 	
 	protected void MenuPrincipal () {

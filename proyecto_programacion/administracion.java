@@ -1,7 +1,5 @@
 package proyecto_programacion;
-
 import java.util.*;
-
 class administracion {
 	protected ArrayList<vehiculos> automovil= new ArrayList<vehiculos>();
 	protected ArrayList<personas> person= new ArrayList<personas>();
@@ -550,66 +548,65 @@ class administracion {
 	}
 	protected void MostrarEmpleado () {
 		String dni, datos;
-		boolean ciclo= true, existe= false;
-		
-		do {
-			menu.MenuMostrarEmpleado();
-			datos= teclado.CadenaTexto();
-				
-			if (comprob.isNumeroEntero(datos)) {
-				switch (datos) {
-				case "1":
-					for (personas i : person) {
-						if (i instanceof asesor) {
-							System.out.println("\n--------------------");
-							System.out.println(i);
-						}
-					}
-					break;
-				case "2":
-					break;
-				case "3":
-					break;
-				case "4":
-					break;
-				default:
-					break;
-				}
-			} else {
-				System.out.println("\nError: La opci\u00f3n solo admite n\u00fameros");
-			}
-		} while (ciclo);
-		
+		boolean ciclo= true;
 		
 		if (person.size() > 0) {
-			System.out.println("\n == MOSTRAR DATOS EMPLEADO == ");
-			System.out.println("");
-			System.out.print("DNI del empleado: ");
-			dni= teclado.CadenaTexto();
-			//Comprobar que exista el DNI de la persona
-			Iterator <personas> itrP = person.iterator();
-			while (itrP.hasNext() && !existe) {
-				personas p= itrP.next();
-				//Segun la verificacion nos lo mostrara o no
-				if (p.getDni().equalsIgnoreCase(dni) && p.getTipo_persona().equals("empleado")) {
-					if (p.getDespedida().equals("si")) {
-						System.out.println("\n == Empleado despedido == ");
-						System.out.println(p);
-						System.out.println("\n == Empleado despedido == ");
-						existe= true;
-					} else {
-						System.out.println(p);
-						existe= true;
-					}
-				}else {
-					existe= false;
+			do {
+				menu.MenuMostrarEmpleado();
+				datos= teclado.CadenaTexto();
+					
+				if (comprob.isNumeroEntero(datos)) {
+					switch (datos) {
+					case "1":
+						for (personas p : person) {
+							if (p instanceof asesor) {
+								System.out.println("\n--------------------");
+								System.out.println(p);
+							}//Fin del if
+						}//Fin del foreach
+						break;
+					case "2":
+						for (personas i : person) {
+							if (i instanceof mecanico) {
+								System.out.println("\n--------------------");
+								System.out.println(i);
+							}//Fin del if
+						}//Fin del foreach
+						break;
+					case "3":
+						boolean existe= false;
+						System.out.println("\n == MOSTRAR DATOS DE UN EMPLEADO == ");
+						System.out.print("\nDNI del empleado: ");
+						dni= teclado.CadenaTexto();
+						//Comprobar que exista el DNI de la persona
+						for (personas p : person) {
+							if (p.getDni().equalsIgnoreCase(dni) && p.getTipo_persona().equals("empleado")) {
+								if (p.getDespedida().equals("si")) {
+									System.out.println("\n == Empleado despedido == ");
+									System.out.println(p);
+									System.out.println("\n == Empleado despedido == ");
+									existe= true;
+								} else {
+									System.out.println(p);
+									existe= true;
+								}//Fin del if
+							}//Fin del if
+						}//Fin del foreach
+						if (!existe) {
+							System.out.println("\nError: No existe empleado registrado con ese DNI");
+						}//Fin del if
+						break;
+					case "4":
+						ciclo= false;
+						break;
+					default:
+						System.out.println("\nError: La opci\u00f3n elegida es incorrecta");
+						break;
+					}//Fin del switch
+				} else {
+					System.out.println("\nError: La opci\u00f3n solo admite n\u00fameros");
 				}//Fin del if
-			}//Fin del while
-
-			if (!existe) {
-				System.out.println("\nError: No existe empleado registrado con ese DNI");
-				existe= true;
-			}//Fin del if
+			} while (ciclo);
 		} else {
 			System.out.println("\nError: No hay ningun empleado contratado");
 		}//Fin del if
@@ -618,7 +615,7 @@ class administracion {
 		String dni, datos;
 		boolean ciclo= true, repetir= true, confirmacion= false, existe= false;
 		if (person.size() > 0) {
-			System.out.println("\n == MOSTRAR DATOS EMPLEADO == ");
+			System.out.println("\n == MODIFICAR DATOS DE UN EMPLEADO == ");
 			System.out.print("\nDNI del empleado: ");
 			dni= teclado.CadenaTexto();
 			//Comprobar que exista el DNI de la persona
@@ -665,7 +662,7 @@ class administracion {
 										do {
 											System.out.print("\nIndique el nuevo DNI: ");
 											datos= teclado.CadenaTexto();
-											
+
 											if (datos.equals("")) {
 												System.out.println("\nError: Por favor inserte dato.");
 											} else if (comprob.isDNI(datos)) {
@@ -707,10 +704,8 @@ class administracion {
 												confirmacion= true;
 											} else {
 												confirmacion= false;
-											}
-											
+											}//Fin del if
 										} while (!confirmacion);
-										
 										i= person.size();
 										break;
 									case "3":
@@ -833,6 +828,7 @@ class administracion {
 														confirmacion= true;
 													}//Fin del if
 												}//Fin del if
+												System.out.println(":v");
 											} else {
 												System.out.println("\nError: Ese tipo de trabajo no existe");
 											}//Fin del if
@@ -868,7 +864,7 @@ class administracion {
 										break;
 									}//Fin del switch
 								}//Fin del if
-							}
+							}//Fin del for i
 							if (ciclo) {
 								confirmacion= false;
 								do {
