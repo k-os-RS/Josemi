@@ -20,7 +20,7 @@ class asesor extends personas {
 
 	@Override
 	public String toString() {
-		String texto= "\nINFORMACI\u00f3N PARA EL EMPLEADO CON DNI: "+dni+"\n"+
+		String texto= "INFORMACI\u00f3N PARA EL EMPLEADO CON DNI: "+dni+"\n"+
 				"Nombre: "+nombre+
 				"\nApellidos: "+apellidos+
 				"\nFecha Nacimiento: "+fecha_nacimiento+

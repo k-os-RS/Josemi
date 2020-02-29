@@ -28,7 +28,7 @@ class cliente extends personas {
 
 	@Override
 	public String toString() {
-		String texto= "\nINFORMACI\u00f3N PARA EL CLIENTE CON DNI: "+dni+"\n"+
+		String texto= "INFORMACI\u00f3N PARA EL CLIENTE CON DNI: "+dni+"\n"+
 				"Nombre: "+nombre+
 				"\nApellidos: "+apellidos+
 				"\nDirecci\u00f3n: "+direccion+

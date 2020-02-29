@@ -86,5 +86,24 @@ class menus {
 		System.out.println("");
 		System.out.print("Elige una opci\u00f3n: ");
 	}
+	protected void MenuModificarVehiculo () {
+		System.out.println("\nPor favor indique el dato que desea cambiar");
+		System.out.println("");
+		System.out.println(" [1] Matr\u00edcula");
+		System.out.println(" [2] Modelo");
+		System.out.println(" [3] Color");
+		System.out.println(" [4] Combustible");
+		System.out.println(" [5] Plazas");
+		System.out.println(" [6] Precio");
+		System.out.println(" [7] Kil\u00f3metros");
+		System.out.println(" [8] Cancelar");
+		System.out.println("");
+		System.out.print("Elige una opci\u00f3n: ");
+	}
+	protected void MenuConfirmacion () {
+		System.out.println(" [1] Si");
+		System.out.println(" [2] No");
+		System.out.print("\nOpci\u00f3n: ");
+	}
 
 }

@@ -79,10 +79,10 @@ class  comprobaciones {
 	protected boolean isNumeroMovil (String movil) {
 		boolean verdadero= false;
 		
-		if (movil.substring(0, 1).equals("6") && movil.length() == 9){
+		if ((movil.substring(0, 1).equals("6") || movil.substring(0, 1).equals("7")) && movil.length() == 9){
 			verdadero= true;
 		} else {
-			System.out.println("\nError: El n\u00famero tendr\u00e1 que conteneder 9 digitos y empezar en 6.");
+			System.out.println("\nError: El n\u00famero tendr\u00e1 que conteneder 9 digitos y empezar en 6 o 7.");
 			verdadero= false;
 		}//Fin del if
 		

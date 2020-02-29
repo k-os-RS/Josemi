@@ -463,6 +463,7 @@ class administracion {
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo nombre");
 					} else if (comprob.isNumeroDecimal(datos) || comprob.isNumeroEntero(datos)){
+						datos= datos.replace(',', '.');
 						double sueldo= Double.parseDouble(datos);
 						if (sueldo < 950) {
 							System.out.println("\nError: El sueldo minimo es de \u20ac950");
@@ -548,8 +549,38 @@ class administracion {
 
 	}
 	protected void MostrarEmpleado () {
-		String dni;
-		boolean existe= false;
+		String dni, datos;
+		boolean ciclo= true, existe= false;
+		
+		do {
+			menu.MenuMostrarEmpleado();
+			datos= teclado.CadenaTexto();
+				
+			if (comprob.isNumeroEntero(datos)) {
+				switch (datos) {
+				case "1":
+					for (personas i : person) {
+						if (i instanceof asesor) {
+							System.out.println("\n--------------------");
+							System.out.println(i);
+						}
+					}
+					break;
+				case "2":
+					break;
+				case "3":
+					break;
+				case "4":
+					break;
+				default:
+					break;
+				}
+			} else {
+				System.out.println("\nError: La opci\u00f3n solo admite n\u00fameros");
+			}
+		} while (ciclo);
+		
+		
 		if (person.size() > 0) {
 			System.out.println("\n == MOSTRAR DATOS EMPLEADO == ");
 			System.out.println("");
@@ -816,6 +847,7 @@ class administracion {
 											if (datos.equals("")) {
 												System.out.println("\nError: Por favor inserte datos.");
 											} else if (comprob.isNumeroDecimal(datos) || comprob.isNumeroEntero(datos)) {
+												datos= datos.replace(',', '.');
 												double sueldo= Double.parseDouble(datos);
 												person.get(i).setSueldo(sueldo);
 												System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
@@ -841,9 +873,7 @@ class administracion {
 								confirmacion= false;
 								do {
 									System.out.println("\nDesea realizar otra modificaci\u00f3n");
-									System.out.println(" [1] Si");
-									System.out.println(" [2] No");
-									System.out.print("\nOpci\u00f3n: ");
+									menu.MenuConfirmacion();
 									datos= teclado.CadenaTexto();
 									if (datos.equals("")) {
 										 System.out.println("\nError: Por favor elija una opci\u00f3n");
@@ -1004,6 +1034,7 @@ class administracion {
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo kil\u00f3metros");
 					} else if (comprob.isNumeroDecimal(datos) || comprob.isNumeroEntero(datos)){
+						datos= datos.replace(',', '.');
 						decimal= Double.parseDouble(datos);
 						c.setKilometros(decimal);
 						m.setKilometros(decimal);
@@ -1022,6 +1053,7 @@ class administracion {
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo precio");
 					} else if (comprob.isNumeroDecimal(datos) || comprob.isNumeroEntero(datos)){
+						datos= datos.replace(',', '.');
 						decimal= Double.parseDouble(datos);
 						c.setPrecio(decimal);
 						m.setPrecio(decimal);
@@ -1204,18 +1236,7 @@ class administracion {
 		for (int i= 0; i <automovil.size(); i++) {
 			do {
 			if(automovil.get(i).getMatricula().equals(matricula))
-			System.out.println("\nPor favor indique el dato que desea cambiar");
-			System.out.println("");
-			System.out.println(" [1] Matr\u00edcula");
-			System.out.println(" [2] Modelo");
-			System.out.println(" [3] Color");
-			System.out.println(" [4] Combustible");
-			System.out.println(" [5] Plazas");
-			System.out.println(" [6] Precio");
-			System.out.println(" [7] Kil\u00f3metros");
-			System.out.println(" [8] Cancelar");
-			System.out.println("");
-			System.out.print("Elige una opci\u00f3n: ");
+			menu.MenuModificarVehiculo();
 			datos= teclado.CadenaTexto();
 			
 			if (comprob.isNumeroEntero(datos)) {
@@ -1267,6 +1288,7 @@ class administracion {
 						System.out.println("introduce el precio");
 						datos=teclado.CadenaTexto();
 						if(comprob.isNumeroEntero(datos) || comprob.isNumeroDecimal(datos)) {
+							datos= datos.replace(',', '.');
 							double precio= Double.parseDouble(datos);
 							automovil.get(j).setPrecio(precio);
 						} else {
@@ -1275,9 +1297,10 @@ class administracion {
 						j= automovil.size();
 						break;
 					case "7":
-						System.out.println("introduce los kil\\u00f3metros");
+						System.out.println("introduce los kil\u00f3metros");
 						datos=teclado.CadenaTexto();
 						if(comprob.isNumeroEntero(datos) || comprob.isNumeroDecimal(datos)) {
+							datos= datos.replace(',', '.');
 							double precio= Double.parseDouble(datos);
 							automovil.get(j).setKilometros(precio);
 						} else {
