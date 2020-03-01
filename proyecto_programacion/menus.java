@@ -32,10 +32,10 @@ class menus {
 		System.out.println(" [1] Vender vehiculo");
 		System.out.println(" [2] Comprar vehiculo");
 		System.out.println(" [3] Mostrar vehiculos");
-		System.out.println(" [6] Mostrar cliente");
-		System.out.println(" [7] Modificar cliente");
-		System.out.println(" [5] Enviar a mecanico");
-		System.out.println(" [4] Devolver vehiculo reparado");
+		System.out.println(" [4] Mostrar cliente");
+		System.out.println(" [5] Modificar cliente");
+		System.out.println(" [6] Enviar a mecanico");
+		System.out.println(" [7] Devolver vehiculo reparado");
 		System.out.println(" [8] Cerrar sesi\u00f3n");
 		System.out.println("");
 		System.out.print("Elija una opci\u00f3n: ");

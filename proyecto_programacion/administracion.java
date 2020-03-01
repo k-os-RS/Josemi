@@ -111,15 +111,19 @@ class administracion {
 						System.out.println("\nError: Este empleado ha sido despedido");
 						existe= true;
 					} else {
-						if (((asesor) p).getTrabajo_asesor().equals("Asesor")) {
-							System.out.println("\n == Asesor: "+p.getNombre()+" "+p.getApellidos()+" == ");
-							MenuAsesor();
-							existe= true;
-						} else if (((mecanico) p).getTrabajo_mecanico().equals("Mecanico")) {
-							System.out.println("\n == Mecanico: "+p.getNombre()+" "+p.getApellidos()+" == ");
-							MenuMecanico();
-							existe= true;
-						}//Fin del if
+						if (p instanceof asesor) {
+							if (((asesor) p).getTrabajo_asesor().equals("Asesor")) {
+								System.out.println("\n == Asesor: "+p.getNombre()+" "+p.getApellidos()+" == ");
+								MenuAsesor();
+								existe= true;
+							}//Fin del if
+						} else if (p instanceof mecanico) {
+							 if (((mecanico) p).getTrabajo_mecanico().equals("Mecanico")) {
+								System.out.println("\n == Mecanico: "+p.getNombre()+" "+p.getApellidos()+" == ");
+								MenuMecanico();
+								existe= true;
+							}//Fin del if
+						}
 					}//Fin del if
 				} else {
 					existe= false;
@@ -263,15 +267,18 @@ class administracion {
 				MostrarVehiculo();
 				break;
 			case "4":
-				//DevolverVehiculo();
-				break;
-			case "5":
-				//EnviarMecanico();
-				break;
-			case "6":
 				//MostrarCliente();
 				break;
+			case "5":
+				//ModificarCliente();
+				break;
+			case "6":
+				//EnviarMecanico();
+				break;
 			case "7":
+				//DevolverVehiculo();
+				break;
+			case "8":
 				ciclo= false;		
 				break;
 			default:
@@ -816,6 +823,7 @@ class administracion {
 														person.remove(i);
 														person.add(i, a);
 														confirmacion= true;
+														System.out.println(":v");
 													}//Fin del if
 												} else if (person.get(i) instanceof mecanico) {
 													if (((mecanico) person.get(i)).getTrabajo_mecanico().equals(datos)) {
@@ -828,7 +836,6 @@ class administracion {
 														confirmacion= true;
 													}//Fin del if
 												}//Fin del if
-												System.out.println(":v");
 											} else {
 												System.out.println("\nError: Ese tipo de trabajo no existe");
 											}//Fin del if
