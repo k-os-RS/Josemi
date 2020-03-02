@@ -1320,16 +1320,248 @@ class administracion {
 		}//Fin del if
 	}
 	protected void VenderVehiculo () {
+		String respuesta, datos;
+		boolean cancelar= false, correcto= false;
 		
+		do {
+			do {
+				System.out.println("\n == VENDER VEHICULO == ");
+				System.out.println("");
+				System.out.println(" [1] Mostrar todos los coches");
+				System.out.println(" [2] Mostrar todos las motos");
+				System.out.println(" [3] Elegir vehiculo");
+				System.out.println(" [4] Salir");
+				System.out.println("");
+				System.out.print("Elige una opci\u00f3n: ");
+				respuesta= teclado.CadenaTexto();
+				
+				if(comprob.isNumeroEntero(respuesta)) {
+					correcto=true;
+				}else {
+					correcto=false;
+				}//Fin del if
+				
+			}while(!correcto);
+
+			switch(respuesta) {
+			case "1":
+				for (vehiculos i : automovil) {
+					if(i instanceof coches) {
+						System.out.println(i);	
+					}
+				}
+			break;
+			case "2":
+				for (vehiculos i : automovil) {
+					if(i instanceof motos) {
+					System.out.println(i);	
+					}
+				}
+			break;
+			case "3":
+				boolean existe=false;
+				vehiculos m =new motos();
+       			vehiculos c =new coches();
+				System.out.println("Introduzca la matr\u00edcula ");
+				System.out.println("Si quiere salir escriba cancelar");
+				//Matricula
+				do {
+					System.out.print("Matr\u00edcula: ");
+					datos= teclado.CadenaTexto();
+					if (datos.equalsIgnoreCase("Cancelar")) {
+						System.out.println("\n == VENDER VEHICULO CANCELADO == ");
+						cancelar= true;
+					} else if (datos.equals("")) {
+						System.out.println("\nError: Por favor rellene el campo matr\u00edcula");		
+					} else if (comprob.isMatricula(datos)) {
+							
+						for (int i= 0; i < automovil.size(); i++) {
+					      	if (automovil.get(i).getMatricula().equalsIgnoreCase(datos)) {
+					       		System.out.println("\nLa matr\u00edcula es de este veh\u00edculo");
+					       		System.out.println(automovil.get(i));
+					       		correcto= true;
+					       		existe=true;
+					       		i= automovil.size();
+					       		System.out.println("\n ==CONFIRMACION DE COMPRA==");
+					       		System.out.println("Confirma con [si] || niega con [no]");
+					       		datos=teclado.CadenaTexto();
+					       		if(datos.equals("si")) {
+					       			((coches)c).setVendidoCoche("si");
+					       			((coches)m).setVendidoCoche("si");
+					       		}else if (datos.equals("no")) {
+					       			
+					       		}else {
+					       			System.out.println("\nError: opcion no valida");
+					       		}
+					       	} else {
+					       		if(!existe) {
+					       		existe=false;}
+								correcto= false;
+					       	}//Fin del if
+					     }//Fin del for i
+						if(!existe) {
+						       		System.out.println("La matr\u00edcula no existe");
+									correcto= false;
+						}
+					} else {
+						System.out.println("\nError: La matr\u00edcula no es v\u00e1lida");
+					}//Fin del if
+	
+					} while (!correcto);	
+			break;
+			case "4":
+				cancelar=true;
+				break;
+			default:
+				System.out.println("Esa opci\u00f3n no es v\u00e1lida");
+			break;
+			}
+		
+
+		}while(!cancelar);
 	}
 	protected void ComprarVehiculo () {
 		
 	}
 	protected void AltaCliente () {
-		
-	}
+		//trabajador es cliente and cliente es trabajador
+		String datos;
+		boolean cancelar= true, correcto= false;
+
+		System.out.println("\n == ALTA 	CLIENTE == ");
+				
+		personas c= new cliente();
+		System.out.println("\nPor favor rellene los siguientes datos: ");
+		System.out.println("");
+		//DNI
+		do {
+			System.out.print("DNI: ");
+			datos= teclado.CadenaTexto();
+			if (datos.equals("")) {
+				System.out.println("\nError: Por favor rellene el campo DNI");
+				cancelar= true;
+				} else if (comprob.isDNI(datos)) {
+					if (person.size() > 0) {
+						for (int i= 0; i < person.size(); i++) {
+							if (person.get(i).getDni().equalsIgnoreCase(datos)) {
+								System.out.println("\nError: El DNI ya est\u00e1 registrado en otro cliente");
+								cancelar= true;
+								i= person.size();
+							}//Fin del if
+						}//Fin del for i
+					} else {
+						c.setDni(datos);
+					}
+				}
+			}while(!cancelar);
+		//Nombre
+		do {
+			System.out.print("Nombre: ");
+			datos= teclado.CadenaTexto();
+			if (datos.equals("")) {
+				System.out.println("\nError: Por favor rellene el campo nombre");
+			} else {
+				c.setNombre(datos);
+				correcto= true;
+			}//Fin del if
+		} while (!correcto);
+		correcto= false;
+		//Apellidos
+		do {
+			System.out.print("Apellidos: ");
+			datos= teclado.CadenaTexto();
+			if (datos.equals("")) {
+				System.out.println("\nError: Por favor rellene el campo apellidos");
+			} else {
+				c.setApellidos(datos);
+				correcto= true;
+			}//Fin del if
+		} while (!correcto);
+		correcto= false;
+		//Telefono movil
+		do {
+			System.out.print("Telefono m\u00f3vil: ");
+			datos= teclado.CadenaTexto();
+			if (datos.equals("")) {
+				System.out.println("\nError: Por favor rellene el campo telefono m\u00f3vil");
+			} else if (comprob.isNumeroMovil(datos)) {
+				c.setTelefono_movil(datos);
+				correcto= true;
+			} else {
+				correcto= false;
+			}//Fin del if
+		} while (!correcto);
+		correcto= false;
+		//Direccion
+		do {
+			System.out.print("Direcci\u00f3n: ");
+			datos= teclado.CadenaTexto();
+			if (datos.equals("")) {
+				System.out.println("\nError: Por favor rellene el campo direccion");
+			} else {
+				c.setDireccion(datos);
+				correcto= true;
+			}//Fin del if
+		} while (!correcto);
+		correcto= false;
+
+		System.out.println("\n == EL ALTA DE CLIENTE HA SIDO COMPLETADA == ");
+		person.add(c);
+		}
+	
 	protected void MostrarCliente () {
-		
+		String dni, datos;
+		boolean ciclo= true;
+
+		if (person.size() > 0) {
+			do {
+				menu.MenuMostrarCliente();
+				datos= teclado.CadenaTexto();
+				if (comprob.isNumeroEntero(datos)) {
+					switch (datos) {
+					case "1":
+						for (personas c : person) {
+							if (c instanceof cliente) {
+								System.out.println("\n-------------------------");
+								System.out.println(c);
+							}//Fin del if
+						}//Fin del foreach
+						break;
+					case "2":
+						boolean existe= false;
+						System.out.println("\n == MOSTRAR DATOS DE UN EMPLEADO == ");
+						System.out.print("\nDNI del empleado: ");
+						dni= teclado.CadenaTexto();
+						//Comprobar que exista el DNI de la persona
+						if (comprob.isDNI(dni)) {
+							for (personas c : person) {
+								if (c.getDni().equalsIgnoreCase(dni)) {
+									System.out.println("\n"+c);
+									existe= true;
+								}//Fin del if
+							}//Fin del foreach
+							if (!existe) {
+								System.out.println("\nError: No existe cliente registrado con ese DNI");
+							}//Fin del if
+						} else {
+							System.out.println("\nError: El DNI introducido no es v\u00e1lido");
+						}//Fin del if
+						break;
+					case "3":
+						ciclo= false;
+						break;
+					default:
+						System.out.println("\nError: La opci\u00f3n elegida es incorrecta");
+						break;
+					}//Fin del switch
+				} else {
+					System.out.println("\nError: La opci\u00f3n solo admite n\u00fameros");
+				}//Fin del if
+			} while (ciclo);
+		} else {
+			System.out.println("\nError: No hay ningun empleado contratado");
+		}//Fin del if
+	
 	}
 	protected void ModificarCliente () {
 		

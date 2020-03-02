@@ -104,5 +104,13 @@ class menus {
 		System.out.println(" [2] No");
 		System.out.print("\nOpci\u00f3n: ");
 	}
-
+	protected vid MenuMostrarCliente() {
+		System.out.println("\n == MOSTRAR CLIENTE == ");
+		System.out.println("");
+		System.out.println(" [1] Mostrar a todos los clientes");
+		System.out.println(" [2] Mostrar un cliente espec\u00edfico");
+		System.out.println(" [3] Salir");
+		System.out.println("");
+		System.out.print("Elige una opci\u00f3n: ");
+	}
 }
