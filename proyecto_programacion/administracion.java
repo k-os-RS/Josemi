@@ -221,10 +221,10 @@ class administracion {
 			if (comprob.isNumeroEntero(datos)) {
 				switch (datos) {
 				case "1":
-					//VentaVehiculo();
+					VenderVehiculo();
 					break;
 				case "2":
-					//CompraVehiculo();
+					ComprarVehiculo();
 					break;
 				case "3":
 					MostrarVehiculo();
@@ -430,7 +430,7 @@ class administracion {
 						datos= datos.replace(',', '.');
 						double sueldo= Double.parseDouble(datos);
 						if (sueldo < 950) {
-							System.out.println("\nError: El sueldo minimo es de \u20ac950");
+							System.out.println("\nError: El sueldo minimo es de 950\u20ac");
 						} else {
 							a.setSueldo(sueldo);
 							m.setSueldo(sueldo);
@@ -823,9 +823,13 @@ class administracion {
 												} else if (comprob.isNumeroDecimal(datos) || comprob.isNumeroEntero(datos)) {
 													datos= datos.replace(',', '.');
 													double sueldo= Double.parseDouble(datos);
-													person.get(i).setSueldo(sueldo);
-													System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
-													confirmacion= true;
+													if (sueldo < 950) {
+														System.out.println("\nError: El sueldo minimo es de 950\u20ac");
+													} else {
+														person.get(i).setSueldo(sueldo);
+														System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
+														confirmacion= true;	
+													}//Fin del if
 												} else {
 													System.out.println("\nError: Solo se admiten n\u00fameros");
 												}//Fin del if
@@ -909,7 +913,6 @@ class administracion {
 					} else {
 						System.out.println("\nError: La matr\u00edcula no es v\u00e1lida");
 					}//Fin del if
-
 				} while (!correcto);
 				correcto= false;
 				//Modelo
@@ -1046,7 +1049,6 @@ class administracion {
 		String matricula;
 		boolean cancelar= false, correcto= false;
 
-
 		System.out.println("\n == BAJA VEHICULO == ");
 		System.out.println("Si desea cancelar la baja escriba Cancelar\n");
 		System.out.println("Introduzca la matr\u00edcula ");
@@ -1182,103 +1184,145 @@ class administracion {
 		}while(!cancelar);
 	}
 	protected void ModificarVehiculo () {
-		String datos,matricula;
-		boolean bucle=false;
+		String matricula, datos;
+		double decimal;
+		boolean ciclo= true, existe= false, repetir= true, confirmacion= false;
 		
 		System.out.println("\n ==MODIFICACION== ");
-		System.out.println("\nIntroduce la matr\u00edcula");
+		System.out.print("\nIntroduce la matr\u00edcula: ");
 		matricula=teclado.CadenaTexto();
 		for (int i= 0; i <automovil.size(); i++) {
-			do {
-			if(automovil.get(i).getMatricula().equals(matricula))
-			menu.MenuModificarVehiculo();
-			datos= teclado.CadenaTexto();
-			
-			if (comprob.isNumeroEntero(datos)) {
-				bucle=true;
-				}else {
-					bucle=false;
-				}
-			}while(bucle);
-			for (int j =0; j <automovil.size(); j++) {
-				if(automovil.get(j).getMatricula().equals(matricula)) {
-					switch (datos){
-					case "1":
-						System.out.println("introduce la matr\u00edcula");
-						datos=teclado.CadenaTexto();
-						if(comprob.isMatricula(datos))
-							automovil.get(j).setMatricula(datos);
-						else
-							System.out.println("\nError: la matr\u00edcula no es valida");
-						j= automovil.size();
-						break;
-					case "2":
-						System.out.println("introduce el modelo");
-						automovil.get(j).setModelo(teclado.CadenaTexto());
-						j= automovil.size();
-						break;
-					case "3":
-						System.out.println("introduce el color");
-						automovil.get(j).setModelo(teclado.CadenaTexto());
-						j= automovil.size();
-						break;
-					case "4":
-						System.out.println("introduce el combustible");
-						datos=teclado.CadenaTexto();
-						if(comprob.isCombustible(datos))
-							automovil.get(j).setCombustible(datos);
-						j= automovil.size();
-						break;
-					case "5":
-						System.out.println("introduce las plazas");
-						datos=teclado.CadenaTexto();
-						if(comprob.isNumeroEntero(datos)) {
-							automovil.get(j).setPlazas(datos);
-						} else {
-							System.out.println("\nError: debe ser un numero");
-						}
-						j= automovil.size();
-						break;
-					case "6":
-						System.out.println("introduce el precio");
-						datos=teclado.CadenaTexto();
-						if(comprob.isNumeroEntero(datos) || comprob.isNumeroDecimal(datos)) {
-							datos= datos.replace(',', '.');
-							double precio= Double.parseDouble(datos);
-							automovil.get(j).setPrecio(precio);
-						} else {
-							System.out.println("\nError: debe ser un numero");
-						}
-						j= automovil.size();
-						break;
-					case "7":
-						System.out.println("introduce los kil\u00f3metros");
-						datos=teclado.CadenaTexto();
-						if(comprob.isNumeroEntero(datos) || comprob.isNumeroDecimal(datos)) {
-							datos= datos.replace(',', '.');
-							double precio= Double.parseDouble(datos);
-							automovil.get(j).setKilometros(precio);
-						} else {
-							System.out.println("\nError: debe ser un numero");
-						}
-						j= automovil.size();
-						break;
-					case "8":
-						j= automovil.size();
-						break;
-					default:
-						System.out.println("Error: esa opci\u00f3n no es valida");
-						break;
-					}
-				}
-			}
-			
-		}
+			if(automovil.get(i).getMatricula().equals(matricula)) {
+				do {
+					menu.MenuModificarVehiculo();
+					datos= teclado.CadenaTexto();				
+					if (comprob.isNumeroEntero(datos)) {
+						for (int j =0; j <automovil.size(); j++) {
+							if(automovil.get(j).getMatricula().equals(matricula)) {
+								switch (datos){
+								case "1":
+									do {
+										System.out.print("\nIndique la nueva matr\u00edcula: ");
+										datos= teclado.CadenaTexto();
+										if (datos.equals("")) {
+											System.out.println("\nError: Por favor inserte dato.");
+										} else if (comprob.isMatricula(datos)) {
+											if (automovil.size() > 0) {
+												for (int x= 0; x < automovil.size(); x++) {
+													if (person.get(x).getDni().equalsIgnoreCase(datos)) {
+														System.out.println("\nError: La matr\u00edcula ya est\u00e1 registrada en un veh\u00edculo");
+														repetir= false;
+														x= automovil.size();
+													}//Fin del if
+												}//Fin del for i
+											} else {
+												automovil.get(j).setMatricula(datos);
+												System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
+												confirmacion= true;
+											}//Fin del if
+										} else {
+											System.out.println("\nError: El DNI no es v\u00e1lido.");
+										}//Fin del if
+										if (repetir) {
+											automovil.get(j).setMatricula(datos);
+											System.out.println("\n == MODIFCACI\u00f3N REALIZADA == ");
+											confirmacion= true;
+										}//Fin del if
+									} while (!confirmacion);
+									j= automovil.size();
+									ciclo= false;
+									break;
+								case "2":
+									System.out.print("\nIndique el nuevo modelo: ");
+									automovil.get(j).setModelo(teclado.CadenaTexto());
+									j= automovil.size();
+									ciclo= false;
+									break;
+								case "3":
+									System.out.print("\nIndique el nuevo color: ");
+									automovil.get(j).setColor(teclado.CadenaTexto());
+									j= automovil.size();
+									ciclo= false;
+									break;
+								case "4":
+									System.out.print("\nIndique el combustible: ");
+									datos= teclado.CadenaTexto();
+									if(comprob.isCombustible(datos))
+										automovil.get(j).setCombustible(datos);
+									j= automovil.size();
+									ciclo= false;
+									break;
+								case "5":
+									do {
+										System.out.print("\nIndique las plazas: ");
+										datos=teclado.CadenaTexto();
+										if(comprob.isNumeroEntero(datos)) {
+											automovil.get(j).setPlazas(datos);
+											confirmacion= true;
+										} else {
+											System.out.println("\nError: La opci\u00f3n solo admite n\u00faumero");
+										}//Fin del if
+									} while (!confirmacion);
+									j= automovil.size();
+									ciclo= false;
+									break;
+								case "6":
+									do {
+										System.out.print("\nIndique el precio: ");
+										datos=teclado.CadenaTexto();
+										if(comprob.isNumeroEntero(datos) || comprob.isNumeroDecimal(datos)) {
+											datos= datos.replace(',', '.');
+											decimal= Double.parseDouble(datos);
+											automovil.get(j).setPrecio(decimal);
+										} else {
+											System.out.println("\nError: La opci\u00f3n solo admite n\u00faumero");
+										}//Fin del if
+									} while (!confirmacion);
+									j= automovil.size();
+									ciclo= false;
+									break;
+								case "7":
+									do {
+										System.out.println("\nIndique los kil\u00f3metros");
+										datos=teclado.CadenaTexto();
+										if(comprob.isNumeroEntero(datos) || comprob.isNumeroDecimal(datos)) {
+											datos= datos.replace(',', '.');
+											decimal= Double.parseDouble(datos);
+											automovil.get(j).setKilometros(decimal);
+											confirmacion= true;
+										} else {
+											System.out.println("\nError: debe ser un numero");
+										}//Fin del if
+									} while (!confirmacion);
+									j= automovil.size();
+									ciclo= false;
+									break;
+								case "8":
+									j= automovil.size();
+									ciclo= false;
+									break;
+								default:
+									System.out.println("Error: esa opci\u00f3n no es valida");
+									break;
+								}//Fin del switch
+							}//Fin del if
+						}//Fin del for j
+					}else {
+						System.out.println("\nError: La opci\u00f3 solo admite n\u00fameros");
+					}//Fin del if
+				} while(ciclo);
+				existe= true;
+			}//Fin del if
+		}//Fin del for i
+		
+		if (!existe) {
+			System.out.println("\nError: La matr\u00edcula no est\u00e1 registrada en ningun veh\u00edculo");
+		}//Fin del if
 	}
-	protected void CompraVehiculo () {
+	protected void VenderVehiculo () {
 		
 	}
-	protected void VentaVehiculo () {
+	protected void ComprarVehiculo () {
 		
 	}
 	protected void AltaCliente () {
