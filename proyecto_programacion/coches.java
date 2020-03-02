@@ -36,7 +36,7 @@ class coches extends vehiculos {
 				"\nKilometros: "+kilometros+
 				"\nPrecio: "+precio+"\u20ac"+
 				"\nVendido: "+vendidoCoche+
-				"\nEn reparaci\u00fan: "+enReparacionCoche;
+				"\nEn reparaci\u00f3n: "+enReparacionCoche;
 		
 		return texto;
 	}

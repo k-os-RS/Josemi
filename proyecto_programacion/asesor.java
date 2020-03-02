@@ -1,30 +1,29 @@
 package proyecto_programacion;
-
 class asesor extends personas {
 	//Atributos
-	protected String trabajo_asesor= "Asesor";
+	protected String trabajo;
 	
 	//Constructores
 	public asesor() {
 		
 	}
-	
+
 	//Getters & Setters
-	protected String getTrabajo_asesor() {
-		return trabajo_asesor;
-	}
-	
-	public void setTrabajo_asesor(String trabajo_asesor) {
-		this.trabajo_asesor = trabajo_asesor;
+	public String getTrabajo() {
+		return trabajo;
 	}
 
+	public void setTrabajo(String trabajo) {
+		this.trabajo = trabajo;
+	}
+	
 	@Override
 	public String toString() {
-		String texto= "\nINFORMACI\u00f3N PARA EL EMPLEADO CON DNI: "+dni+"\n"+
+		String texto= "INFORMACI\u00f3N PARA EL EMPLEADO CON DNI: "+dni+"\n"+
 				"Nombre: "+nombre+
 				"\nApellidos: "+apellidos+
-				"\nFecha Nacimiento: "+fecha_nacimiento+
-				"\nTrabaja de: "+trabajo_asesor+
+				"\nFecha nacimiento: "+fecha_nacimiento+
+				"\nTrabaja de: "+trabajo+
 				"\nSueldo: "+sueldo+ "\u20ac"+
 				"\nCuenta bancaria: "+cuenta_bancaria+
 				"\nTelefono m\u00f3vil: "+telefono_movil+

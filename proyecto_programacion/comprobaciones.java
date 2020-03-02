@@ -1,7 +1,6 @@
 package proyecto_programacion;
-
+import java.time.*;
 class  comprobaciones {
-
 	
 	//Comprobacion de validez
     protected boolean isDNI (String dni) {
@@ -54,7 +53,7 @@ class  comprobaciones {
 
 		return valido;
 	}
-	protected boolean isMatricula (String matricula){
+ 	protected boolean isMatricula (String matricula) {
 		boolean matriculaValida= false;
 		
 	    if (matricula.toUpperCase().matches("^[0-9]{4}[A-Z]{3}$")) {
@@ -79,10 +78,10 @@ class  comprobaciones {
 	protected boolean isNumeroMovil (String movil) {
 		boolean verdadero= false;
 		
-		if (movil.substring(0, 1).equals("6") && movil.length() == 9){
+		if ((movil.substring(0, 1).equals("6") || movil.substring(0, 1).equals("7")) && movil.length() == 9){
 			verdadero= true;
 		} else {
-			System.out.println("\nError: El n\u00famero tendr\u00e1 que conteneder 9 digitos y empezar en 6.");
+			System.out.println("\nError: El n\u00famero tendr\u00e1 que conteneder 9 digitos y empezar en 6 o 7.");
 			verdadero= false;
 		}//Fin del if
 		
@@ -138,5 +137,37 @@ class  comprobaciones {
 		
 		return verdadero;
 	}
+	
+	//Obtencion de la fecha y hora actual
+    protected String isFechaActual () {
+    	String fechanow, dia, mes, anio;
+    	
+    	LocalDateTime fechas = LocalDateTime.now();
+    	LocalDate fecha = fechas.toLocalDate();
+    	
+    	fechanow= fecha.toString();
+    	dia= fechanow.substring(8, 10);
+    	mes= fechanow.substring(5, 7);
+    	anio= fechanow.substring(0, 4);
+    	fechanow= dia+"/"+mes+"/"+anio;
+
+    	return fechanow;
+    }
+    protected String isHoraActual () {
+    	String horanow;
+    	int pospunto;
+    	
+    	LocalDateTime horas = LocalDateTime.now();
+    	LocalTime hora = horas.toLocalTime();
+    	
+    	horanow= hora.toString();
+    	pospunto= horanow.indexOf('.');
+    	horanow= horanow.substring(0, pospunto);
+
+    	return horanow;
+    }
+//	comprobaciones ia= new comprobaciones();
+//	System.out.println(ia.isFechaActual());
+//	System.out.println(ia.isHoraActual());
 	
 }
