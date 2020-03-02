@@ -2,7 +2,7 @@ package proyecto_programacion;
 class menus {
 	
 	protected void MenuPrincipal () {
-		System.out.println(" == CONCENSIONARIO == ");
+		System.out.println("\n == CONCENSIONARIO == ");
 		System.out.println("");
 		System.out.println("Por favor, a continuaci\u00f3n elija el tipo de cuenta");
 		System.out.println("");
@@ -18,10 +18,10 @@ class menus {
 		System.out.println(" [2] Baja empleado");
 		System.out.println(" [3] Mostrar empleado");
 		System.out.println(" [4] Modificar empleado");
-		System.out.println(" [5] Alta vehiculo");
-		System.out.println(" [6] Baja vehiculo");
-		System.out.println(" [7] Mostrar vehiculos");
-		System.out.println(" [8] Modificar vehiculo");
+		System.out.println(" [5] Alta veh\u00edculo");
+		System.out.println(" [6] Baja veh\u00edculo");
+		System.out.println(" [7] Mostrar veh\u00edculos");
+		System.out.println(" [8] Modificar veh\u00edculo");
 		System.out.println(" [9] Mostrar dinero y ganancias");
 		System.out.println(" [10] Cerrar sesi\u00f3n");
 		System.out.println("");
@@ -29,9 +29,9 @@ class menus {
 	}
 	protected void MenuAsesor () {
 		System.out.println("");
-		System.out.println(" [1] Vender vehiculo");
-		System.out.println(" [2] Comprar vehiculo");
-		System.out.println(" [3] Mostrar vehiculos");
+		System.out.println(" [1] Vender veh\u00edculo");
+		System.out.println(" [2] Comprar veh\u00edculo");
+		System.out.println(" [3] Mostrar veh\u00edculos");
 		System.out.println(" [4] Mostrar cliente");
 		System.out.println(" [5] Modificar cliente");
 		System.out.println(" [6] Enviar a mecanico");
@@ -42,10 +42,10 @@ class menus {
 	}
 	protected void MenuMecanico () {
 		System.out.println("");
-		System.out.println(" [1] Mostrar Vehiculo");
+		System.out.println(" [1] Mostrar veh\u00edculo");
 		System.out.println(" [2] Marcar vehiculo reparado");
-		System.out.println(" [3] Vehiculos en reparaci\u00f3n");
-		System.out.println(" [4] Cerrar sesi\uf003n");
+		System.out.println(" [3] Veh\u00edculos en reparaci\u00f3n");
+		System.out.println(" [4] Cerrar sesi\u00f3n");
 		System.out.println("");
 		System.out.print("Elija una opci\u00f3n: ");
 	}
