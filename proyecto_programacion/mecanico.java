@@ -1,7 +1,7 @@
 package proyecto_programacion;
 class mecanico extends personas {
 	//Atributos
-	protected String trabajo;
+	protected String primerinicio, trabajo, password;
 	
 	//Constructores
 	public mecanico() {
@@ -9,6 +9,14 @@ class mecanico extends personas {
 	}
 	
 	//Getters & Setters
+	public String getPrimerinicio() {
+		return primerinicio;
+	}
+
+	public void setPrimerinicio(String primerinicio) {
+		this.primerinicio = primerinicio;
+	}
+
 	public String getTrabajo() {
 		return trabajo;
 	}
@@ -17,6 +25,14 @@ class mecanico extends personas {
 		this.trabajo = trabajo;
 	}
 	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public String toString() {
 		String texto= "INFORMACI\u00f3N PARA EL EMPLEADO CON DNI: "+dni+"\n"+

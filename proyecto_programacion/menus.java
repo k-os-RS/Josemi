@@ -35,7 +35,8 @@ class menus {
 		System.out.println(" [5] Modificar cliente");
 		System.out.println(" [6] Enviar a mecanico");
 		System.out.println(" [7] Devolver vehiculo reparado");
-		System.out.println(" [8] Cerrar sesi\u00f3n");
+		System.out.println(" [8] Cambiar contrase\u00f1a");
+		System.out.println(" [9] Cerrar sesi\u00f3n");
 		System.out.println("");
 		System.out.print("Elija una opci\u00f3n: ");
 	}
@@ -44,7 +45,8 @@ class menus {
 		System.out.println(" [1] Mostrar veh\u00edculo");
 		System.out.println(" [2] Marcar vehiculo reparado");
 		System.out.println(" [3] Veh\u00edculos en reparaci\u00f3n");
-		System.out.println(" [4] Cerrar sesi\u00f3n");
+		System.out.println(" [4] Cambiar contrase\u00f1a");
+		System.out.println(" [5] Cerrar sesi\u00f3n");
 		System.out.println("");
 		System.out.print("Elija una opci\u00f3n: ");
 	}

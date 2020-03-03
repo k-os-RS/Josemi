@@ -1,20 +1,36 @@
 package proyecto_programacion;
 class asesor extends personas {
 	//Atributos
-	protected String trabajo;
+	protected String primerinicio, trabajo, password;
 	
 	//Constructores
 	public asesor() {
 		
 	}
 	
-	//Getters & Setters
+	//Getters & Setters	
+	public String getPrimerinicio() {
+		return primerinicio;
+	}
+
+	public void setPrimerinicio(String primerinicio) {
+		this.primerinicio = primerinicio;
+	}
+
 	public String getTrabajo() {
 		return trabajo;
 	}
 
 	public void setTrabajo(String trabajo) {
 		this.trabajo = trabajo;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	@Override

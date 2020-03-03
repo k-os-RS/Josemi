@@ -43,13 +43,14 @@ class  comprobaciones {
 				} else {
 					System.out.println("\nError: Este a\u00f1o no es bisiesto");
 					valido= false;
-				}
+				}//Fin del if
 			} else {
 				valido= dia > 0 && dia <= diasMes[mes - 1];
-			}
+			}//Fin del if
 		} else {
+			System.out.println("\nError: La fecha no es v\u00e1lida");
 			valido= false;
-		}
+		}//Fin del if
 
 		return valido;
 	}
@@ -66,11 +67,16 @@ class  comprobaciones {
 	}
 	protected boolean isCombustible (String combustible) {
 		boolean valido= false;
+		boolean gasolina= combustible.equalsIgnoreCase("gasolina"),
+				electrico= combustible.equalsIgnoreCase("electrico"),
+				diesel= combustible.equalsIgnoreCase("diesel"),
+				gasoil= combustible.equalsIgnoreCase("gasoil");
 		
-		if (combustible.equalsIgnoreCase("gasolina") || combustible.equalsIgnoreCase("diesel") ||combustible.equalsIgnoreCase("electricidad") || combustible.equalsIgnoreCase("gasoil")) {
+		if (gasolina || electrico || diesel || gasoil) {
 			valido= true;
 		} else {
 			System.out.println("\nError: El tipo de combustible no es v\u00e1lido");
+			System.out.println("Gasolina - Electrico - Diesel - Gasoil");
 		}
 		
 		return valido;
@@ -136,6 +142,44 @@ class  comprobaciones {
 		}//Fin del if
 		
 		return verdadero;
+	}
+	protected boolean isFechaNacimiento (String fechaN) {
+		boolean valido= false;
+		String fechaA= isFechaActual();
+		int[] diasMes= {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+		if (fechaN.matches("^(3[01]|[12][0-9]|0[1-9])/(1[0-2]|0[1-9])/[0-9]{4}$")) {
+			int dia= Integer.parseInt(fechaN.substring(0, 2)); 
+			int mes= Integer.parseInt(fechaN.substring(3, 5)); 
+			int anio= Integer.parseInt(fechaN.substring(6, 10));
+			int anio2= Integer.parseInt(fechaA.substring(6, 10));
+
+			if (dia > 28 && mes == 2) {
+				if (((anio%400 == 0 ) || (anio%100 != 0)) && (anio%4 == 0)) {
+					valido= true;
+				} else {
+					System.out.println("\nError: Este a\u00f1o no es bisiesto");
+					valido= false;
+				}//Fin del if
+			} else {
+				valido= dia > 0 && dia <= diasMes[mes - 1];
+			}//Fin del if
+			
+			if ((anio2 - anio) >= 0 && (anio2 - anio) < 18) {
+				System.out.println("\nError: El a\u00f1o de nacimiento es de un menor de edad");
+				valido= false;
+			} else if ((anio2 - anio) < 0) {
+				System.out.println("\nError: Un no nacido no puede realizar acci\u00f3nes");
+				valido= false;
+			} else {
+				valido= true;
+			}//Fin del if
+		} else {
+			System.out.println("\nError: La fecha de nacimiento no es v\u00e1lida");
+			valido= false;
+		}//Fin del if
+
+		return valido;
 	}
 	
 	//Obtencion de la fecha y hora actual
