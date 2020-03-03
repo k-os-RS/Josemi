@@ -4,7 +4,7 @@ class venta {
 	//Atributos
 	protected cliente cl;
 	protected ArrayList<vehiculos> auto;
-	protected String fechacompra, horacompra;
+	protected String fechaventa, horaventa;
 	
 	//Constructores
 	public venta () {
@@ -28,20 +28,20 @@ class venta {
 		this.auto = auto;
 	}
 
-	public String getFechacompra() {
-		return fechacompra;
+	public String getFechaventa() {
+		return fechaventa;
 	}
 
-	public void setFechacompra(String fechacompra) {
-		this.fechacompra = fechacompra;
+	public void setFechaventa(String fechaventa) {
+		this.fechaventa = fechaventa;
 	}
 
-	public String getHoracompra() {
-		return horacompra;
+	public String getHoraventa() {
+		return horaventa;
 	}
 
-	public void setHoracompra(String horacompra) {
-		this.horacompra = horacompra;
+	public void setHoraventa(String horaventa) {
+		this.horaventa = horaventa;
 	}
 	
 }

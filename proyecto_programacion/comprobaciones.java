@@ -17,7 +17,6 @@ class  comprobaciones {
                 i++;
             } while(i < dni.length() - 1 && valido);
         }//Fin del if
-        
         if(valido) {
         	//Validamos que la letra corresponda al DNI
             letra = Character.toUpperCase(dni.charAt(8));
@@ -61,7 +60,7 @@ class  comprobaciones {
 	        matriculaValida= true;
 	    }else{
 	        matriculaValida= false;
-	    }
+	    }//Fin del if
 	    
 	    return matriculaValida;
 	}
@@ -113,9 +112,8 @@ class  comprobaciones {
 		for (int i= 0; i < numeroD.length(); i++) {
 			if (numeroD.charAt(i) == '.') {
 				cont++;
-			}
+			}//Fin del if
 		}//Fin del for i
-		
 		if (cont == 1) {
 			pospunto= numeroD.indexOf('.');
 			if (pospunto == numeroD.length() - 1 || pospunto == 0) {
@@ -126,9 +124,8 @@ class  comprobaciones {
 				for (int j= 0; j < parteI.length(); j++) {
 					if (!Character.isDigit(parteI.charAt(j))) {
 						verdadero= false;
-					}
+					}//Fin del if
 				}//Fin del for j
-				
 				if (verdadero) {
 					for (int x= 0; x < parteF.length(); x++) {
 						if (!Character.isDigit(parteF.charAt(x))) {

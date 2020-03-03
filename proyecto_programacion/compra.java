@@ -1,6 +1,6 @@
 package proyecto_programacion;
 import java.util.*;
-public class compra {
+class compra {
 	//Atributos
 	protected cliente cl;
 	protected ArrayList<vehiculos> auto;
