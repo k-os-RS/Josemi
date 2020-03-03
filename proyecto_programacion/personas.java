@@ -3,7 +3,7 @@ abstract class personas {
 	//Atributos
 	protected String dni, nombre, apellidos, telefono_movil, fecha_nacimiento, cuenta_bancaria, direccion, tipo_persona, despedida;
 	protected double sueldo;
-	
+
 	//Getters & Setters
 	protected String getDni() {
 		return dni;

@@ -2,7 +2,7 @@ package proyecto_programacion;
 import java.time.*;
 class  comprobaciones {
 	
-	//Comprobacion de validez
+	//Comprobacion de validez 
     protected boolean isDNI (String dni) {
         boolean valido = false;
         int caracter= 0, miDNI = 0, resto = 0, i= 0;

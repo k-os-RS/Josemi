@@ -7,7 +7,7 @@ class asesor extends personas {
 	public asesor() {
 		
 	}
-
+	
 	//Getters & Setters
 	public String getTrabajo() {
 		return trabajo;
