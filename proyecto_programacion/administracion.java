@@ -1980,7 +1980,142 @@ class administracion {
 		}//Fin del if
 	}
 	protected void ComprarVehiculo () {
+		String dni, matricula, datos;
+		double precioC, precioM, dinerototal;
+		boolean ciclo= true, ciclo2= true, ciclo3= true, ciclo4= true, comprobacion= false, existe= false;
 		
+		if (person.size() > 0) {
+			System.out.println("\n == COMPRA DE UN VEH\u00edCULO == ");
+			System.out.println("Si desea cancelar la compra escriba Cancelar");
+			do {
+				System.out.print("\nDNI del cliente: ");
+				dni= teclado.CadenaTexto();
+				if (dni.equals("")) {
+					System.out.println("\nError: Por favor rellene el campo");
+				} else if (dni.equalsIgnoreCase(dni)) {
+					System.out.println("\n== COMPRA CANCELADA ==");
+					ciclo= false;
+				} else if (comprob.isDNI(dni)) {
+					for (personas p : person) {
+						if (p.getDni().equalsIgnoreCase(dni) && p.getTipo_persona().equals("cliente")) {
+							if (p instanceof cliente) {
+								do {
+									System.out.print("\nMatricula del vehiculo a comprar: ");
+									matricula= teclado.CadenaTexto();
+									if (matricula.equals("")) {
+										System.out.println("\nError: Por favor rellena datos");
+									} else if (matricula.equalsIgnoreCase("cancelar")) {
+										System.out.println("\n== COMPRA CANCELADA ==");
+										ciclo= false;
+										ciclo2= false;
+									} else if (comprob.isMatricula(matricula)) {
+										for (vehiculos v : automovil) {
+											if (v.getMatricula().equalsIgnoreCase(matricula)) {
+												comprobacion= true;
+												System.out.println("\nError: La matr\u00edcula ya existe en un veh\u00edculo");
+											}//Fin del if
+										}//Fin del foreach
+										if (!comprobacion) {
+											do {
+												System.out.print("Precio del veh\u00edculo: ");
+												datos= teclado.CadenaTexto();
+												
+												if (datos.equals("")) {
+													System.out.println("\nError: Por favor rellena datos");
+												} else if (comprob.isNumeroDecimal(datos) || comprob.isNumeroEntero(datos)) {
+													ciclo= false;
+													ciclo2= false;
+													ciclo3= false;
+													datos= datos.replace(',', '.');
+													double precio= Double.parseDouble(datos);
+													do {
+														System.out.println("\nCoche - Moto");
+														System.out.print("Indique el tipo de veh\u00edculo: ");
+														datos= teclado.CadenaTexto();
+														
+														if (datos.equals("")) {
+															System.out.println("\nError: Por favor rellene datos");
+														} else if (datos.equalsIgnoreCase("coche")) {
+															vehiculos c= new coches();
+															precioC= Double.parseDouble(admin.get(5));
+															precioC= precioC + precio;
+															dinerototal= Double.parseDouble(admin.get(7));
+															dinerototal= dinerototal - precio;
+															admin.remove(5);
+															admin.remove(7);
+															admin.add(5, String.valueOf(precioC));
+															admin.add(7, String.valueOf(dinerototal));
+															c.setMatricula(matricula);
+															c.setModelo("");
+															c.setColor("");
+															c.setCombustible("");
+															c.setKilometros(0);
+															c.setPlazas("");
+															precio = precio * 1.3;
+															c.setPrecio(precio);
+															((coches) c).setEnReparacionCoche("no");
+															((coches) c).setVendidoCoche("no");
+															automovil.add(c);
+															System.out.println("\n == COMPRA REALIZADA CON \u00e9xito == ");
+															System.out.println("El administrador podr\u00e1 visualizar los datos del vehiculo");
+															System.out.println("en su respectivo apartado, resta por completar los datos");
+															ciclo= false;
+															ciclo2= false;
+															ciclo3= false;
+															ciclo4= false;
+														} else if (datos.equalsIgnoreCase("moto")) {
+															vehiculos m= new motos();
+															precioM= Double.parseDouble(admin.get(5));
+															precioM= precioM + precio;
+															dinerototal= Double.parseDouble(admin.get(7));
+															dinerototal= dinerototal - precio;
+															admin.remove(5);
+															admin.remove(7);
+															admin.add(5, String.valueOf(precioM));
+															admin.add(7, String.valueOf(dinerototal));
+															m.setMatricula(matricula);
+															m.setModelo("");
+															m.setColor("");
+															m.setCombustible("");
+															m.setKilometros(0);
+															m.setPlazas("");
+															m.setPrecio(precio);
+															((motos) m).setEnReparacionMoto("no");
+															((motos) m).setVendidoMoto("no");
+															automovil.add(m);
+															System.out.println("\n == COMPRA REALIZADA CON \u00e9xito == ");
+															System.out.println("El administrador podr\u00e1 visualizar los datos del vehiculo");
+															System.out.println("en su respectivo apartado, resta por completar los datos");
+															ciclo= false;
+															ciclo2= false;
+															ciclo3= false;
+															ciclo4= false;
+;														} else {
+															System.out.println("\nError: El tipo de veh\u00edculo no existe");
+														}//Fin del if
+													} while (ciclo4);
+												} else {
+													System.out.println("\nError: El campo solo admite n\u00fameros");
+												}//Fin del if
+											} while (ciclo3);
+										}//Fin del if
+									} else {
+										System.out.println("\nError: La matr\u00edcula no es v\u00e1lida");
+									}//Fin del if
+								} while (ciclo2);
+							}//Fin del if
+						}//Fin del if
+					}//Fin del foreach
+					if (!existe) {
+						System.out.println("No existe cliente registrado con ese DNI");
+					}//Fin del if
+				} else {
+					System.out.println("\nError: El DNI no es v\u00e1lido");
+				}
+			} while (ciclo);
+		} else {
+			System.out.println("\nError: No hay clientes registrados");
+		}//Fin del if
 	}
 	protected void AltaCliente () {
 		//Un trabajador puede ser cliente
@@ -2074,7 +2209,6 @@ class administracion {
 	protected void MostrarCliente () {
 		String dni, datos;
 		boolean ciclo= true;
-
 		do {
 			menu.MenuMostrarCliente();
 			datos= teclado.CadenaTexto();
@@ -2358,9 +2492,9 @@ class administracion {
 		boolean ciclo= true, existe= false;
 		
 		if (automovil.size() > 0) {
+			System.out.println("\n== REPARAR VEH\u00edCULO ==");
+			System.out.println("Si quieres cancelar escribe Cancelar");
 			do {
-				System.out.println("\n== REPARAR VEH\u00edCULO ==");
-				System.out.println("Si quieres cancelar escribe Cancelar");
 				System.out.print("\nMatricula del veh\u00edculo: ");
 				matricula= teclado.CadenaTexto();
 				
@@ -2402,9 +2536,9 @@ class administracion {
 		boolean ciclo= true, existe= false;
 		
 		if (automovil.size() > 0) {
+			System.out.println("\n== ENVIAR VEH\u00edCULO A MEC\u00e1NICO ==");
+			System.out.println("Si quieres cancelar escribe Cancelar");
 			do {
-				System.out.println("\n== ENVIAR VEH\u00edCULO A MEC\u00e1NICO ==");
-				System.out.println("Si quieres cancelar escribe Cancelar");
 				System.out.print("\nMatricula del veh\u00edculo: ");
 				matricula= teclado.CadenaTexto();
 				
@@ -2470,9 +2604,9 @@ class administracion {
 						if (passrepeat.equals(passnew)) {
 							((asesor) p).setPassword(passnew);
 							System.out.println("\n == Contrase\u00f1a cambiada con \u00e9xito == ");
+							correcto= true;
 						} else {
 							System.out.println("\nError: Las contrase\u00f1as no coinciden");
-							correcto= false;
 						}//Fin del if
 					} while (!correcto);
 				} else if (p instanceof mecanico) {
@@ -2535,6 +2669,7 @@ class administracion {
 									System.out.println("\n == Contrase\u00f1a cambiada con \u00e9xito == ");
 								} else {
 									System.out.println("\nError: Las contrase\u00f1as no coinciden");
+									correcto= false;
 								}//Fin del if
 							} else {
 								System.out.println("\nError: La contrase\u00f1a no es correcta");
