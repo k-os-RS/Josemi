@@ -3,6 +3,7 @@ import java.util.*;
 class administracion {
 	protected ArrayList<vehiculos> automovil= new ArrayList<vehiculos>();
 	protected ArrayList<personas> person= new ArrayList<personas>();
+	//protected ArrayList<personas> newperson= new ArrayList<personas>();
 	protected ArrayList<venta> vendidos= new ArrayList<venta>();
 	protected ArrayList<String> admin= new ArrayList<String>();
 	protected comprobaciones comprob= new comprobaciones();
@@ -100,19 +101,19 @@ class administracion {
 			System.out.println("\n == INICIO DE SESI\u00f3N EMPLEADO == ");
 			System.out.print("\nIntroduzca su DNI: ");
 			usuario= teclado.CadenaTexto();
-			for (personas p : person ) {
-				if (p.getDni().equalsIgnoreCase(usuario) && p.getTipo_persona().equals("empleado")) {
+			for (int i= 0; i < person.size(); i++) {
+				if (person.get(i).getDni().equalsIgnoreCase(usuario) && person.get(i).getTipo_persona().equals("empleado")) {
 					existe= true;
-					if (p.getDespedida().equals("si")) {
+					if (person.get(i).getDespedida().equals("si")) {
 						System.out.println("\nError: Este empleado ha sido despedido");
 					} else {
-						if (p instanceof asesor) {
-							if (((asesor) p).getPrimerinicio().equals("si")) {
+						if (person.get(i) instanceof asesor) {
+							if (((asesor) person.get(i)).getPrimerinicio().equals("si")) {
 								System.out.println("\nEste es su primer inicio, por favor establezca una contrase\u00f1a");
 								System.out.print("Contrase\u00f1a: ");
 								password= teclado.CadenaTexto();
-								((asesor) p).setPrimerinicio("no");
-								((asesor) p).setPassword(password);
+								((asesor) person.get(i)).setPrimerinicio("no");
+								((asesor) person.get(i)).setPassword(password);
 								System.out.println("\n == La contrase\u00f1a se ha establecida con \u00e9xito == ");
 								System.out.println("\nPor favor vuelva a seleccionar la opci\u00f3n empleado e ingrese");
 								System.out.println("con su DNI y contrase\u00f1a establecida recientemente");
@@ -122,11 +123,11 @@ class administracion {
 									password= teclado.CadenaTexto();
 									if (admin.get(1).equals(password)) {
 										admin.remove(9);
-										admin.add(9, p.getDni());
+										admin.add(9, person.get(i).getDni());
 										CambiarPassword();
 										comprobacion= true;
-									} else if (((asesor) p).getPassword().equals(password)) {
-										System.out.println("\n == Asesor: "+p.getNombre()+" "+p.getApellidos()+" == ");
+									} else if (((asesor) person.get(i)).getPassword().equals(password)) {
+										System.out.println("\n == Asesor: "+person.get(i).getNombre()+" "+person.get(i).getApellidos()+" == ");
 										MenuAsesor();
 										comprobacion= true;
 									} else {
@@ -136,13 +137,13 @@ class administracion {
 									}//Fin del if
 								} while (!comprobacion);
 							}//Fin del if
-						} else if (p instanceof mecanico) {
-							if (((mecanico) p).getPrimerinicio().equals("si")) {
+						} else if (person.get(i) instanceof mecanico) {
+							if (((mecanico) person.get(i)).getPrimerinicio().equals("si")) {
 								System.out.println("\nEste es su primer inicio, por favor establezca una contrase\u00f1a");
 								System.out.print("Contrase\u00f1a: ");
 								password= teclado.CadenaTexto();
-								((mecanico) p).setPrimerinicio("no");
-								((mecanico) p).setPassword(password);
+								((mecanico) person.get(i)).setPrimerinicio("no");
+								((mecanico) person.get(i)).setPassword(password);
 								System.out.println("\n == La contrase\u00f1a se ha establecida con \u00e9xito == ");
 								System.out.println("\nPor favor vuelva a seleccionar la opci\u00f3n empleado e ingrese");
 								System.out.println("con su DNI y contrase\u00f1a establecida recientemente");
@@ -150,8 +151,8 @@ class administracion {
 								do {
 									System.out.print("Contrase\u00f1a: ");
 									password= teclado.CadenaTexto();
-									if (((mecanico) p).getPassword().equals(password) || admin.get(1).equals(password)) {
-										System.out.println("\n == Mec\u00e1nico: "+p.getNombre()+" "+p.getApellidos()+" == ");
+									if (((mecanico) person.get(i)).getPassword().equals(password) || admin.get(1).equals(password)) {
+										System.out.println("\n == Mec\u00e1nico: "+person.get(i).getNombre()+" "+person.get(i).getApellidos()+" == ");
 										MenuMecanico();
 										comprobacion= true;
 									} else {
@@ -164,7 +165,7 @@ class administracion {
 						}//Fin del if
 					}//Fin del if
 				}//Fin del if
-			}//Fin foreach
+			}//Fin del for i
 			
 			//Segun la verificacion anterior nos dira si existe o no
 			if (!existe) {
@@ -294,6 +295,7 @@ class administracion {
 					break;
 				case "9":
 					CambiarPassword();
+					break;
 				case "10":
 					ciclo= false;		
 					break;
@@ -1523,7 +1525,7 @@ class administracion {
 																		} else {
 																			System.out.println("\nMotos compradas: 0");
 																		}//Fin del if
-																		System.out.println("Venta realizada el d\u00eda "+comprob.isFechaActual()+" a las "+comprob.isHoraActual());
+																		System.out.println("\nVenta realizada el d\u00eda "+comprob.isFechaActual()+" a las "+comprob.isHoraActual());
 																		System.out.println("\n == VENTA REALIZADA ==");
 																		compra= false;
 																		confirmacion= true;
@@ -1544,122 +1546,127 @@ class administracion {
 												}//Fin del foreach
 												break;
 											case "2":
-												do {
-													System.out.println("\nDNI del cliente");
-													dni= teclado.CadenaTexto();
-													if (dni.equals("")) {
-														System.out.println("\nError: Por favor rellene el campo");
-													} else if (comprob.isDNI(dni)) {
-														for (personas p : person) {
-															if (p.getDni().equals(dni) && p.getTipo_persona().equals("cliente")) {
-																System.out.println("\nEl cliente con DNI "+p.getDni()+" comprar\u00e1 el coche con matricula "+v.getMatricula());
-																System.out.println("Para continar pulse INTRO si desea elegir otro cliente escriba cualquier cosa");
-																datos= teclado.CadenaTexto();
-																if (datos.equals("")) {
-																	venta vender= new venta();
-																	contadorC++;
-																	vender.setCl(((cliente) p));
-																	((coches) v).setVendidoCoche("si");
-																	auto.add(((coches) v));
-																	do {
-																		System.out.println("\nDesea comprar otro veh\u00edculo\n");
-																		menu.MenuConfirmacion();
-																		datos= teclado.CadenaTexto();
-																		if (datos.equals("")) {
-																			System.out.println("\nError: Por favor rellena el campo");
-																		} else if (comprob.isNumeroEntero(datos)) {
-																			switch (datos) {
-																			case "1":
-																				comprobacion= false;
-																				do {
-																					System.out.println("\nMatr\u00edcula:");
-																					matricula= teclado.CadenaTexto();
-																					if (matricula.equals("")) {
-																						System.out.println("\nError: Por favor rellene datos");
-																					} else if (comprob.isMatricula(matricula)) {
-																						for (vehiculos v2 : automovil) {
-																							if (v.getMatricula().equalsIgnoreCase(matricula)) {
-																								if (v2 instanceof coches) {
-																									System.out.println("\nEl cliente con DNI "+p.getDni()+" comprar\u00e1 el coche con matricula "+v2.getMatricula());
-																									System.out.println("Pulse INTRO para continuar o escriba cualquier cosa para cancelar");
-																									if (datos.equals("")) {
-																										((coches) v2).setVendidoCoche("si");
-																										auto.add(((coches) v2));
-																										contadorC++;
-																									} else {
-																										System.out.println("\n == VENTA CANCELADA ==");
-																										comprobacion= true;
+												if (person.size() > 0) {
+													do {
+														System.out.println("\nDNI del cliente");
+														dni= teclado.CadenaTexto();
+														if (dni.equals("")) {
+															System.out.println("\nError: Por favor rellene el campo");
+														} else if (comprob.isDNI(dni)) {
+															for (personas p : person) {
+																if (p.getDni().equals(dni) && p.getTipo_persona().equals("cliente")) {
+																	System.out.println("\nEl cliente con DNI "+p.getDni()+" comprar\u00e1 el coche con matricula "+v.getMatricula());
+																	System.out.println("Para continar pulse INTRO si desea elegir otro cliente escriba cualquier cosa");
+																	datos= teclado.CadenaTexto();
+																	if (datos.equals("")) {
+																		venta vender= new venta();
+																		contadorC++;
+																		vender.setCl(((cliente) p));
+																		((coches) v).setVendidoCoche("si");
+																		auto.add(((coches) v));
+																		do {
+																			System.out.println("\nDesea comprar otro veh\u00edculo\n");
+																			menu.MenuConfirmacion();
+																			datos= teclado.CadenaTexto();
+																			if (datos.equals("")) {
+																				System.out.println("\nError: Por favor rellena el campo");
+																			} else if (comprob.isNumeroEntero(datos)) {
+																				switch (datos) {
+																				case "1":
+																					comprobacion= false;
+																					do {
+																						System.out.println("\nMatr\u00edcula:");
+																						matricula= teclado.CadenaTexto();
+																						if (matricula.equals("")) {
+																							System.out.println("\nError: Por favor rellene datos");
+																						} else if (comprob.isMatricula(matricula)) {
+																							for (vehiculos v2 : automovil) {
+																								if (v.getMatricula().equalsIgnoreCase(matricula)) {
+																									if (v2 instanceof coches) {
+																										System.out.println("\nEl cliente con DNI "+p.getDni()+" comprar\u00e1 el coche con matricula "+v2.getMatricula());
+																										System.out.println("Pulse INTRO para continuar o escriba cualquier cosa para cancelar");
+																										if (datos.equals("")) {
+																											((coches) v2).setVendidoCoche("si");
+																											auto.add(((coches) v2));
+																											contadorC++;
+																										} else {
+																											System.out.println("\n == VENTA CANCELADA ==");
+																											comprobacion= true;
+																										}//Fin del if
+																									} else if (v2 instanceof motos) {
+																										System.out.println("\nEl cliente con DNI "+p.getDni()+" comprar la moto con matricula "+v.getMatricula());
 																									}//Fin del if
-																								} else if (v2 instanceof motos) {
-																									System.out.println("\nEl cliente con DNI "+p.getDni()+" comprar la moto con matricula "+v.getMatricula());
 																								}//Fin del if
+																							}//Fin del foreach
+																						} else {
+																							System.out.println("\nError: La matr\u00edcula no es v\u00e1lida");
+																						}//Fin de if
+																					} while (!comprobacion);
+																					break;
+																				case "2":
+																					cantidad= ((cliente) p).getCompraCoche();
+																					((cliente) p).setCompraCoche(cantidad+contadorC);
+																					vender.setAuto(auto);
+																					vender.setFechaventa(comprob.isFechaActual());
+																					vender.setHoraventa(comprob.isHoraActual());
+																					vendidos.add(vender);
+																					System.out.println("\n ===== RESUMEN DE LA VENTA =====");
+																					System.out.println("\nCliente: ");
+																					System.out.println(" DNI: "+p.getDni());
+																					System.out.println(" Nombre y apellidos: "+p.getNombre()+" "+p.getApellidos());
+																					if (((cliente) p).getCompraCoche() > 0) {
+																						System.out.println("\nCoches comprados: "+((cliente) p).getCompraCoche());
+																						System.out.println("\n-------------------------");
+																						for (int i= 0; i < auto.size(); i++) {
+																							if (auto.get(i) instanceof coches) {
+																								System.out.println(" * Matricula: "+auto.get(i).getMatricula());
+																								System.out.println("   Modelo: "+auto.get(i).getMatricula());
+																								System.out.println("-------------------------");
 																							}//Fin del if
 																						}//Fin del foreach
 																					} else {
-																						System.out.println("\nError: La matr\u00edcula no es v\u00e1lida");
-																					}//Fin de if
-																				} while (!comprobacion);
-																				break;
-																			case "2":
-																				cantidad= ((cliente) p).getCompraCoche();
-																				((cliente) p).setCompraCoche(cantidad+contadorC);
-																				vender.setAuto(auto);
-																				vender.setFechaventa(comprob.isFechaActual());
-																				vender.setHoraventa(comprob.isHoraActual());
-																				vendidos.add(vender);
-																				System.out.println("\n ===== RESUMEN DE LA VENTA =====");
-																				System.out.println("\nCliente: ");
-																				System.out.println(" DNI: "+p.getDni());
-																				System.out.println(" Nombre y apellidos: "+p.getNombre()+" "+p.getApellidos());
-																				if (((cliente) p).getCompraCoche() > 0) {
-																					System.out.println("\nCoches comprados: "+((cliente) p).getCompraCoche());
-																					System.out.println("\n-------------------------");
-																					for (int i= 0; i < auto.size(); i++) {
-																						if (auto.get(i) instanceof coches) {
-																							System.out.println(" * Matricula: "+auto.get(i).getMatricula());
-																							System.out.println("   Modelo: "+auto.get(i).getMatricula());
-																							System.out.println("-------------------------");
-																						}//Fin del if
-																					}//Fin del foreach
-																				} else {
-																					System.out.println("\nCoches comprados: 0");
-																				}//Fin del if
-																				if (((cliente) p).getCompraMoto() > 0) {
-																					System.out.println("\nMotos compradas: "+((cliente) p).getCompraCoche());
-																					System.out.println("\n-------------------------");
-																					for (int i= 0; i < auto.size(); i++) {
-																						if (auto.get(i) instanceof motos) {
-																							System.out.println(" * Matricula: "+auto.get(i).getMatricula());
-																							System.out.println("   Modelo: "+auto.get(i).getMatricula());
-																							System.out.println("-------------------------");
-																						}//Fin del if
-																					}//Fin del foreach
-																				} else {
-																					System.out.println("\nMotos compradas: 0");
-																				}//Fin del if
-																				System.out.println("\n == VENTA REALIZADA ==");
-																				compra= false;
-																				confirmacion= true;
-																				comprobacion= true;
-																				ciclo= false;
-																				break;
-																			default:
-																				System.out.println("\nError La opci\u00f3n elegida es incorrecta");
-																				break;
-																			}//Fin del switch
-																		} else {
-																			System.out.println("\nError: La opci\u00f3n solo admite n\u00fameros");
-																		}//Fin del if
-																	} while (compra);
-																} else {
-																	System.out.println("\nRegresando...");
-																}//Fin del if
-															}//Fin de if
-														}//Fin del foreach
-													} else {
-														System.out.println("\nError: Ese DNI no es v\u00e1lido");
-													}//Fin del if
-												} while (!comprobacion);
+																						System.out.println("\nCoches comprados: 0");
+																					}//Fin del if
+																					if (((cliente) p).getCompraMoto() > 0) {
+																						System.out.println("\nMotos compradas: "+((cliente) p).getCompraCoche());
+																						System.out.println("\n-------------------------");
+																						for (int i= 0; i < auto.size(); i++) {
+																							if (auto.get(i) instanceof motos) {
+																								System.out.println(" * Matricula: "+auto.get(i).getMatricula());
+																								System.out.println("   Modelo: "+auto.get(i).getMatricula());
+																								System.out.println("-------------------------");
+																							}//Fin del if
+																						}//Fin del foreach
+																					} else {
+																						System.out.println("\nMotos compradas: 0");
+																					}//Fin del if
+																					System.out.println("\nVenta realizada el d\u00eda "+comprob.isFechaActual()+" a las "+comprob.isHoraActual());
+																					System.out.println("\n == VENTA REALIZADA ==");
+																					compra= false;
+																					confirmacion= true;
+																					comprobacion= true;
+																					ciclo= false;
+																					break;
+																				default:
+																					System.out.println("\nError La opci\u00f3n elegida es incorrecta");
+																					break;
+																				}//Fin del switch
+																			} else {
+																				System.out.println("\nError: La opci\u00f3n solo admite n\u00fameros");
+																			}//Fin del if
+																		} while (compra);
+																	} else {
+																		System.out.println("\nRegresando...");
+																	}//Fin del if
+																}//Fin de if
+															}//Fin del foreach
+														} else {
+															System.out.println("\nError: Ese DNI no es v\u00e1lido");
+														}//Fin del if
+													} while (!comprobacion);
+												} else {
+													System.out.println("\nError: No hay clientes registrados");
+												}//Fin del if
 												break;
 											case "3":
 												System.out.println("\n== VENTA CANCELADA == ");
@@ -2261,9 +2268,9 @@ class administracion {
 		boolean ciclo= true, existe= false;
 		
 		if (vendidos.size() > 0) {
+			System.out.println("\n== COMPRAS REALIZAS POR UN CLIENTE == ");
+			System.out.println("Para cancelar escriba Cancelar");
 			do {
-				System.out.println("\n== COMPRAS REALIZAS POR UN CLIENTE == ");
-				System.out.println("Para cancelar escriba Cancelar");
 				System.out.print("\nDNI del cliente: ");
 				dni= teclado.CadenaTexto();
 				
@@ -2301,12 +2308,13 @@ class administracion {
 							} else {
 								System.out.println("\nMotos compradas: 0");
 							}//Fin del if
-							System.out.println("Venta realizada el d\u00eda "+ve.getFechaventa()+" a las "+ve.getHoraventa());
+							System.out.println("\nVenta realizada el d\u00eda "+ve.getFechaventa()+" a las "+ve.getHoraventa());
 						}//Fin del if
-					}//For
+					}//Fin del for
 					if (!existe) {
 						System.out.println("\nError: No existe cliente con ese DNI");
 					}//Fin del if
+					ciclo= false;
 				} else if (dni.equalsIgnoreCase("cancelar")) {
 					System.out.println("\n == ACCI\u00f3N CANCELADA == ");
 					ciclo= false;
