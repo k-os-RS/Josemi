@@ -106,12 +106,24 @@ class menus {
 		System.out.println(" [2] No");
 		System.out.print("\nOpci\u00f3n: ");
 	}
-	protected void MenuMostrarCliente() {
+	protected void MenuMostrarCliente () {
 		System.out.println("\n == MOSTRAR CLIENTE == ");
 		System.out.println("");
 		System.out.println(" [1] Mostrar a todos los clientes");
 		System.out.println(" [2] Mostrar un cliente espec\u00edfico");
 		System.out.println(" [3] Salir");
+		System.out.println("");
+		System.out.print("Elija una opci\u00f3n: ");
+	}
+	protected void MenuModificarCliente () {
+		System.out.println("\nPor favor indique el dato que desea cambiar");
+		System.out.println("");
+		System.out.println(" [1] DNI");
+		System.out.println(" [2] Nombre");
+		System.out.println(" [3] Apellidos");
+		System.out.println(" [4] Direccion");
+		System.out.println(" [5] Telefono m\u00f3vil");
+		System.out.println(" [6] Cancelar");
 		System.out.println("");
 		System.out.print("Elija una opci\u00f3n: ");
 	}
