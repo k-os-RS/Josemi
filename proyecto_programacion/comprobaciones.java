@@ -178,14 +178,14 @@ class  comprobaciones {
 
 		return valido;
 	}
-	
+
 	//Obtencion de la fecha y hora actual
     protected String isFechaActual () {
     	String fechanow, dia, mes, anio;
     	
     	LocalDateTime fechas = LocalDateTime.now();
     	LocalDate fecha = fechas.toLocalDate();
-    	
+    	//Cambia el orden
     	fechanow= fecha.toString();
     	dia= fechanow.substring(8, 10);
     	mes= fechanow.substring(5, 7);
@@ -200,7 +200,7 @@ class  comprobaciones {
     	
     	LocalDateTime horas = LocalDateTime.now();
     	LocalTime hora = horas.toLocalTime();
-    	
+    	//Quita los milisegundos
     	horanow= hora.toString();
     	pospunto= horanow.indexOf('.');
     	horanow= horanow.substring(0, pospunto);
