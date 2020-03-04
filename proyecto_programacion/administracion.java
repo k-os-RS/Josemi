@@ -291,12 +291,9 @@ class administracion {
 					VentasRealizadas();
 					break;
 				case "8":
-					DevolverVehiculo();
-					break;
-				case "9":
 					CambiarPassword();
 					break;
-				case "10":
+				case "9":
 					ciclo= false;		
 					break;
 				default:
@@ -1097,7 +1094,7 @@ class administracion {
 	}
 	protected void BajaVehiculo () {
 		String matricula;
-		boolean cancelar= false, correcto= false;
+		boolean cancelar= false, correcto= false, comprobacion= false;
 
 		System.out.println("\n == BAJA VEHICULO == ");
 		System.out.println("Si desea cancelar la baja escriba Cancelar");
@@ -1115,11 +1112,29 @@ class administracion {
 				} else if (comprob.isMatricula(matricula)) {		
 					for (int i= 0; i < automovil.size(); i++) {
 			        	if (automovil.get(i).getMatricula().equalsIgnoreCase(matricula)) {
-			        		System.out.println("\nLa matr\u00edcula es de este veh\u00edculo");
-			        		System.out.println(automovil.get(i));
-				        	correcto= true;
-							cancelar= true;
-				        	i= automovil.size();
+			        		if (automovil.get(i) instanceof coches) {
+			        			if (((coches) automovil.get(i)).getVendidoCoche().equals("no")) {
+			        				System.out.println("\nLa matr\u00edcula es de este veh\u00edculo");
+					        		System.out.println(automovil.get(i));
+					        		comprobacion= true;
+						        	correcto= true;
+									cancelar= true;
+						        	i= automovil.size();
+			        			} else {
+			        				System.out.println("\nError: El coche ha sido vendido");
+			        			}//Fin del if
+			        		} else if (automovil.get(i) instanceof motos) {
+			        			if (((motos) automovil.get(i)).getVendidoMoto().equals("no")) {
+			        				System.out.println("\nLa matr\u00edcula es de este veh\u00edculo");
+					        		System.out.println(automovil.get(i));
+					        		comprobacion= true;
+						        	correcto= true;
+									cancelar= true;
+						        	i= automovil.size();
+			        			} else {
+			        				System.out.println("\nError: La moto ha sido vendida");
+			        			}//Fin del if
+			        		}//Fin del if
 				        } else {
 				        	System.out.println("La matr\u00edcula no existe");
 							correcto= false;
@@ -1129,25 +1144,26 @@ class administracion {
 				} else {
 					System.out.println("\nError: La matr\u00edcula no es v\u00e1lida");
 				}//Fin del if
-
 			} while (!correcto);
-			correcto= false;
-			System.out.println("\nSeguro que desea dar de baja este vehiculo?");
-			matricula=teclado.CadenaTexto();	
-			
-			if (matricula.equalsIgnoreCase("si")) {
-				System.out.println("\n == LA BAJA DE VEH\u00dedCULO HA SIDO COMPLETADA == ");
-				for (int i= 0; i < automovil.size(); i++) {
-			       	if (automovil.get(i).getMatricula().equalsIgnoreCase(matricula)) {
-			       		i= automovil.size();
-			       		automovil.remove(i);
-				cancelar= true;	
-			       	}//Fin del if
-			       }//Fin del for i
-			} else if (matricula.equalsIgnoreCase("no")) {					
-				cancelar= true;	
-			}//Fin del if
 
+			if (comprobacion) {
+				System.out.println("\nSeguro que desea dar de baja este vehiculo?");
+				matricula=teclado.CadenaTexto();	
+				
+				if (matricula.equalsIgnoreCase("si")) {
+					System.out.println("\n == LA BAJA DE VEH\u00dedCULO HA SIDO COMPLETADA == ");
+					for (int i= 0; i < automovil.size(); i++) {
+				       	if (automovil.get(i).getMatricula().equalsIgnoreCase(matricula)) {
+				       		i= automovil.size();
+				       		automovil.remove(i);
+				       		cancelar= true;	
+				       	}//Fin del if
+				       }//Fin del for i
+				} else if (matricula.equalsIgnoreCase("no")) {
+					System.out.println("\n== BAJA VEH\u00edCULO CANCELADA == ");
+					cancelar= true;	
+				}//Fin del if
+			}
 		} while (!cancelar);		
 	}
 	protected void MostrarVehiculo () {
@@ -2582,9 +2598,6 @@ class administracion {
 		} else {
 			System.out.println("\nError: No hay veh\u00edculos registrados");
 		}//Fin del if
-	}
-	protected void DevolverVehiculo () {
-		
 	}
 	protected void MostrarGanancias () {
 		System.out.println("\n== MOSTRAR GANANCIAS == ");
