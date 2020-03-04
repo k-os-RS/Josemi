@@ -1,3 +1,5 @@
+//clases
+
 INICIO PERSONAS tipo abstracto
 	variables (dni, nombre, apellidos, telefono_movil, fecha_nacimiento, cuenta_bancaria, direccion, tipo_persona,sueldo)
 	crear getter y setter de las variables
@@ -26,6 +28,9 @@ INICIO MOTOS HEREDA DE VEHICULO
 	VARIABLES(enReparacionMoto, vendidoMoto)
 	crear constructor vacio,getter, setter y toString
 FIN MOTOS
+
+//main
+
 INICIO MAIN 
 	Crear objeto 
 	Crear ArrayList
@@ -91,87 +96,76 @@ INICIO MAIN
 				Preguntar "que quiere modificar"
 				Mostrar opciones
 				//edita y guarda objeto
+			caso mostrar ganancias:
+				Muestra el dinero base y las ganancias de venta de vehiculos y lo que se pierde con la compra de coche y moto
 			
 		Caso “trabajador”:
 			segun dni
-			caso “Asesor(compra/venta) derivar/comprobar garantia”:
-				Mostrar “Vender/Comprar”
-				Segun  <opcion>
+			caso "asesor":
+				segun <opcion>	
 				caso vender:
-				Preguntar “coche o moto”
-					si “coche”
-						pregunta “modelo,color,combustible,plazas”
-						guardar en objeto
-						Mostrar coches con esas caracteristicas,km y precio
-						pregunta “quiere accesorios?”
-						Generar matricula 
-						Pregunta si quiere modificarla 
-					si “moto”
-						pregunta “modelo,color,combustible,plazas”
-						Mostrar coches con esas caracteristicas,km y precio
-						pregunta “quiere accesorios?”
-						Generar matricula 
-						Pregunta si quiere modificarla 
-						+el dinero base
-		
+					escribe matricula
+					si <vehiculo no ha sido vendido> hacer
+						segun opcion
+							caso cliente nuevo
+								introducir (nombre,apellido,dni,direccion,telefono)
+								el vehiculo pasa a estar como vendido junto a la fecha y hora 
+							caso cliente antiguo
+								introducir dni
+								recorrer array y cuando encuentre al cliente
+								el vehiculo pasa a estar como vendido junto a la fecha y hora 
+					sino
+						mostrar <venta cancelada>
+					fin si
 				caso comprar:
-				Preguntar “coche o moto”
-					si “coche”
-						pregunta “modelo,color,combustible,plazas”
-						guardar en objeto
-						Mostrar coches con esas caracteristicas,km y precio
-						pregunta “quiere accesorios?”
-						Generar matricula 
-						Pregunta si quiere modificarla 
-					si “moto”
-						pregunta “modelo,color,combustible,plazas”
-						Mostrar coches con esas caracteristicas,km y precio
-						pregunta “quiere accesorios?”
-						Generar matricula 
-						Pregunta si quiere modificarla 
-
-		caso “Mecanico”:
-			Mostrar “Tiene garantia ?”
-			segun respuesta
-			si <si>:
-				Mostrar "Que tipo de incidente tuvo?"
-				(leve[arañazo,abollon],medio[pieza arrancada,],grave[gran parte del vehiculo dañado])
-				segun <opcion>
-				caso leve:
-					mostrar componentes que estan dentro de leve y su precio
-					elejir componente
-					+dinerobase
-				caso medio:
-					mostrar componentes que estan dentro de leve y su precio
-					elejir componente
-					+dinerobase
-				caso grave:
-					mostrar componentes que estan dentro de leve y su precio
-					elejir componente
-					+dinerobase
-				mostrar que se lo cubre el seguro
-			sino
-			Mostrar "Que tipo de incidente tuvo?"
-				(leve[arañazo,abollon],medio[pieza arrancada,],grave[gran parte del vehiculo dañado])
-				segun <opcion>
-				caso leve:
-					mostrar componentes que estan dentro de leve y su precio
-					elejir componente
-					+dinerobase
-				caso medio:
-					mostrar componentes que estan dentro de leve y su precio
-					elejir componente
-					+dinerobase
-				caso grave:
-					mostrar componentes que estan dentro de leve y su precio
-					elejir componente
-					+dinerobase
-				mostrar cuanto se le cobrara
-				guardar en objeto
+					introducir dni cliente
+					mostrar vehiculos comprados(precio puesto por el cliente) 
+					cambia el estado de vendido a 2º mano
+				caso mostrar vehiculos:
+					segun opcion
+					caso mostrar coches
+						con un bucle for recorre el array y muestra los que contenga coches
+					caso mostrar motos
+						con un bucle for recorre el array y muestra los que contenga motos
+					caso mostrar vehiculo en especifico
+						pedir matricula
+						recorrer array y mostrar el que coincidad la matricula
+				caso mostrar clientes:
+					segun opcion
+					caso mostrar todos
+						con un bucle recorre array y muestra los que contenga cliente
+					caso mostrar un cliente especifico
+						pedir DNI
+						recorre array y mostrar el que coincida dni
+				caso modificar clientes:
+					pedir DNI
+					recorre array y muestra el que coincida dni
+					pregunta que quiere modificar(nombre,apellido,dni,direccion,telefono)
+				caso enviar a mecanico:
+					se le indica al vehiculo como que esta en reparacion
+				caso devolver vehiculo:
+					se devuelve el vehiculo marcado como reparado al cliente asociado al vehiculo
+			caso “Mecanico”:
+				segun opcion
+					caso mostrar vehiculo
+						segun opcion
+						caso mostrar coches
+							con un bucle for recorre el array y muestra los que contenga coches
+						caso mostrar motos
+							con un bucle for recorre el array y muestra los que contenga motos
+						caso mostrar vehiculo en especifico
+							pedir matricula
+							recorrer array y mostrar el que coincidad la matricula
+					caso reparar vehiculo
+						se marca los vehiculos en reparacion como reparados
+					caso mostrar en reaparacion
+						con un bucle for recorre el array y muestra los que contenga 'en reparacion'
+					
 	mientras<bucle>
 
 FIN
 
+//comprobaciones
 
 INICIO DNI
 	nombre de metodo<- validar
@@ -200,41 +194,7 @@ INICIO DNI
 	fin si
 	validado<-valido
 	retorna validado(true o false)
-	FIN DNI
-
-
-	INICIO MATRICULA
-	si <matricula con letras mayusculas contiene (4 numeros y 3 letras)[matricula.toUpperCase().matches("^[0-9]{4}[A-Z]{3}$")]>
-		retorna true
-	sino 
-		retorna false
-FIN MATRICULA
-
-INICIO TELEFONO
-	si <movil primer caracter sea 6 o 7 y movil debe tener 9 numeros[movil.substring(0,1) || movil.substring(0,1)=7 && movil.matches("[0-9]+")]>
-		retorna true 
-	sino
-		retorna false
-FIN TELEFONO
-
-INICIO PUNTO 
-	si escribe alguna coma pasala a punto [usa .replace (',','.')]
-FIN PUNTO
-
-INICIO NUMERO
-	//es para comprobar que cuando piden numeros y escriben otras cosas no se rompa el programa 
-	si <numero contiene numeros [numero.matches("[0-9]+")]>
-	retorna true
-	sino 
-	retorna false
-FIN NUMERO
-
-INICIO COMBUSTIBLE
-	si es <diesel,gasolia,electricidad> hacer
-		valido->true
-	sino
-		mostrar que <no es un combustible valido>
-FIN COMBUSTIBLE	
+FIN DNI
 
 INICIO FECHA
 	//con un boolean y un array de entero
@@ -256,3 +216,114 @@ INICIO FECHA
 	fin sino
 	return boolean
 FIN FECHA
+
+INICIO MATRICULA
+	si <matricula con letras mayusculas contiene (4 numeros y 3 letras)[matricula.toUpperCase().matches("^[0-9]{4}[A-Z]{3}$")]>
+		retorna true
+	sino 
+		retorna false
+FIN MATRICULA
+
+INICIO COMBUSTIBLE
+	si es <diesel,gasolia,electrico,gasoil> hacer
+		valido->true
+	sino
+		mostrar que <no es un combustible valido>
+FIN COMBUSTIBLE	
+
+INICIO NUMERO MOVIL
+	si <movil primer caracter sea 6 o 7 y movil debe tener 9 numeros[movil.substring(0,1) || movil.substring(0,1)=7 && movil.matches("[0-9]+")]>
+		retorna true 
+	sino
+		retorna false
+FIN NUMERO MOVIL
+
+INICIO NUMERO ENTERO
+	//es para comprobar que cuando piden numeros y escriben otras cosas no se rompa el programa 
+	si <numero contiene numeros [numero.matches("[0-9]+")]>
+	retorna true
+	sino 
+	retorna false
+FIN NUMERO ENTERO
+
+INICIO NUMERO DECIMAL
+	si escribe alguna coma pasala a punto [usa .replace (',','.')]
+	asignarle a una variable el numero (ejemplo<-numero introducido)
+	para i < (tamaño de la variable) incrementa
+		si <un caracter de la variable es = '.'> hacer
+		contador aumenta
+		fin si
+	fin para 
+	si <contador = 1> hacer
+		variable<-posicion del punto ( numeroD.indexOf('.'))
+		si<posicion esta la primera o la ultima> hacer
+			boolean <-false
+		sino
+			variable1<-obtiene los numeros desde el comienzo hasta el punto
+			variable2<- obtiene los numeros desde el punto hasta el final
+			para <j < tamaño de variable1 incrementa> hacer
+				si <los caracteres no son digitos(Character.isDigit(variable1.charAt(j))> hacer
+					boolean<-false
+				fin si
+			fin para
+			si <boolean<-true> hacer
+				para < x< tamaño de variable2 incrementa> hacer
+					si <los caracteres no son digitos(Character.isDigit(variable2.charAt(j))> hacer
+						boolean<-false
+					fin si
+				fin para
+			fin si
+	sino
+		boolean<-false
+	fin si
+	retorna boolean
+FIN NUMERO DECIMAL
+
+INICIO FECHA DE NACIMIENTO
+	variable array <- [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+	si <fecha contiene (la posicion 0[numeros del 0-9] y 2[numeros del 1-9] /la posicion 2[numeros del 0-2] y 5[numeros del 1-9]/debe tener 4 nuemeros que contenga del 1-9)[.matches("^(3[01]|[12][0-9]|0[1-9])/(1[0-2]|0[1-9])/[0-9]{4}$")]> hacer
+		dia<-obtiene el numero de fecha que esta en la posicion 0-2
+		mes<-obtiene el numero de fecha que esta en la posicion 3-5
+		anio<-obtiene el numero de fecha que esta en la posicion 6-10
+		anio2<-obtiene el año actual
+		si <dia=28 and mes 2> hacer
+			si <anio%400 = 0 or anio%100 <> 0 and anio%4 = 0> hacer
+				boolean<- true
+			sino
+				mostrar <error>
+				boolean false
+			fin si
+		sino
+			boolean<-(dia> 0 and dia< variable array[mes-1])
+		fin si
+		si <(anio2 - anio)>= 0 and (anio2-anio) < 18> hacer
+			mostrar <menor de edad>
+		sino <(anio2-anio)<0> hacer
+			mostrar <no nacido>
+		sino
+			boolean<-true
+	sino
+		mostrar<error>
+		boolean<-false
+	fin si
+	retorna boolean	
+FIN FECHA DE NACIMIENTO
+
+INICIO FECHA ACTUAL //solo cambia el orden
+	variable<-localdatetime.now()
+	variable2<-variable.tolocaldate()
+	variable3<- convertir en una cadena de texto variable2
+	dia<-obtiene el numero de variable que esta en la posicion 8-10
+	mes<-obtiene el numero de variable que esta en la posicion 5-7
+	anio<-obtiene el numero de variable que esta en la posicion 0-4
+	variable3<- dia/mes/anio
+	retorna variable3
+FIN FECHA ACTUAL
+
+INICIO HORA ACTUAL
+	variable 1<-localdatetime.now()
+	variable 2<-variable1.tolocaltime()
+	variable 3<- convertir en una cadena de texto variable2
+	variable 4<- obtiene la posicion del punto que separa las milesimas
+	variable 3<- obtiene los numero desde el 0 hasta el punto
+FIN HORA ACTUAL
