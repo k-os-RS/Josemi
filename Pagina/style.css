@@ -1,3 +1,4 @@
+/*encabezado*/
 * {
   box-sizing: border-box;
 }
@@ -178,7 +179,21 @@ a {
   background: transparent;
   text-decoration: none
 }
+/*Datos*/
+#SERVICIOS{
+  background: transparent;
+  text-decoration: none;
+}
+.cuadraditos:hover{
+  border: 1.5 px black solid;
 
+}
+.caja{
+  position: fixed;
+  border: black solid 1px;
+  text-align: center;
+  size: 5em;
+}
 /*ul {
   display: inline;
   border: 1px solid black;

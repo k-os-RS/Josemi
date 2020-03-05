@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Formulario</title>
+        <link rel="stylesheet" href="Formulario.css">
+    </head>
+    <body>
+        <h1>Formulario</h1>
+        <form action="Formulario.php" method="POST">
+            <fieldset><legend>Datos de Alumno</legend>
+                    <label for="Nombre">Nombre<span>*</span></label><br>
+                    <input type="text" name="Nombre" value=""><br>
+                    <label for="Email">Email<span>*</span></label><br>
+                    <input type="text" name="Email" value=""><br>
+                    <label for="Telefono">Teléfono:<span>*</span></label><br>
+                    <input type="text" name="Telefono" value="">
+                <hr>
+                <p>Grado Medio</p><input type="hidden" name="Grado_Medio" value="no">
+                    <input type="checkbox" name="Grado_Medio" value="TÉCNICO EN SISTEMAS MICROINFORMATICOS Y REDES">
+                    <label for="Grado_Medio">TÉCNICO EN SISTEMAS MICROINFORMATICOS Y REDES</label><br>
+                    <input type="checkbox" name="Grado_Medio" value="EN ATENCIÓN A PERSONAS EN SITUACIÓN DE DEPENDENCIA">
+                    <label for="Grado_Medio">EN ATENCIÓN A PERSONAS EN SITUACIÓN DE DEPENDENCIA</label><br>
+                    <input type="checkbox" name="Grado_Medio" value="EN CUIDADOS AUXILIARES DE ENFERMERÍA">
+                    <label  for="Grado_Medio">EN CUIDADOS AUXILIARES DE ENFERMERÍA</label><br>
+                <hr>
+                <p>Grado superior</p><input type="hidden" name="Grado_superior" value="no">
+                    <input type="checkbox" name="Grado_superior" value="TÉCNICO SUPERIOR EN EDUCACIÓN INFANTIL">
+                    <label for="Grado_superior">TÉCNICO SUPERIOR EN EDUCACIÓN INFANTIL</label><br>
+                    <input type="checkbox" name="Grado_superior" value="TÉCNICO SUPERIOR EN INTEGRACIÓN SOCIAL">
+                    <label for="Grado_superior">TÉCNICO SUPERIOR EN INTEGRACIÓN SOCIAL</label><br>
+                    <input type="checkbox" name="Grado_superior" value="TÉCNICO SUPERIOR EN DAM">
+                    <label for="Grado_superior">TÉCNICO SUPERIOR EN DAM</label><br>    
+                <hr>
+                <p>Privacidad<span>*</span></p>
+                    <input type="hidden" name="privacidad" value="no">
+                    <input type="checkbox" name="privacidad" value="Aceptado">
+                    <label for="Privacidad">He leído y acepto la política de privacidad</label><br>                
+                <input type="submit" value="Aceptar" id="si">
+                <input type="reset" value="Borrar">
+            </fieldset>
+            
+        </form><br>
+    </body>
+</html>
