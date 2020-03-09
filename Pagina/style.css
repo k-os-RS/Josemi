@@ -195,6 +195,15 @@ section {
   }
 }
 
+.footer-area {
+  background: #fc8d16;
+  border-top: 1px solid #363636;
+  padding: 10px 0 0;
+}
+  .footer-area .contenido .secciones span {
+    color: #363636;
+  }
+
 img {
   vertical-align: middle;
   border: 0;
