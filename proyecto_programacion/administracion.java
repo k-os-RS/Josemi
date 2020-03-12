@@ -1,5 +1,6 @@
 package proyecto_programacion;
 import java.util.*;
+
 class administracion {
 	protected ArrayList<vehiculos> automovil= new ArrayList<vehiculos>();
 	protected ArrayList<personas> person= new ArrayList<personas>();
