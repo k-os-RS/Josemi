@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -196,9 +197,10 @@ section {
 }
 
 .footer-area {
-  background: #fc8d16;
+  background: #0077a9;
   border-top: 1px solid #363636;
   padding: 10px 0 0;
+  overflow: hidden;
 }
   .footer-area .contenido .secciones span {
     color: #363636;
@@ -350,7 +352,7 @@ a {
           box-shadow: 3px 3px 0 rgba(201, 201, 201, 1);
         }
         .navegacion .barra-nav .menu .nav .activo > a {
-          background: #fc8d16;
+          background: #0077a9;
           box-shadow: 3px 3px 0 rgba(201, 201, 201, 1);
           color: #fff;
           font-weight: normal;
@@ -374,14 +376,14 @@ a {
           margin-top: 0;
         }
         .abrir:hover > a {
-          background: #fc8d16;
+          background: #0077a9;
         }
         .abrir:hover .dropmenu {
           display: block;
           top: 30px;
         }
         .dropmenu {
-          background: #fc8d16;
+          background: #0077a9;
         }
         .dropmenu > li > a {
           display: block;
@@ -409,7 +411,7 @@ a {
   height: 90px;
   margin-right: 20px;
   text-align: center;
-  border: 4px solid #fc8d16;
+  border: 4px solid #0077a9;
   border-radius: 100%;
   background: radial-gradient(ellipse at center, rgba(247,156,45,1) 0%, rgba(250,147,32,1) 35%, rgba(252,141,22,1) 60%, rgba(253,164,71,1) 60%, rgba(255,241,240,1) 100%);
   transition: all ease 0.8s;
