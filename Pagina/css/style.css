@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap');
+/* <- 37 -> 39 var teclaPulsada = evObject.keyCode;*/
+:root {
+  /* --- Colors --- */
+  --gris-fondo: #e4e4e4;
+  --azul-general: #0077a9;
+  --oscuro-letras: #363636;
+  /* --- Fonts --- */
+  --font-poppins: 'Poppins', sans-serif;
+  --font-baloo: 'Baloo Chettan 2', cursive;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--gris-fondo);
+  font-family: var(--font-poppins);
+  font-size: 16px;
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+	animation-duration: 1.5s;
+	animation-timing-function: ease-in-out;
+	visibility: visible!important;
+}
+
+@keyframes fadeIn {
+	0% {
+		transform: scale(0);
+		opacity: 0.0;
+	}
+	60% {
+		transform: scale(1.1);
+	}
+	80% {
+		transform: scale(0.9);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+/* --- Main Header --- */
+ul, ol {
+  list-style: none;
+}
+
+.navegation {
+  background: #fefefe;
+  padding-right: 1rem;
+  position: sticky;
+  top: 0;
+  padding: .5rem 1rem;
+  z-index: 999;
+  box-shadow: 0px 5px 6px 2px rgba(245,245,245,0.7);
+}
+  .navegation .nav-container {
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+    .navegation .nav-bar {
+      position: relative;
+      min-height: 50px;
+    }
+      .navegation .nav-bar .menu {
+        display: block;
+        height: auto;
+        padding-bottom: 0;
+        padding-right: 15px;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        overflow: visible;
+        max-height: 340px;
+        width: auto;
+      }
+        .navegation .nav-bar .menu ul {
+          float: left;
+          margin: 0;
+        }
+          .menu .nav > li {
+            position: relative;
+            margin-right: 7px;
+            display: block;
+            float: left;
+          }
+        .nav-bar .nav > li > a {
+          text-transform: uppercase;
+          text-decoration: none;
+          padding: 10px 20px;
+          font-weight: normal;
+          line-height: 20px;
+          font-size: 14px;
+          color: #222;
+          transition: all 0.3s ease 0s;
+        }
+          .navegation .nav-bar .nav > .nav-active > a {
+            font-weight: normal;
+            font-size: 14px;
+            background: #0077a9;
+            border-top: 3px solid #004765;
+            color: #fefefe;
+            box-shadow: 3px 3px 0 rgba(201, 201, 201, 1);
+          }
+            .dropmenu {
+              display: none;
+              font-family: var(--font-baloo);
+              position: absolute;
+              right: auto;
+              border-radius: 7px;
+              background: #66adcb;
+              left: -2px;
+              float: left;
+              min-width: 200px;
+              padding: 0;
+              margin: 2px 0 0;
+              font-size: 16px;
+              z-index: 999;
+            }
+              .background-dropdown {
+                background: #0077a9;
+                color: #fefefe!important;
+                font-size: 14px!important;
+              }
+              .nav-bar .nav > li.open > a,
+              .nav-bar .nav > li.open > a:hover,
+              .nav-bar .nav > li.open > a:focus {
+                border-radius: 0px;
+                border-top: 3px solid #004765;
+                font-weight: normal;
+                font-size: 18px;
+              }
+                .open .dropmenu {
+                  display: block;
+                  top: 32px;
+                  transition: all 0.3s ease 0s;
+                }
+                  .dropmenu > li > a {
+                    display: block;
+                    clear: both;
+                    font-weight: normal;
+                    white-space: nowrap;
+                    color: #fefefe;
+                    text-decoration: none;
+                    padding: 7px 32px 7px 10px;
+                    transition: padding 400ms;
+                  }
+                    .dropmenu > li > a:hover {
+                      background: #cce3ed;
+                      color: var(--oscuro-letras);
+                      text-decoration: none;
+                      padding: 7px 20px;
+                    }
+
+.container .slider-head {
+  position: relative;
+}
+  .container .slider-head .slider-img {
+    display: none;
+  }
+    .container .slider-head img {
+      width: 100%;
+      height: 750px;
+      animation: slide 1.5s;
+      overflow: hidden;
+    }
+
+@keyframes slide {
+  from {
+    opacity: .4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.btn-dots {
+  background: transparent;
+  text-align: center;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  z-index: 1;
+}
+  .btn-dots .dot {
+    display: inline-block;
+    background-color: #777;
+    margin: 0 2px;
+    width: 15px;
+    height: 15px;
+    border-radius: 25%;
+    transition: background-color 0.6s ease;
+  }
+.active, .dot:hover {
+  background-color: #333!important;
+}
+
+.prev, .next {
+  background: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 50%;
+  width: auto;
+  cursor: pointer;
+  padding: 16px;
+  margin-top: -16px;
+  color: #fefefe;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 0 3px 3px 0;
+  transition: background 0.6s ease;
+  user-select: none;
+}
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+  .prev:hover, .next:hover {
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+/* --- Main Body --- */
+
+
+
+/* --- Main Footer --- */
+
+
+
+/* --- ScrollBar --- */
+
+body::-webkit-scrollbar {
+  width: 10px;
+  background: rgba(255, 255, 255, 0.2);
+}
+  body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #004765;
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+/* --- Sections of all the @media --- */
+@media screen and (min-width: 768px) {
+  .nav-container {
+    width: 750px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .nav-container {
+    width: 940px;
+  }
+}
+@media (min-width: 1200px) {
+  .nav-container {
+    width: 1140px;
+  }
+}
+
+/*
+background: linear-gradient(to right, rgba(242,251,252,1) 5%, rgba(242,251,252,1) 9%, rgba(234,243,250,1) 41%, rgba(237,233,222,1) 83%, rgba(238,234,223,1) 84%, rgba(254,243,231,1) 100%);
+*/

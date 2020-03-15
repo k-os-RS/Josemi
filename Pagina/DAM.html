@@ -1,17 +1,93 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <p>Un paso más para convertirte en un experto informático, capaz de gestionar todo tipo de entidades, públicas o privadas, creando, desarrollando o gestionando aplicaciones empresariales de todo ámbito.
-            <br><br>
-            A la finalización del ciclo podrás incorporarte al mundo laboral de la informática como desarrollador o gestor de aplicaciones para negocios u ocio.
-            <br><br>
-            También podrás continuar tu formación con otro ciclo formativo o incorporándote a un Grado de Ingeniería Informática en cualquiera de sus especialidades.
-            <br><br>
-            Listado de módulos que tiene este ciclo formativo («asignaturas»):
-            </p>
-            <img src="img/DAM.jpg" alt="DAM">
-    </body>
+<html lang="es" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>CES FUENCARRAL</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <script src="https://kit.fontawesome.com/8b57b2134f.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/selector.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="navegation">
+          <div class="nav-container">
+            <nav class="nav-bar">
+              <div class="menu">
+                <ul class="nav">
+                  <li class="dropdown"><a href="index.html">inicio</a></li>
+                  <li class="dropdown"><a href="index.html">grado medio <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropmenu">
+                      <li><a href="smr.html">Sistemas microinformaticos y redes</a></li>
+                      <li><a href="dependencia.html">Atención a personas en situación de dependencia</a></li>
+                      <li><a href="enfermeria.html">Cuidados auxiliares de enfermeria</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown nav-active"><a href="index.html">grado superior <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropmenu">
+                      <li><a href="dam.html">Desarrollo de aplicaciones multiplataforma</a></li>
+                      <li><a href="integracion.html">Integración social</a></li>
+                      <li><a href="infantil.html">Educación infantil</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a href="becas.html">becas</a></li>
+                  <li class="dropdown"><a href="conocenos.html">conocenos <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropmenu">
+                      <li><a href="instalaciones.html">Instalaciones</a></li>
+                      <li><a href="empresas.html">Empresas colaboradoras</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a href="https://campusvirtual.cesfuencarral.com/">campus virtual</a></li>
+                  <li class="dropdown"><a href="formulario.html">contáctanos</a></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+        <div class="slider-head">
+          <div class="slider-img">
+            <img src="img/infantil_fondo.jpg">
+          </div>
+          <div class="slider-img">
+            <img src="img/dependencia_fondo.jpg">
+          </div>
+          <div class="slider-img">
+            <img src="img/enfermeria_fondo.jpg">
+          </div>
+          <div class="slider-img">
+            <img src="img/integracion_fondo.jpg">
+          </div>
+          <a class="prev" onclick="plusSlide(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlide(1)">&#10095;</a>
+          <div class="btn-dots">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+          </div>
+        </div>
+        <script type="text/javascript" src="js/slider.js"></script>
+      </header>
+      <div class="main">
+
+      </div>
+      <div class="footer">
+
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(window).scroll(function() {
+        $('#ElementAnimated').each(function() {
+          var posimg= $(this).offset().top;
+          var topofwindows= $(window).scrollTop();
+            if (posimg < topofwindows + 400) {
+              $(this).addClass("fadeIn");
+            }
+        })
+      })
+    </script>
+  </body>
 </html>

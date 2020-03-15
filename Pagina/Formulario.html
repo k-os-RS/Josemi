@@ -1,45 +1,93 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Formulario</title>
-        <link rel="stylesheet" href="Formulario.css">
-    </head>
-    <body>
-        <h1>Formulario</h1>
-        <form action="Formulario.php" method="POST">
-            <fieldset><legend>Datos de Alumno</legend>
-                    <label for="Nombre">Nombre<span>*</span></label><br>
-                    <input type="text" name="Nombre" value=""><br>
-                    <label for="Email">Email<span>*</span></label><br>
-                    <input type="text" name="Email" value=""><br>
-                    <label for="Telefono">Teléfono:<span>*</span></label><br>
-                    <input type="text" name="Telefono" value="">
-                <hr>
-                <p>Grado Medio</p><input type="hidden" name="Grado_Medio" value="no">
-                    <input type="checkbox" name="Grado_Medio" value="TÉCNICO EN SISTEMAS MICROINFORMATICOS Y REDES">
-                    <label for="Grado_Medio">TÉCNICO EN SISTEMAS MICROINFORMATICOS Y REDES</label><br>
-                    <input type="checkbox" name="Grado_Medio" value="EN ATENCIÓN A PERSONAS EN SITUACIÓN DE DEPENDENCIA">
-                    <label for="Grado_Medio">EN ATENCIÓN A PERSONAS EN SITUACIÓN DE DEPENDENCIA</label><br>
-                    <input type="checkbox" name="Grado_Medio" value="EN CUIDADOS AUXILIARES DE ENFERMERÍA">
-                    <label  for="Grado_Medio">EN CUIDADOS AUXILIARES DE ENFERMERÍA</label><br>
-                <hr>
-                <p>Grado superior</p><input type="hidden" name="Grado_superior" value="no">
-                    <input type="checkbox" name="Grado_superior" value="TÉCNICO SUPERIOR EN EDUCACIÓN INFANTIL">
-                    <label for="Grado_superior">TÉCNICO SUPERIOR EN EDUCACIÓN INFANTIL</label><br>
-                    <input type="checkbox" name="Grado_superior" value="TÉCNICO SUPERIOR EN INTEGRACIÓN SOCIAL">
-                    <label for="Grado_superior">TÉCNICO SUPERIOR EN INTEGRACIÓN SOCIAL</label><br>
-                    <input type="checkbox" name="Grado_superior" value="TÉCNICO SUPERIOR EN DAM">
-                    <label for="Grado_superior">TÉCNICO SUPERIOR EN DAM</label><br>    
-                <hr>
-                <p>Privacidad<span>*</span></p>
-                    <input type="hidden" name="privacidad" value="no">
-                    <input type="checkbox" name="privacidad" value="Aceptado">
-                    <label for="Privacidad">He leído y acepto la política de privacidad</label><br>                
-                <input type="submit" value="Aceptar" id="si">
-                <input type="reset" value="Borrar">
-            </fieldset>
-            
-        </form><br>
-    </body>
+<html lang="es" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>CES FUENCARRAL</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <script src="https://kit.fontawesome.com/8b57b2134f.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/selector.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="navegation">
+          <div class="nav-container">
+            <nav class="nav-bar">
+              <div class="menu">
+                <ul class="nav">
+                  <li class="dropdown"><a href="index.html">inicio</a></li>
+                  <li class="dropdown"><a href="index.html">grado medio <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropmenu">
+                      <li><a href="smr.html">Sistemas microinformaticos y redes</a></li>
+                      <li><a href="dependencia.html">Atención a personas en situación de dependencia</a></li>
+                      <li><a href="enfermeria.html">Cuidados auxiliares de enfermeria</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a href="index.html">grado superior <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropmenu">
+                      <li><a href="dam.html">Desarrollo de aplicaciones multiplataforma</a></li>
+                      <li><a href="integracion.html">Integración social</a></li>
+                      <li><a href="infantil.html">Educación infantil</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a href="becas.html">becas</a></li>
+                  <li class="dropdown"><a href="quien.html">conocenos <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropmenu">
+                      <li><a href="instalaciones.html">Instalaciones</a></li>
+                      <li><a href="404.html">Empresas colaboradoras</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a href="https://campusvirtual.cesfuencarral.com/">campus virtual</a></li>
+                  <li class="dropdown nav-active"><a href="formulario.html">contáctanos</a></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+        <div class="slider-head">
+          <div class="slider-img">
+            <img src="img/infantil_fondo.jpg">
+          </div>
+          <div class="slider-img">
+            <img src="img/dependencia_fondo.jpg">
+          </div>
+          <div class="slider-img">
+            <img src="img/enfermeria_fondo.jpg">
+          </div>
+          <div class="slider-img">
+            <img src="img/integracion_fondo.jpg">
+          </div>
+          <a class="prev" onclick="plusSlide(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlide(1)">&#10095;</a>
+          <div class="btn-dots">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+          </div>
+        </div>
+        <script type="text/javascript" src="js/slider.js"></script>
+      </header>
+      <div class="main">
+
+      </div>
+      <div class="footer">
+
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(window).scroll(function() {
+        $('#ElementAnimated').each(function() {
+          var posimg= $(this).offset().top;
+          var topofwindows= $(window).scrollTop();
+            if (posimg < topofwindows + 400) {
+              $(this).addClass("fadeIn");
+            }
+        })
+      })
+    </script>
+  </body>
 </html>

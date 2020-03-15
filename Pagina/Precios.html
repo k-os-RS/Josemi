@@ -1,28 +1,93 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <div>                
-            <h4>CICLOS FORMATIVOS GRADO SUPERIOR</h4>
-            <p>
-Desde el curso 2013/2014, los ciclos concertados de Grado Superior han pasado a ser Grados Privados sin financiación de la Administración, para lo que han dispuesto unas BECAS, a la que optan todos los alumnos/as que cumplan los requisitos descritos en la convocatoria (ver noticia de Becas).
-<br><br>
-Todos los alumnos tienen una BECA garantizada por diez meses anuales de 230 euros mensuales, pudiendo llegar a los 290 euros, en función de la renta familiar.
-<br><br>
-Nuestros precios son los siguientes:
-* MATRÍCULA: 290 EUROS.
-* MENSUALIDADES: NUEVE MENSUALIDADES DE 325 EUROS CADA UNA.
-            </p>
-            <img src="img/primerciclo.png" alt="primerciclo">
-            <img src="img/segundociclo.png" alt="segundociclo">
-            <p>Puedes hacer tus propios cálculos descontando el importe de la beca al que tienes derecho.
-                <br><br>
-                Al concederse diez mensualidades de beca, el importe de la matrícula se reduciría de la misma forma que la mensualidad.
-                <br><br>
-                Queremos informaros que para aquellos alumnos que no cumplís los requisitos para las becas de la Comunidad de Madrid, el centro pone a vuestra disposición sus propias becas para cursar Ciclos Formativos de Grado Superior. Para más información ponte en contacto con nosotros mediante el teléfono 917292862 o en el correo electrónico info@cesfuencarral.com
-            </p>
+<html lang="es" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>CES FUENCARRAL</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <script src="https://kit.fontawesome.com/8b57b2134f.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/selector.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="navegation">
+          <div class="nav-container">
+            <nav class="nav-bar">
+              <div class="menu">
+                <ul class="nav">
+                  <li class="dropdown"><a href="index.html">inicio</a></li>
+                  <li class="dropdown"><a href="index.html">grado medio <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropmenu">
+                      <li><a href="smr.html">Sistemas microinformaticos y redes</a></li>
+                      <li><a href="dependencia.html">Atención a personas en situación de dependencia</a></li>
+                      <li><a href="enfermeria.html">Cuidados auxiliares de enfermeria</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a href="index.html">grado superior <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropmenu">
+                      <li><a href="dam.html">Desarrollo de aplicaciones multiplataforma</a></li>
+                      <li><a href="integracion.html">Integración social</a></li>
+                      <li><a href="infantil.html">Educación infantil</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a href="becas.html">becas</a></li>
+                  <li class="dropdown"><a href="conocenos.html">conocenos <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropmenu">
+                      <li><a href="instalaciones.html">Instalaciones</a></li>
+                      <li><a href="empresas.html">Empresas colaboradoras</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a href="https://campusvirtual.cesfuencarral.com/">campus virtual</a></li>
+                  <li class="dropdown"><a href="formulario.html">contáctanos</a></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
         </div>
-    </body>
+        <div class="slider-head">
+          <div class="slider-img">
+            <img src="img/infantil_fondo.jpg">
+          </div>
+          <div class="slider-img">
+            <img src="img/dependencia_fondo.jpg">
+          </div>
+          <div class="slider-img">
+            <img src="img/enfermeria_fondo.jpg">
+          </div>
+          <div class="slider-img">
+            <img src="img/integracion_fondo.jpg">
+          </div>
+          <a class="prev" onclick="plusSlide(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlide(1)">&#10095;</a>
+          <div class="btn-dots">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+          </div>
+        </div>
+        <script type="text/javascript" src="js/slider.js"></script>
+      </header>
+      <div class="main">
+
+      </div>
+      <div class="footer">
+
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(window).scroll(function() {
+        $('#ElementAnimated').each(function() {
+          var posimg= $(this).offset().top;
+          var topofwindows= $(window).scrollTop();
+            if (posimg < topofwindows + 400) {
+              $(this).addClass("fadeIn");
+            }
+        })
+      })
+    </script>
+  </body>
 </html>
