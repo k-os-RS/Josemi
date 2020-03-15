@@ -343,9 +343,11 @@ class administracion {
 	}
 	//Metodos generales
 	protected void AltaEmpleado () {
+		//variables
 		String tipoEmpleado, datos;
 		boolean cancelar= false, correcto= false;
-
+		personas p = null;
+		
 		System.out.println("\n == ALTA EMPLEADO == ");
 		System.out.println("\nPor favor, a continuaci\u00f3n indique el tipo de empleado");
 		System.out.println("Asesor - Mecanico | Si desea cancelar el alta escriba Cancelar\n");
@@ -357,7 +359,6 @@ class administracion {
 			if (tipoEmpleado.equals("")) {
 				System.out.println("\nError: Por favor rellene el campo para poder continuar");
 			} else if (tipoEmpleado.equalsIgnoreCase("asesor") || tipoEmpleado.equalsIgnoreCase("mecanico")) {
-				personas p = null;
 				System.out.println("\nPor favor rellene los siguientes datos: ");
 				System.out.println("");
 				//DNI
@@ -514,8 +515,10 @@ class administracion {
 		} while (!cancelar);
 	}
 	protected void BajaEmpleado () {
+		//variables
 		String dni;
 		boolean existe= false, confirmacion= false;
+		
 		if (person.size() > 0) {
 			System.out.println("\n == MOSTRAR DATOS EMPLEADO == ");
 			System.out.println("");
@@ -564,6 +567,7 @@ class administracion {
 
 	}
 	protected void MostrarEmpleado () {
+		//variables
 		String dni, datos;
 		boolean ciclo= true;
 
@@ -913,9 +917,11 @@ class administracion {
 		}//Fin del if
 	}
 	protected void AltaVehiculo () {
+		//variables
 		String tipoVehiculo, datos;
 		Double decimal;
 		boolean cancelar= false, correcto= false;
+		vehiculos v = null;
 
 		System.out.println("\n == ALTA VEHICULO == ");
 		System.out.println("\nPor favor, a continuaci\u00f3n indique el tipo de vehiculo");
@@ -926,8 +932,6 @@ class administracion {
 			if (tipoVehiculo.equals("")) {
 				System.out.println("\nError: Por favor rellene el campo para poder continuar");
 			} else if (tipoVehiculo.equalsIgnoreCase("coche") || tipoVehiculo.equalsIgnoreCase("moto")) {
-				vehiculos m = new motos();
-				vehiculos c = new coches();
 				System.out.println("\nPor favor rellene los siguientes datos: \n");
 				//Matricula
 				do {
@@ -938,8 +942,7 @@ class administracion {
 						System.out.println("\nError: Por favor rellene el campo matr\u00edcula");
 					} else if (comprob.isMatricula(datos)) {
 						if(automovil.size()==0) {
-							c.setMatricula(datos);
-							m.setMatricula(datos);
+							v.setMatricula(datos);
 							correcto= true;
 						}else {
 							for (int i= 0; i < automovil.size(); i++) {
@@ -948,8 +951,7 @@ class administracion {
 									correcto= false;
 									i= automovil.size();
 								} else {
-									c.setMatricula(datos);
-									m.setMatricula(datos);
+									v.setMatricula(datos);
 									correcto= true;
 									i= automovil.size();
 								}//Fin del if
@@ -967,8 +969,7 @@ class administracion {
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo modelo");
 					} else {
-						c.setModelo(datos);
-						m.setModelo(datos);
+						v.setModelo(datos);
 						correcto= true;
 					}//Fin del if
 				} while (!correcto);
@@ -980,8 +981,7 @@ class administracion {
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo apellidos");
 					} else {
-						c.setColor(datos);
-						m.setColor(datos);
+						v.setColor(datos);
 						correcto= true;
 					}//Fin del if
 				} while (!correcto);
@@ -995,8 +995,7 @@ class administracion {
 						System.out.println("\nError: Por favor rellene el campo combustible");
 						correcto= false;
 					} else if (comprob.isCombustible(datos)) {
-						c.setCombustible(datos);
-						m.setCombustible(datos);
+						v.setCombustible(datos);
 						correcto= true;
 					} else {
 						correcto= false;
@@ -1013,8 +1012,7 @@ class administracion {
 					} else if (comprob.isNumeroEntero(datos)) {
 						int comprobante= Integer.parseInt(datos);
 						if (comprobante >= 1) {
-							c.setPlazas(datos);
-							m.setPlazas(datos);
+							v.setPlazas(datos);
 							correcto= true;
 						} else {
 							System.out.println("\nError: La cantidad de plazas debe ser mayor a 1");
@@ -1035,8 +1033,7 @@ class administracion {
 					} else if (comprob.isNumeroDecimal(datos) || comprob.isNumeroEntero(datos)){
 						datos= datos.replace(',', '.');
 						decimal= Double.parseDouble(datos);
-						c.setKilometros(decimal);
-						m.setKilometros(decimal);
+						v.setKilometros(decimal);
 						correcto= true;
 					} else {
 						System.out.println("\nError: El campo solo admite n\u00fameros");
@@ -1054,8 +1051,7 @@ class administracion {
 					} else if (comprob.isNumeroDecimal(datos) || comprob.isNumeroEntero(datos)){
 						datos= datos.replace(',', '.');
 						decimal= Double.parseDouble(datos);
-						c.setPrecio(decimal);
-						m.setPrecio(decimal);
+						v.setPrecio(decimal);
 						correcto= true;
 					} else {
 						System.out.println("\nError: El campo solo admite n\u00fameros");
@@ -1064,15 +1060,15 @@ class administracion {
 				} while (!correcto);
 				if (tipoVehiculo.equalsIgnoreCase("coche")) {
 					System.out.println("\n == EL ALTA DE COCHE HA SIDO COMPLETADA == ");
-					((coches) c).setVendidoCoche("no");
-					((coches) c).setEnReparacionCoche("no");
-					automovil.add(c);
+					((coches) v).setVendidoCoche("no");
+					((coches) v).setEnReparacionCoche("no");
+					automovil.add(v);
 					cancelar= true;	
 				} else {
 					System.out.println("\n == EL ALTA DE MOTO HA SIDO COMPLETADA == ");
-					((motos) m).setVendidoMoto("no");
-					((motos) m).setEnReparacionMoto("no");
-					automovil.add(m);
+					((motos) v).setVendidoMoto("no");
+					((motos) v).setEnReparacionMoto("no");
+					automovil.add(v);
 					cancelar= true;	
 				}//Fin del if
 			} else if (tipoVehiculo.equalsIgnoreCase("Cancelar")) {
