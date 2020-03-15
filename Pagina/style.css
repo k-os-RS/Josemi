@@ -302,6 +302,13 @@ a {
   background: transparent;
   text-decoration: none
 }
+/*Datos*/
+#SERVICIOS{
+  background: transparent;
+  text-decoration: none;
+}
+.cuadraditos:hover{
+  border: 1.5 px black solid;
 
 .navegacion {
   background: #fefefe;

@@ -82,8 +82,8 @@ class administracion {
 					} else {
 						System.out.println("\n == Has fallado 3 veces, volviendo al menu principal == ");
 						ciclo= false;
-					}//Fin del if
-				}//Fin del if
+					}//Fin del if.
+				}//Fin del if.
 			} while (ciclo); //Fin del do
 			//Se ejecuta si los datos son correctos
 			while (!ciclo && contador > 0) {
@@ -2002,6 +2002,7 @@ class administracion {
 		} else {
 			System.out.println("\nError: No hay vehiculos disponibles");
 		}//Fin del if
+
 	}
 	protected void ComprarVehiculo () {
 		String dni, matricula, datos;
