@@ -217,7 +217,7 @@ class administracion {
 			menu.MenuAdmin();
 			datos= teclado.CadenaTexto();
 			if (datos.equals("")) {
-				System.out.println("\nErro: Por favor elige una opci\u00f3n");
+				System.out.println("\n\n\nError: Por favor elige una opci\u00f3n");
 			} else if (comprob.isNumeroEntero(datos)) {
 				switch (datos) {
 				case "1":
@@ -357,8 +357,7 @@ class administracion {
 			if (tipoEmpleado.equals("")) {
 				System.out.println("\nError: Por favor rellene el campo para poder continuar");
 			} else if (tipoEmpleado.equalsIgnoreCase("asesor") || tipoEmpleado.equalsIgnoreCase("mecanico")) {
-				personas a= new asesor();
-				personas m= new mecanico();
+				personas p = null;
 				System.out.println("\nPor favor rellene los siguientes datos: ");
 				System.out.println("");
 				//DNI
@@ -379,8 +378,7 @@ class administracion {
 								}//Fin del if
 							}//Fin del for i
 						} else {
-							a.setDni(datos);
-							m.setDni(datos);
+							p.setDni(datos);
 							correcto= true;
 							repetir= false;
 						}//Fin del if
@@ -389,8 +387,7 @@ class administracion {
 						repetir= false;
 					}//Fin del if
 					if (repetir) {
-						a.setDni(datos);
-						m.setDni(datos);
+						p.setDni(datos);
 						correcto= true;
 					}//Fin del if
 				} while (!correcto);
@@ -402,8 +399,7 @@ class administracion {
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo nombre");
 					} else {
-						a.setNombre(datos);
-						m.setNombre(datos);
+						p.setNombre(datos);
 						correcto= true;
 					}//Fin del if
 				} while (!correcto);
@@ -415,8 +411,7 @@ class administracion {
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo apellidos");
 					} else {
-						a.setApellidos(datos);
-						m.setApellidos(datos);
+						p.setApellidos(datos);
 						correcto= true;
 					}//Fin del if
 				} while (!correcto);
@@ -428,8 +423,7 @@ class administracion {
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo telefono m\u00f3vil");
 					} else if (comprob.isNumeroMovil(datos)) {
-						a.setTelefono_movil(datos);
-						m.setTelefono_movil(datos);
+						p.setTelefono_movil(datos);
 						correcto= true;
 					} else {
 						correcto= false;
@@ -443,8 +437,7 @@ class administracion {
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo fecha de nacimiento");
 					} else if (comprob.isFechaNacimiento(datos)) {
-						a.setFecha_nacimiento(datos);
-						m.setFecha_nacimiento(datos);
+						p.setFecha_nacimiento(datos);
 						correcto= true;
 					} else {
 						correcto= false;
@@ -458,8 +451,7 @@ class administracion {
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo cuenta bancaria");
 					} else {
-						a.setCuenta_bancaria(datos);
-						m.setCuenta_bancaria(datos);
+						p.setCuenta_bancaria(datos);
 						correcto= true;
 					}//Fin del if
 				} while (!correcto);
@@ -471,8 +463,7 @@ class administracion {
 					if (datos.equals("")) {
 						System.out.println("\nError: Por favor rellene el campo direccion");
 					} else {
-						a.setDireccion(datos);
-						m.setDireccion(datos);
+						p.setDireccion(datos);
 						correcto= true;
 					}//Fin del if
 				} while (!correcto);
@@ -489,8 +480,7 @@ class administracion {
 						if (sueldo < 950) {
 							System.out.println("\nError: El sueldo minimo es de 950\u20ac");
 						} else {
-							a.setSueldo(sueldo);
-							m.setSueldo(sueldo);
+							p.setSueldo(sueldo);
 							correcto= true;
 						}//Fin del if
 					} else {
@@ -500,19 +490,19 @@ class administracion {
 
 				if (tipoEmpleado.equalsIgnoreCase("asesor")) {
 					System.out.println("\n == EL ALTA DE ASESOR HA SIDO COMPLETADA == ");
-					((asesor) a).setPrimerinicio("si");
-					((asesor) a).setTrabajo("Asesor");
-					a.setTipo_persona("empleado");
-					a.setDespedida("no");
-					person.add(a);
+					((asesor) p).setPrimerinicio("si");
+					((asesor) p).setTrabajo("Asesor");
+					p.setTipo_persona("empleado");
+					p.setDespedida("no");
+					person.add(p);
 					cancelar= true;
 				} else {
 					System.out.println("\n == EL ALTA DE MECANICO HA SIDO COMPLETADA == ");
-					((mecanico) m).setPrimerinicio("si");
-					((mecanico) m).setTrabajo("Mec\u00e1nico");
-					m.setTipo_persona("empleado");
-					m.setDespedida("no");
-					person.add(m);
+					((mecanico) p).setPrimerinicio("si");
+					((mecanico) p).setTrabajo("Mec\u00e1nico");
+					p.setTipo_persona("empleado");
+					p.setDespedida("no");
+					person.add(p);
 					cancelar= true;
 				}//Fin del if
 			} else if (tipoEmpleado.equalsIgnoreCase("Cancelar")) {
