@@ -3,7 +3,7 @@ package proyecto_programacion;
 class motos extends vehiculos {
 	//Atributos
 	protected String enReparacionMoto, vendidoMoto;
-
+	
 	//Constructores	
 	public motos() {
 		
@@ -28,7 +28,7 @@ class motos extends vehiculos {
 
 	@Override
 	public String toString() {
-		String texto= "\nDatos de la moto: "+matricula+"\n"+
+		String texto= "Datos de la moto: "+matricula+"\n"+
 				"Modelo: "+modelo+
 				"\nColor: "+color+
 				"\nPlazas: "+plazas+

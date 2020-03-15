@@ -2,7 +2,7 @@ package proyecto_programacion;
 import java.time.*;
 class  comprobaciones {
 	
-	//Comprobacion de validez
+	//Comprobacion de validez 
     protected boolean isDNI (String dni) {
         boolean valido = false;
         int caracter= 0, miDNI = 0, resto = 0, i= 0;
@@ -17,7 +17,6 @@ class  comprobaciones {
                 i++;
             } while(i < dni.length() - 1 && valido);
         }//Fin del if
-        
         if(valido) {
         	//Validamos que la letra corresponda al DNI
             letra = Character.toUpperCase(dni.charAt(8));
@@ -43,13 +42,14 @@ class  comprobaciones {
 				} else {
 					System.out.println("\nError: Este a\u00f1o no es bisiesto");
 					valido= false;
-				}
+				}//Fin del if
 			} else {
 				valido= dia > 0 && dia <= diasMes[mes - 1];
-			}
+			}//Fin del if
 		} else {
+			System.out.println("\nError: La fecha no es v\u00e1lida");
 			valido= false;
-		}
+		}//Fin del if
 
 		return valido;
 	}
@@ -60,17 +60,22 @@ class  comprobaciones {
 	        matriculaValida= true;
 	    }else{
 	        matriculaValida= false;
-	    }
+	    }//Fin del if
 	    
 	    return matriculaValida;
 	}
 	protected boolean isCombustible (String combustible) {
 		boolean valido= false;
+		boolean gasolina= combustible.equalsIgnoreCase("gasolina"),
+				electrico= combustible.equalsIgnoreCase("electrico"),
+				diesel= combustible.equalsIgnoreCase("diesel"),
+				gasoil= combustible.equalsIgnoreCase("gasoil");
 		
-		if (combustible.equalsIgnoreCase("gasolina") || combustible.equalsIgnoreCase("diesel") ||combustible.equalsIgnoreCase("electricidad") || combustible.equalsIgnoreCase("gasoil")) {
+		if (gasolina || electrico || diesel || gasoil) {
 			valido= true;
 		} else {
 			System.out.println("\nError: El tipo de combustible no es v\u00e1lido");
+			System.out.println("Gasolina - Electrico - Diesel - Gasoil");
 		}
 		
 		return valido;
@@ -107,9 +112,8 @@ class  comprobaciones {
 		for (int i= 0; i < numeroD.length(); i++) {
 			if (numeroD.charAt(i) == '.') {
 				cont++;
-			}
+			}//Fin del if
 		}//Fin del for i
-		
 		if (cont == 1) {
 			pospunto= numeroD.indexOf('.');
 			if (pospunto == numeroD.length() - 1 || pospunto == 0) {
@@ -120,9 +124,8 @@ class  comprobaciones {
 				for (int j= 0; j < parteI.length(); j++) {
 					if (!Character.isDigit(parteI.charAt(j))) {
 						verdadero= false;
-					}
+					}//Fin del if
 				}//Fin del for j
-				
 				if (verdadero) {
 					for (int x= 0; x < parteF.length(); x++) {
 						if (!Character.isDigit(parteF.charAt(x))) {
@@ -137,14 +140,52 @@ class  comprobaciones {
 		
 		return verdadero;
 	}
-	
+	protected boolean isFechaNacimiento (String fechaN) {
+		boolean valido= false;
+		String fechaA= isFechaActual();
+		int[] diasMes= {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+		if (fechaN.matches("^(3[01]|[12][0-9]|0[1-9])/(1[0-2]|0[1-9])/[0-9]{4}$")) {
+			int dia= Integer.parseInt(fechaN.substring(0, 2)); 
+			int mes= Integer.parseInt(fechaN.substring(3, 5)); 
+			int anio= Integer.parseInt(fechaN.substring(6, 10));
+			int anio2= Integer.parseInt(fechaA.substring(6, 10));
+
+			if (dia > 28 && mes == 2) {
+				if (((anio%400 == 0 ) || (anio%100 != 0)) && (anio%4 == 0)) {
+					valido= true;
+				} else {
+					System.out.println("\nError: Este a\u00f1o no es bisiesto");
+					valido= false;
+				}//Fin del if
+			} else {
+				valido= dia > 0 && dia <= diasMes[mes - 1];
+			}//Fin del if
+			
+			if ((anio2 - anio) >= 0 && (anio2 - anio) < 18) {
+				System.out.println("\nError: El a\u00f1o de nacimiento es de un menor de edad");
+				valido= false;
+			} else if ((anio2 - anio) < 0) {
+				System.out.println("\nError: Un no nacido no puede realizar acci\u00f3nes");
+				valido= false;
+			} else {
+				valido= true;
+			}//Fin del if
+		} else {
+			System.out.println("\nError: La fecha de nacimiento no es v\u00e1lida");
+			valido= false;
+		}//Fin del if
+
+		return valido;
+	}
+
 	//Obtencion de la fecha y hora actual
     protected String isFechaActual () {
     	String fechanow, dia, mes, anio;
     	
     	LocalDateTime fechas = LocalDateTime.now();
     	LocalDate fecha = fechas.toLocalDate();
-    	
+    	//Cambia el orden
     	fechanow= fecha.toString();
     	dia= fechanow.substring(8, 10);
     	mes= fechanow.substring(5, 7);
@@ -159,7 +200,7 @@ class  comprobaciones {
     	
     	LocalDateTime horas = LocalDateTime.now();
     	LocalTime hora = horas.toLocalTime();
-    	
+    	//Quita los milisegundos
     	horanow= hora.toString();
     	pospunto= horanow.indexOf('.');
     	horanow= horanow.substring(0, pospunto);
