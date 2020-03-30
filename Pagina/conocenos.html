@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>CES FUENCARRAL</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <script src="https://kit.fontawesome.com/8b57b2134f.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/selector.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="navegation">
+          <div class="nav-container">
+            <nav class="nav-bar">
+              <div class="menu">
+                <ul class="nav">
+                  <li class="dropdown"><a href="index.html">inicio</a></li>
+                  <li class="dropdown"><a href="index.html">grado medio <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropmenu">
+                      <li><a href="smr.html">Sistemas microinformaticos y redes</a></li>
+                      <li><a href="dependencia.html">Atención a personas en situación de dependencia</a></li>
+                      <li><a href="enfermeria.html">Cuidados auxiliares de enfermeria</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a href="index.html">grado superior <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropmenu">
+                      <li><a href="dam.html">Desarrollo de aplicaciones multiplataforma</a></li>
+                      <li><a href="integracion.html">Integración social</a></li>
+                      <li><a href="infantil.html">Educación infantil</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a href="becas.html">becas</a></li>
+                  <li class="dropdown nav-active"><a href="conocenos.html">conocenos <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropmenu">
+                      <li><a href="instalaciones.html">Instalaciones</a></li>
+                      <li><a href="empresas.html">Empresas colaboradoras</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a target="_blank" href="https://campusvirtual.cesfuencarral.com/">campus virtual</a></li>
+                  <li class="dropdown"><a href="contactanos.html">contáctanos</a></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+        <div class="slider-head">
+          <div class="slider-img">
+            <img src="img/infantil_fondo.jpg">
+          </div>
+          <div class="slider-img">
+            <img src="img/dependencia_fondo.jpg">
+          </div>
+          <div class="slider-img">
+            <img src="img/enfermeria_fondo.jpg">
+          </div>
+          <div class="slider-img">
+            <img src="img/integracion_fondo.jpg">
+          </div>
+          <a class="prev" onclick="plusSlide(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlide(1)">&#10095;</a>
+          <div class="btn-dots">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+          </div>
+        </div>
+        <script type="text/javascript" src="js/slider.js"></script>
+      </header>
+      <div class="main">
+
+      </div>
+      <div class="footer">
+
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(window).scroll(function() {
+        $('#ElementAnimated').each(function() {
+          var posimg= $(this).offset().top;
+          var topofwindows= $(window).scrollTop();
+            if (posimg < topofwindows + 400) {
+              $(this).addClass("fadeIn");
+            }
+        })
+      })
+    </script>
+    <div class="centro">
+      <div>
+          <!--texto-->
+          <h4>¿QUIÉNES SOMOS?</h4>
+          <hr>
+          <p>
+              El Centro de Estudios Superiores Fuencarral, es un centro educativo que focaliza sus esfuerzos en la formación integral del alumno/a y que para ello ha elegido como medio, la Formación Profesional de Grado Medio y Grado Superior.
+              <br><br>
+              Desde este objetivo, empezamos nuestra andadura en el curso 2012-13, partiendo de la experiencia y vocación del equipo directivo, fundadores y creadores de nuestro centro, y la colaboración indispensable de la Consejería de Educación de la Comunidad de Madrid. Este equipo está integrado por profesionales de la educación con más de quince años de experiencia, impartiendo docencia en casi todos los niveles educativos y diferentes especialidades.
+              <br><br>
+              Fundamentándose en esta experiencia, surge este proyecto propio, que como antes hemos mencionado, tiene el objetivo de formar todas las dimensiones del alumno/a, ayudándoles en su proceso madurativo y dotándoles de los instrumentos necesarios para que puedan alcanzar todos sus objetivos, entre ellos el laboral.
+              <br><br>
+              Para este complejo proceso hemos buscado el mejor equipo humano posible, el cual garantiza al alumno/a que todas sus necesidades puedan ser respondidas positiva e inmediatamente, dotándoles de los mejores recursos y medios posibles. Buscamos alumnos/as íntegros/as para que puedan convertirse en profesionales honestos. Nuestro objetivo, es el ser humano, sin artificios ni palabras vacías. Esa es la realidad de nuestro proyecto y se puede comprobar en el día a día de nuestros alumnos/as.
+              <br><br>
+              Estamos atentos a las necesidades educativas que la sociedad demanda, con lo que nuestros planes son abiertos y flexibles. La educación debe estar preparada para los cambios y dispuesta para poder responder de forma rápida y efectiva.
+              <br><br>
+              Esperamos siempre que nuestros alumnos/as se encuentren integrados en el centro y por ellos estamos siempre a su disposición y a la de las familias para cualquier necesidad que puedan plantearnos.
+              <br><br>
+              Vivimos al servicio de los alumnos/as y para ello trabajamos, esperando estar a la altura de lo que nos demanden.
+          </p>
+           <hr>
+          <!-- profes -->
+          <table class="profes">
+            <tr>
+              <td>
+                <div>
+                  <img src="img/JaviLopez.jpg" alt="JaviLopez">
+                  <p>
+                    JAVIER LÓPEZ PADÍN <br>
+                    LDO. EN PSICOPEDAGOGIA <br>
+                    DIRECTOR Y ORIENTADOR
+                  </p>
+              </div>
+              </td>
+              <td>
+                <div>
+                  <img src="img/JaviSanchez.jpg" alt="JaviSanchez">
+                  <p>
+                    JAVIER SÁNCHEZ PALACIOS <br>
+                    GRADO EN INGENIERÍA INFORMÁTICA <br>
+                    JEFE DE ESTUDIOS
+                  </p>
+              </div>
+              </td>
+              <td>
+                <div>
+                  <img src="img/JaviNavazo.jpg" alt="JaviNavazo">
+                  <p>
+                    FCO JAVIER NAVAZO FERNADEZ <br>
+                    GRADO EN INGENIERÍA INFORMÁTICA <br>
+                    PROFESOR. RESPONSABLE FCT
+                  </p>
+              </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div>
+                  <img src="img/David.jpg" alt="David">
+                  <p>
+                    DAVID ALVAREZ BOYERO <br>
+                    GRADO EN INGENIERÍA INFORMÁTICA <br>
+                    PROFESOR
+                  </p>
+              </div>
+              </td>
+              <td>
+                <div>
+                  <img src="img/Jorge.jpg" alt="Jorge">
+                  <p>
+                    JORGE YEPES RAMÍREZ <br>
+                    GRADO EN INGENIERÍA INFORMÁTICA <br>
+                    PROFESOR
+                  </p>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <img src="img/susana.jpg" alt="Susana">
+                  <p>
+                    SUSANA SÁNCHEZ PALACIOS <br>
+                    LDA. EN DERECHO <br>
+                    PROFESORA
+                  </p>
+              </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div>
+                  <img src="img/nacho.jpg" alt="Nacho">
+                  <p>
+                    IGNACIO RIVAS TORRES <br>
+                    GRADUADO ENFERMERIA  <br>
+                    PROFESOR.
+                  </p>
+              </div>
+              </td>
+              <td>
+                <div>
+                  <img src="img/Pilar.jpg" alt="Pilar">
+                  <p>
+                    PILAR CALLEJO PRADO <br>
+                    LDA. FILOLOGÍA INGLESA <br>
+                    PROFESORA
+                  </p>
+              </div>
+              </td>
+              <td>
+                <div>
+                  <img src="img/Teresa.jpg" alt="Teresa">
+                  <p>
+                    TERESA VALES CABALLERO <br>
+                    LDA. FILOSOFÍA Y CIENCIAS DE LA EDUCACIÓN. SECCIÓN PSICOLOGÍA <br>
+                    PROFESORA. TUTORA
+                  </p>
+              </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div>
+                  <img src="img/Esperanza.jpg" alt="Esperanza">
+                  <p>
+                    ESPERANZA MARTÍN VARA <br>
+                    LDA. FILOSOFÍA Y CIENCIAS DE LA EDUCACIÓN <br>
+                    PROFESORA. TUTORA
+                  </p>
+              </div>
+              </td>
+              <td>
+                <div>
+                  <img src="img/Angeles.jpg" alt="Angeles">
+                  <p>
+                    ÁNGELES MARÍA LARA PRADAS <br>
+                    LICENCIADA EN MEDICINA Y CIRUGÍA <br>
+                    PROFESORA. TUTORA
+                  </p>
+              </div>
+              </td>
+              <td>
+                <div>
+                  <img src="img/Esther.jpg" alt="Esther">
+                  <p>
+                    ESTHER MORENO MUÑOZ <br>
+                    LICENCIADA EN PSICOLOGÍA <br>
+                    PROFESORA. TUTORA
+                  </p>
+              </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div>
+                  <img src="img/Miguel.jpg" alt="Miguel">
+                  <p>
+                      MIGUEL ANGEL ROMERO ALHAMBRA <br>
+                      LICENCIADO EN DERECHO <br>
+                      PROFESOR
+                  </p>
+              </div>
+              </td>
+              <td>
+                <div>
+                  <img src="img/virginia.jpg" alt="Virginia">
+                  <p>
+                    VIRGINIA MARTÍNEZ AYERRA <br>
+                    LDA. EN BIOLOGÍA ESPECIALIDAD AMBIENTAL <br>
+                    PSICÓLOGA CLÍNICA <br>
+                    PROFESORA
+                  </p>
+              </div>
+              </td>
+              <td>
+                <div>
+                  <img src="img/blanca.jpg" alt="Blanca">
+                  <p>
+                    BLANCA MEJÍAS NEIRA <br>
+                    GRADO EN EDUCACIÓN PRIMARIA <br>
+                    PROFESORA. TUTORA
+                  </p>
+              </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div>
+                  <img src="img/monica.jpg" alt="monica">
+                  <p>
+                    MONICA FUENTES PLEITE <br>
+                    GRADO EN EDUCACIÓN INFANTIL <br>
+                    LDA. EN DERECHO <br>
+                    LDA. EN DIRECCIÓN Y ADMINISTRACIÓN DE EMPRESAS <br>
+                    PROFESORA
+                  </p>
+              </div>
+              </td>
+            </tr>
+          </table>
+      </div>
+  </body>
+</html>
