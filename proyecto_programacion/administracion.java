@@ -4,9 +4,9 @@ import java.util.*;
 class administracion {
 	protected ArrayList<vehiculos> automovil= new ArrayList<vehiculos>();
 	protected ArrayList<personas> person= new ArrayList<personas>();
-	//protected ArrayList<personas> newperson= new ArrayList<personas>();
 	protected ArrayList<venta> vendidos= new ArrayList<venta>();
 	protected ArrayList<String> admin= new ArrayList<String>();
+	//protected ArrayList<personas> newperson= new ArrayList<personas>();
 	protected comprobaciones comprob= new comprobaciones();
 	protected E_S teclado= new E_S();
 	protected menus menu= new menus();
@@ -1080,6 +1080,7 @@ class administracion {
 		} while (!cancelar);
 	}
 	protected void BajaVehiculo () {
+		//variables
 		String matricula;
 		boolean cancelar= false, correcto= false, comprobacion= false;
 
@@ -1154,6 +1155,7 @@ class administracion {
 		} while (!cancelar);		
 	}
 	protected void MostrarVehiculo () {
+		//variables
 		String respuesta, datos;
 		boolean cancelar= false, correcto= false;
 		
@@ -1236,6 +1238,7 @@ class administracion {
 		}while(!cancelar);
 	}
 	protected void ModificarVehiculo () {
+		//variables
 		String matricula, datos;
 		double decimal;
 		boolean ciclo= true, existe= false, repetir= true, confirmacion= false;
@@ -1372,6 +1375,7 @@ class administracion {
 		}//Fin del if
 	}
 	protected void VenderVehiculo () {
+		//variables
 		ArrayList<vehiculos> auto= new ArrayList<vehiculos>();
 		String matricula, dni, datos;
 		int contadorC= 0, contadorM= 0, cantidad, cantidad2;
@@ -1991,6 +1995,7 @@ class administracion {
 
 	}
 	protected void ComprarVehiculo () {
+		//variables
 		String dni, matricula, datos;
 		double precioC, precioM, dinerototal;
 		boolean ciclo= true, ciclo2= true, ciclo3= true, ciclo4= true, comprobacion= false, existe= false;
@@ -2218,8 +2223,10 @@ class administracion {
 		System.out.println("\n == EL ALTA DE CLIENTE HA SIDO COMPLETADA == ");
 	}
 	protected void MostrarCliente () {
+		//variables
 		String dni, datos;
 		boolean ciclo= true;
+		
 		do {
 			menu.MenuMostrarCliente();
 			datos= teclado.CadenaTexto();
@@ -2331,8 +2338,10 @@ class administracion {
 		}//Fin del if
 	}
 	protected void ModificarCliente () {
+		//variables
 		String dni, datos;
 		boolean ciclo= true, repetir= true, confirmacion= false, existe= false;
+		
 		System.out.println("\n == MODIFICAR DATOS DE UN CLIENTE == ");
 		System.out.print("\nDNI del cliente: ");
 		dni= teclado.CadenaTexto();
@@ -2500,6 +2509,7 @@ class administracion {
 		}//Fin del if
 	}
 	protected void RepararVehiculo () {
+		//variables
 		String matricula;
 		boolean ciclo= true, existe= false;
 		
@@ -2597,6 +2607,7 @@ class administracion {
 		System.out.println("\nDinero Total: "+admin.get(7)+"\u20ac");
 	}
 	protected void CambiarPassword () {
+		//variables
 		String dni, passold, passnew, passrepeat;
 		boolean existe= false, correcto= false, comprobacion= false;
 		

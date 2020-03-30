@@ -327,3 +327,7 @@ INICIO HORA ACTUAL
 	variable 4<- obtiene la posicion del punto que separa las milesimas
 	variable 3<- obtiene los numero desde el 0 hasta el punto
 FIN HORA ACTUAL
+
+
+¡¡VIVA EL BRAWL STARS!!
+by: Brandon Ramirez
