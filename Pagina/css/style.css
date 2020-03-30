@@ -365,8 +365,8 @@ section {
             }
 /*Mas cosas añadidas*/
 .centro {
-  margin-left: 12em;
-  margin-right: 14em;
+  margin-left: 15%;
+  margin-right: 15%;
   text-align: left;
   
 }
@@ -374,7 +374,7 @@ h3{
   text-align: center;
 }
 .lista{
-  margin-left: 5em;
+  margin-left: 5%;
 }
 caption{
   text-align: center
@@ -387,14 +387,15 @@ caption{
 
 }
 .boton{
-  width: 300px;
-  height: 60px;
+  width: 250px;
+  height: 55px;
   font-size: 30px;
   border-style: none;
   margin: auto;
   background:rgb(4,150,213);
   color:white;
   border-radius: 15px;
+  margin-left: 25%;
 }
 .boton:hover{
   background: rgb(5, 89, 185);
