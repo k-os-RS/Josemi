@@ -1,17 +1,192 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <p>Un paso más para convertirte en un experto informático, capaz de gestionar todo tipo de entidades, públicas o privadas, creando, desarrollando o gestionando aplicaciones empresariales de todo ámbito.
-            <br><br>
-            A la finalización del ciclo podrás incorporarte al mundo laboral de la informática como desarrollador o gestor de aplicaciones para negocios u ocio.
-            <br><br>
-            También podrás continuar tu formación con otro ciclo formativo o incorporándote a un Grado de Ingeniería Informática en cualquiera de sus especialidades.
-            <br><br>
-            Listado de módulos que tiene este ciclo formativo («asignaturas»):
-            </p>
-            <img src="img/DAM.jpg" alt="DAM">
-    </body>
+<html lang="es" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>CES FUENCARRAL</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <script src="https://kit.fontawesome.com/8b57b2134f.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/selector.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="navegation">
+          <div class="nav-container">
+            <nav class="nav-bar">
+              <div class="menu">
+                <ul class="nav">
+                  <li class="dropdown"><a href="index.html">inicio</a></li>
+                  <li class="dropdown"><a href="index.html">grado medio <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropmenu">
+                      <li><a href="smr.html">Sistemas microinformaticos y redes</a></li>
+                      <li><a href="dependencia.html">Atención a personas en situación de dependencia</a></li>
+                      <li><a href="enfermeria.html">Cuidados auxiliares de enfermeria</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown nav-active"><a href="index.html">grado superior <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropmenu">
+                      <li><a href="dam.html">Desarrollo de aplicaciones multiplataforma</a></li>
+                      <li><a href="integracion.html">Integración social</a></li>
+                      <li><a href="infantil.html">Educación infantil</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a href="becas.html">becas</a></li>
+                  <li class="dropdown"><a href="conocenos.html">conocenos <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropmenu">
+                      <li><a href="instalaciones.html">Instalaciones</a></li>
+                      <li><a href="empresas.html">Empresas colaboradoras</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a target="_blank" href="https://campusvirtual.cesfuencarral.com/">campus virtual</a></li>
+                  <li class="dropdown"><a href="contactanos.html">contáctanos</a></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+        <div class="slider-head">
+          <div class="slider-img">
+            <img src="img/infantil_fondo.jpg">
+          </div>
+          <div class="slider-img">
+            <img src="img/dependencia_fondo.jpg">
+          </div>
+          <div class="slider-img">
+            <img src="img/enfermeria_fondo.jpg">
+          </div>
+          <div class="slider-img">
+            <img src="img/integracion_fondo.jpg">
+          </div>
+          <a class="prev" onclick="plusSlide(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlide(1)">&#10095;</a>
+          <div class="btn-dots">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+          </div>
+        </div>
+        <script type="text/javascript" src="js/slider.js"></script>
+      </header>
+      <div class="main">
+
+      </div>
+      <div class="footer">
+
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(window).scroll(function() {
+        $('#ElementAnimated').each(function() {
+          var posimg= $(this).offset().top;
+          var topofwindows= $(window).scrollTop();
+            if (posimg < topofwindows + 400) {
+              $(this).addClass("fadeIn");
+            }
+        })
+      })
+    </script>
+    <div class="centro">
+      <p>
+        Un paso más para convertirte en un experto informático, capaz de gestionar todo tipo de entidades, públicas o privadas, creando, desarrollando o gestionando aplicaciones empresariales de todo ámbito.
+        <br>
+        A la finalización del ciclo podrás incorporarte al mundo laboral de la informática como desarrollador o gestor de aplicaciones para negocios u ocio.
+        <br>
+        También podrás continuar tu formación con otro ciclo formativo o incorporándote a un Grado de Ingeniería Informática en cualquiera de sus especialidades.
+        <br> 
+        Listado de módulos que tiene este ciclo formativo («asignaturas»):
+      </p>
+      <table>
+        <caption><h3>Módulos profesionales</h3></caption>
+        <tr>
+          <td>
+            <table>
+              <tr class="tablita">
+              <td>1º Curso</td>
+              <td>Horas</td>
+              </tr>
+              <tr>
+                <td>Base de datos</td>
+                <td>205</td>
+              </tr>
+              <tr>
+                <td>Entornos de desarrollo</td>
+                <td>90</td>
+              </tr>
+              <tr>
+                <td>Formación y orientación laboral</td>
+                <td>90</td>
+              </tr>
+              <tr>
+                <td>Lenguaje de marcas y sistemas de gestión de la información</td>
+                <td>140</td>
+              </tr>
+              <tr>
+                <td>Programación</td>
+                <td>270</td>
+              </tr>
+              <tr>
+                <td>Sistemas informáticos</td>
+                <td>205</td>
+              </tr>
+            </table>    
+          </td>
+          <td class="separador"></td>
+          <td>
+            <table>
+              <tr class="tablita">
+                <td>2º Curso</td>
+                <td>Horas</td>
+              </tr>
+                <tr>
+                  <td>Acceso a datos</td>
+                  <td>120</td>
+                </tr>
+                <tr>
+                  <td>Desarrolo de interfaces</td>
+                  <td>120</td>
+                </tr>
+                <tr>
+                  <td>Empresa e iniciativa emprendedora</td>
+                  <td>65</td>
+                </tr>
+                <tr>
+                  <td>Inglés técnico para grado superior</td>
+                  <td>40</td>
+                </tr>
+                <tr>
+                  <td>Programación de servicios y procesos</td>
+                  <td>80</td>
+                </tr>
+                <tr>
+                  <td>Programación multimedia y dispositivos móviles</td>
+                  <td>80</td>
+                </tr>
+                <tr>
+                  <td>Sistemas de gestión empresarial</td>
+                  <td>95</td>
+                </tr>
+                <tr>
+                  <td>Proyecto de desarrollo de aplicaciones multiplataforma</td>
+                  <td>30</td>
+                </tr>
+                <tr>
+                  <td>Formación en centros de trabajo</td>
+                  <td>440</td>
+                </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <div>
+        <form action="formulario.html">
+          <p>Si desea conseguir asesoramiento de alguno de nuestros cursos, pulse en el formulario</p>
+          <input type="submit" name="formulario" value="Formuario" class="boton">
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
